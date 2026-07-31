@@ -7,8 +7,15 @@ export const metadata: Metadata = {
   description:
     "Academia y comunidad de danza. Formación, creación y experiencias escénicas para descubrir el movimiento y encontrar una voz propia.",
   icons: {
-    icon: "/vox-corpus-logo.png",
-    shortcut: "/vox-corpus-logo.png",
+    icon: [
+      {
+        url: "/favicon-vox-v2.png",
+        type: "image/png",
+        sizes: "512x512",
+      },
+    ],
+    shortcut: "/favicon-vox-v2.png",
+    apple: "/favicon-vox-v2.png",
   },
   openGraph: {
     type: "website",
