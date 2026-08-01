@@ -1,235 +1,262 @@
 const programs = [
   {
-    number: "01",
     title: "Primeros pasos",
-    text: "Un espacio de descubrimiento para bailar, jugar y construir confianza a través del movimiento.",
+    label: "Exploración y confianza",
+    text: "Un comienzo cercano para descubrir la danza a través del juego, la música y el movimiento.",
     image: "/primeros-pasos.png",
-    alt: "Niñas de Vox Corpus en una presentación",
+    alt: "Niñas de Vox Corpus disfrutando una presentación",
   },
   {
-    number: "02",
-    title: "Formación",
-    text: "Técnica, musicalidad y presencia para crecer paso a paso y encontrar una voz propia al bailar.",
-    image: "/grupo-intermedio.png",
+    title: "Formación infantil",
+    label: "Bases y expresión",
+    text: "Procesos que fortalecen coordinación, escucha, disciplina y seguridad al bailar.",
+    image: "/team-girls.png",
     alt: "Grupo infantil de Vox Corpus en escena",
   },
   {
-    number: "03",
-    title: "Escena & equipo",
-    text: "Entrenamiento, creación colectiva y experiencias escénicas que convierten el esfuerzo en memoria.",
-    image: "/tiny-rockers.png",
-    alt: "Equipo de danza urbana realizando una figura",
+    title: "Nivel intermedio",
+    label: "Técnica y presencia",
+    text: "Entrenamiento para ampliar recursos, musicalidad y confianza frente al escenario.",
+    image: "/grupo-intermedio.png",
+    alt: "Estudiantes de nivel intermedio en una coreografía",
   },
+  {
+    title: "Danza urbana",
+    label: "Energía y equipo",
+    text: "Ritmo, identidad y creación colectiva en una experiencia dinámica y formativa.",
+    image: "/escenario-urbano-azul.jpg",
+    alt: "Grupo de danza urbana de Vox Corpus en una presentación",
+  },
+  {
+    title: "Contemporáneo",
+    label: "Creación y escena",
+    text: "Un espacio para investigar el cuerpo, la emoción y nuevas formas de expresión.",
+    image: "/contemporaneo-azul.jpg",
+    alt: "Bailarinas de Vox Corpus en una obra contemporánea",
+  },
+];
+
+const values = [
+  ["01", "Formación integral", "Técnica, sensibilidad y carácter en un mismo proceso."],
+  ["02", "Acompañamiento", "Cada estudiante encuentra su ritmo y una voz propia."],
+  ["03", "Experiencia escénica", "El aprendizaje también se transforma en presencia."],
+  ["04", "Comunidad", "Crecer bailando es un camino que se comparte."],
 ];
 
 const gallery = [
   {
     src: "/escenario-grupo.jpg",
     alt: "Elenco de Vox Corpus cerrando una coreografía grupal",
-    className: "gallery-wide",
-  },
-  {
-    src: "/contemporaneo-azul.jpg",
-    alt: "Tres bailarinas en una coreografía contemporánea bajo luz azul",
-    className: "gallery-tall",
+    className: "experience-main",
   },
   {
     src: "/escenario-urbano-rojo.jpg",
     alt: "Grupo infantil de danza urbana en el escenario",
-    className: "gallery-standard",
+    className: "experience-side",
   },
   {
     src: "/escenario-contemporaneo.jpg",
     alt: "Grupo de danza contemporánea vestido de blanco",
-    className: "gallery-standard",
+    className: "experience-side",
   },
   {
     src: "/comunidad-vox.jpg",
-    alt: "Comunidad de Vox Corpus reunida con sus reconocimientos",
-    className: "gallery-wide gallery-community",
+    alt: "Comunidad Vox Corpus reunida con sus reconocimientos",
+    className: "experience-wide",
   },
 ];
 
 export default function Home() {
   return (
-    <main>
+    <main className="home-page">
       <header className="site-header">
         <a className="brand" href="#inicio" aria-label="Vox Corpus Danza, inicio">
-          <img src="/vox-corpus-logo.png" alt="Vox Corpus Danza" />
+          <span className="brand-mark" aria-hidden="true" />
         </a>
 
         <nav className="desktop-nav" aria-label="Navegación principal">
-          <a href="#nosotros">Nosotros</a>
-          <a href="#programas">Formación</a>
-          <a href="#galeria">Galería</a>
-          <a className="nav-cta" href="#contacto">Inscripciones</a>
+          <a href="#inicio">Inicio</a>
+          <a href="#academia">La academia</a>
+          <a href="#programas">Programas</a>
+          <a href="#experiencias">Experiencias</a>
+          <a href="#contacto">Contacto</a>
+          <a className="nav-cta" href="#contacto">Inscríbete <span aria-hidden="true">→</span></a>
         </nav>
 
         <details className="mobile-menu">
           <summary aria-label="Abrir menú"><span>Menú</span></summary>
           <nav aria-label="Navegación móvil">
-            <a href="#nosotros">Nosotros</a>
-            <a href="#programas">Formación</a>
-            <a href="#galeria">Galería</a>
-            <a href="#contacto">Inscripciones</a>
+            <a href="#inicio">Inicio</a>
+            <a href="#academia">La academia</a>
+            <a href="#programas">Programas</a>
+            <a href="#experiencias">Experiencias</a>
+            <a href="#contacto">Contacto</a>
           </nav>
         </details>
       </header>
 
       <section className="hero" id="inicio">
-        <img
-          className="hero-image"
-          src="/escenario-grupo.jpg"
-          alt="Presentación grupal de Vox Corpus Danza"
-        />
-        <div className="hero-wash" />
-        <div className="hero-grid" aria-hidden="true" />
-
-        <div className="hero-content">
-          <p className="eyebrow"><span /> Academia de danza · Formación escénica</p>
-          <h1>
-            Donde el cuerpo
-            <span>encuentra su voz.</span>
-          </h1>
+        <div className="hero-copy-panel">
+          <p className="eyebrow">Formación en danza para la vida</p>
+          <h1>La danza como fundamento <span>para la vida</span></h1>
           <p className="hero-copy">
-            Un espacio para descubrir el movimiento, desarrollar disciplina y
-            vivir la danza con libertad, carácter y comunidad.
+            Acompañamos procesos de formación artística donde cada cuerpo puede
+            aprender, expresarse y crecer con disciplina, libertad y comunidad.
           </p>
           <div className="hero-actions">
-            <a className="button button-primary" href="#programas">Conoce la formación <span aria-hidden="true">↗</span></a>
-            <a className="button button-ghost" href="#galeria">Ver nuestra energía</a>
+            <a className="button button-primary" href="#programas">Conoce los programas <span aria-hidden="true">→</span></a>
+            <a className="button button-secondary" href="#contacto">Solicita información</a>
           </div>
         </div>
 
-        <div className="hero-footer" aria-label="Nuestros pilares">
-          <p><span>01</span> Formación</p>
-          <p><span>02</span> Comunidad</p>
-          <p><span>03</span> Escena</p>
-        </div>
-        <p className="hero-scroll" aria-hidden="true">Desliza para descubrir <span>↓</span></p>
-      </section>
-
-      <section className="manifesto" id="nosotros">
-        <div className="manifesto-mark" aria-hidden="true">VOX</div>
-        <img className="manifesto-silhouette" src="/silueta-contemporaneo.png" alt="" />
-        <div className="section-label"><span>01</span> Nuestra esencia</div>
-        <div className="manifesto-layout">
-          <h2>
-            No solo<br />aprendemos pasos.
-            <em>Construimos presencia.</em>
-          </h2>
-          <div className="manifesto-copy">
-            <p className="lead">
-              En Vox Corpus entendemos la danza como una forma de expresión,
-              encuentro y crecimiento.
-            </p>
-            <p>
-              Acompañamos cada proceso con sensibilidad y disciplina. Aquí cada
-              cuerpo tiene algo que decir y cada escenario es una oportunidad
-              para hacerlo visible.
-            </p>
-            <a className="text-link" href="#programas">Explora el camino <span aria-hidden="true">→</span></a>
+        <figure className="hero-media">
+          <img src="/escenario-contemporaneo.jpg" alt="Estudiantes de Vox Corpus en una presentación de danza contemporánea" />
+          <figcaption>Formación · Comunidad · Escena</figcaption>
+          <div className="hero-index" aria-hidden="true">
+            <strong>01</strong><span>02</span><span>03</span><span>04</span>
           </div>
-        </div>
+        </figure>
       </section>
 
-      <section className="programs" id="programas">
-        <div className="programs-heading">
+      <section className="value-strip" aria-label="Principios de Vox Corpus">
+        {values.map(([number, title, text]) => (
+          <article key={number}>
+            <span>{number}</span>
+            <div><strong>{title}</strong><p>{text}</p></div>
+          </article>
+        ))}
+      </section>
+
+      <section className="programs-section" id="programas">
+        <div className="section-heading">
           <div>
-            <div className="section-label section-label-dark"><span>02</span> El camino</div>
-            <h2>Encuentra tu<br /><em>propio ritmo.</em></h2>
+            <p className="section-label">Programas</p>
+            <h2>Clases para <span>cada etapa</span></h2>
           </div>
           <p>
-            Procesos pensados para distintas etapas. El punto de partida cambia;
-            las ganas de moverse nos conectan.
+            Propuestas para explorar, aprender y avanzar. Los detalles de
+            grupos, niveles y horarios estarán disponibles próximamente.
           </p>
         </div>
 
-        <div className="program-list">
+        <div className="program-grid">
           {programs.map((program) => (
-            <article className="program-card" key={program.number}>
-              <div className="program-image-wrap">
+            <article className="program-card" key={program.title}>
+              <div className="program-image">
                 <img src={program.image} alt={program.alt} />
               </div>
-              <p className="program-number">/{program.number}</p>
-              <div>
+              <div className="program-body">
+                <p>{program.label}</p>
                 <h3>{program.title}</h3>
-                <p>{program.text}</p>
+                <span>{program.text}</span>
+                <a href="#contacto" aria-label={`Solicitar información sobre ${program.title}`}>Información <b aria-hidden="true">→</b></a>
               </div>
-              <span className="program-arrow" aria-hidden="true">↗</span>
             </article>
           ))}
         </div>
+      </section>
 
-        <div className="styles-strip" aria-label="Estilos de danza">
-          <span>Urbano</span><i>✦</i><span>Contemporáneo</span><i>✦</i><span>Creación</span><i>✦</i><span>Escena</span>
+      <section className="academy-section" id="academia">
+        <div className="academy-media">
+          <img src="/comunidad-vox.jpg" alt="Estudiantes de Vox Corpus celebrando sus procesos y reconocimientos" />
+          <span>Vox Corpus Danza</span>
+        </div>
+        <div className="academy-copy">
+          <p className="section-label">La academia</p>
+          <h2>Formar para la vida, <span>bailar con propósito.</span></h2>
+          <p className="academy-lead">
+            Entendemos la danza como una herramienta para construir presencia,
+            autonomía, sensibilidad y vínculos reales.
+          </p>
+          <p>
+            Cada clase hace parte de un proceso humano y artístico. Acompañamos
+            a nuestros estudiantes para que desarrollen recursos técnicos sin
+            perder la alegría, la autenticidad ni el sentido de comunidad.
+          </p>
+          <div className="academy-points">
+            <div><strong>Proceso</strong><span>Aprender paso a paso.</span></div>
+            <div><strong>Expresión</strong><span>Dar valor a una voz propia.</span></div>
+            <div><strong>Escena</strong><span>Convertir el trabajo en memoria.</span></div>
+          </div>
         </div>
       </section>
 
-      <section className="gallery" id="galeria">
-        <div className="gallery-heading">
-          <div className="section-label"><span>03</span> En movimiento</div>
-          <h2>La energía<br /><em>se vive en escena.</em></h2>
-          <p>Entrenar. Crear. Compartir. Volver a empezar.</p>
+      <section className="stage-section">
+        <div className="stage-copy">
+          <p className="section-label section-label-light">Experiencia escénica</p>
+          <h2>El escenario también <span>educa.</span></h2>
+          <p>
+            Presentarse, trabajar en equipo y sostener una creación fortalece
+            la confianza. En Vox Corpus, la escena es una parte viva del proceso.
+          </p>
+          <a className="button button-light" href="#experiencias">Ver nuestra energía <span aria-hidden="true">→</span></a>
+        </div>
+        <div className="stage-media">
+          <img src="/escenario-grupo.jpg" alt="Elenco de Vox Corpus en una presentación grupal" />
+        </div>
+      </section>
+
+      <section className="experiences-section" id="experiencias">
+        <div className="section-heading experiences-heading">
+          <div>
+            <p className="section-label">Experiencias</p>
+            <h2>La danza <span>se vive</span></h2>
+          </div>
+          <p>Ensayar. Crear. Compartir. Celebrar cada nuevo movimiento.</p>
         </div>
 
-        <div className="gallery-grid">
+        <div className="experience-grid">
           {gallery.map((image, index) => (
             <figure className={image.className} key={image.src}>
               <img src={image.src} alt={image.alt} />
-              <figcaption>Vox Corpus <span>0{index + 1}</span></figcaption>
+              <figcaption><span>Vox Corpus</span><b>0{index + 1}</b></figcaption>
             </figure>
           ))}
         </div>
       </section>
 
-      <section className="community">
-        <img className="community-silhouette silhouette-left" src="/silueta-salto.png" alt="" />
-        <img className="community-silhouette silhouette-right" src="/silueta-acrobacia-1.png" alt="" />
-        <div className="community-content">
-          <p className="eyebrow eyebrow-dark"><span /> Más que una academia</p>
-          <h2>Somos movimiento.<br />Somos escena.<br /><em>Somos Vox Corpus.</em></h2>
+      <section className="community-quote">
+        <p>Más que una academia</p>
+        <blockquote>“Cada cuerpo tiene algo que decir.”</blockquote>
+        <span>Una comunidad para aprender, crear y crecer bailando.</span>
+      </section>
+
+      <section className="contact-section" id="contacto">
+        <div>
+          <p className="section-label">Próximo paso</p>
+          <h2>Tu historia puede empezar <span>aquí.</span></h2>
+        </div>
+        <div className="contact-copy">
           <p>
-            Una comunidad que celebra el proceso, la autenticidad y la alegría
-            de crecer bailando.
+            Estamos organizando la información completa de grupos, horarios,
+            ubicación e inscripciones. Mientras tanto, puedes escribirnos y te
+            orientaremos personalmente.
           </p>
+          <div className="contact-status"><span>Información en preparación</span><strong>Inscripciones próximamente</strong></div>
+          <a className="button button-primary" href="mailto:voxcorpusdanza@gmail.com">Escríbenos <span aria-hidden="true">→</span></a>
         </div>
       </section>
 
-      <section className="contact" id="contacto">
-        <div className="contact-index" aria-hidden="true">04</div>
-        <div className="section-label section-label-dark"><span>04</span> Próximo paso</div>
-        <div className="contact-layout">
-          <h2>Tu próxima historia<br />puede empezar <em>aquí.</em></h2>
-          <div className="contact-copy">
-            <p>
-              Estamos preparando la información completa de grupos, horarios,
-              ubicación y proceso de inscripción.
-            </p>
-            <div className="coming-soon">
-              <span>Muy pronto</span>
-              <p>Nuevos canales de contacto e inscripciones</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <footer>
+      <footer className="site-footer">
         <div className="footer-brand">
-          <img src="/vox-corpus-logo.png" alt="Vox Corpus Danza" />
-          <p>El cuerpo habla. Nosotros bailamos.</p>
+          <span className="footer-brand-mark" aria-hidden="true" />
+          <p>La danza como fundamento para la vida.</p>
+          <a href="mailto:voxcorpusdanza@gmail.com">voxcorpusdanza@gmail.com</a>
         </div>
-        <div className="footer-nav">
+        <div className="footer-links">
           <p>Navega</p>
-          <a href="#nosotros">Nosotros</a>
-          <a href="#programas">Formación</a>
-          <a href="#galeria">Galería</a>
+          <a href="#academia">La academia</a>
+          <a href="#programas">Programas</a>
+          <a href="#experiencias">Experiencias</a>
+          <a href="#contacto">Contacto</a>
         </div>
-        <div className="footer-status">
+        <div className="footer-links">
           <p>Información</p>
+          <a href="/cancelar_cuenta_vox_danza/">Eliminar cuenta de Vox Danza</a>
           <span>Sitio en construcción</span>
           <small>© {new Date().getFullYear()} Vox Corpus Danza</small>
         </div>
+        <a className="footer-cta" href="#contacto">Inscríbete <span aria-hidden="true">→</span></a>
       </footer>
     </main>
   );
