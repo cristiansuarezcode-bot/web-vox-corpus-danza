@@ -3,9 +3,9 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://voxcorpusdanza.com"),
-  title: "Vox Corpus Danza | El cuerpo encuentra su voz",
+  title: "Vox Corpus Danza | La danza como fundamento para la vida",
   description:
-    "Academia y comunidad de danza. Formación, creación y experiencias escénicas para descubrir el movimiento y encontrar una voz propia.",
+    "Formación artística y comunidad de danza para aprender, expresarse y crecer con disciplina, libertad y propósito.",
   icons: {
     icon: [
       {
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     locale: "es_CO",
     siteName: "Vox Corpus Danza",
     title: "Vox Corpus Danza",
-    description: "Donde el cuerpo encuentra su voz.",
+    description: "La danza como fundamento para la vida.",
     images: [
       {
         url: "/og.png",
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Vox Corpus Danza",
-    description: "Donde el cuerpo encuentra su voz.",
+    description: "La danza como fundamento para la vida.",
     images: ["/og.png"],
   },
 };
