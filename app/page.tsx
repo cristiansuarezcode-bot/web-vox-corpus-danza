@@ -179,12 +179,6 @@ export default function Home() {
       </section>
 
       <section className="academy-section" id="academia">
-        <img
-          className="academy-graphic"
-          src="/vox-silueta-ballet-vertical.png"
-          alt=""
-          aria-hidden="true"
-        />
         <div className="academy-media">
           <img src="/comunidad-vox.jpg" alt="Estudiantes de Vox Corpus celebrando sus procesos y reconocimientos" />
           <span>Vox Corpus Danza</span>
@@ -250,12 +244,6 @@ export default function Home() {
       </section>
 
       <section className="community-quote">
-        <img
-          className="community-graphic"
-          src="/vox-silueta-ballet-extension.png"
-          alt=""
-          aria-hidden="true"
-        />
         <p>Más que una academia</p>
         <blockquote>“Cada cuerpo tiene algo que decir.”</blockquote>
         <span>Una comunidad para aprender, crear y crecer bailando.</span>

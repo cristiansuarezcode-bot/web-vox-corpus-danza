@@ -555,17 +555,16 @@
   }
 
   .heroGraphic {
-    height: 80%;
-    left: -10%;
+    height: 60%;
+    left: -18%;
+    opacity: 0.08;
     right: auto;
     width: auto;
   }
 
-  .dataGraphic {
-    bottom: -1px;
-    height: 80%;
-    left: -28%;
-    width: auto;
+  .dataGraphic,
+  .formGraphic {
+    display: none;
   }
 }
 
@@ -592,12 +591,7 @@
   }
 
   .heroGraphic {
-    height: 70%;
-    left: -20%;
-    opacity: 0.13;
-    right: auto;
-    top: -1px;
-    width: auto;
+    display: none;
   }
 
   .hero h1 {
@@ -631,11 +625,6 @@
 
   .form {
     padding: 24px 20px;
-  }
-
-  .dataGraphic,
-  .formGraphic {
-    display: none;
   }
 
   .footer {
