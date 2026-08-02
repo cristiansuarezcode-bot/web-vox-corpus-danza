@@ -1,19 +1,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Condensed:wght@700&display=swap");
 
 :root {
-  --color-bg: #faf9f7;
-  --color-section: #f1f2f3;
+  --color-bg: #fcfbf9;
+  --color-section: #f2f3f4;
   --color-primary: #7a1028;
   --color-primary-dark: #500a1a;
   --color-text: #111111;
   --color-text-muted: #55575a;
-  --color-border: #d8dadd;
+  --color-border: #d9dadc;
   --color-warm: #eee4da;
   --color-white: #ffffff;
   --font-display: "Roboto Condensed", "Arial Narrow", Arial, sans-serif;
   --font-body: "Inter", Arial, sans-serif;
   --content-max: 1320px;
-  --section-space: clamp(80px, 8vw, 128px);
+  --section-space: clamp(64px, 7vw, 112px);
 }
 
 * {
@@ -53,7 +53,7 @@ blockquote {
 }
 
 section {
-  scroll-margin-top: 84px;
+  scroll-margin-top: 78px;
 }
 
 .home-page {
@@ -63,10 +63,10 @@ section {
 
 .site-header {
   align-items: center;
-  background: rgba(250, 249, 247, 0.96);
+  background: rgba(252, 251, 249, 0.96);
   border-bottom: 1px solid var(--color-border);
   display: flex;
-  height: 84px;
+  height: 78px;
   justify-content: space-between;
   padding: 0 clamp(24px, 4.2vw, 72px);
   position: sticky;
@@ -83,7 +83,7 @@ section {
 
 .brand-mark,
 .footer-brand-mark {
-  background: var(--color-primary);
+  background: var(--color-text);
   display: block;
   height: 100%;
   mask: url("/vox-corpus-logo.png") left center / contain no-repeat;
@@ -104,13 +104,13 @@ section {
 }
 
 .desktop-nav a:not(.nav-cta) {
-  padding: 31px 0 27px;
+  padding: 28px 0 25px;
   position: relative;
 }
 
 .desktop-nav a:not(.nav-cta)::after {
   background: var(--color-primary);
-  bottom: 21px;
+  bottom: 18px;
   content: "";
   height: 2px;
   left: 0;
@@ -290,7 +290,7 @@ section {
 }
 
 .hero-media figcaption {
-  background: rgba(250, 249, 247, 0.92);
+  background: rgba(252, 251, 249, 0.92);
   bottom: 0;
   font-size: 0.69rem;
   font-weight: 700;
@@ -304,7 +304,7 @@ section {
 
 .hero-index {
   align-items: center;
-  background: rgba(250, 249, 247, 0.9);
+  background: rgba(252, 251, 249, 0.9);
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -496,6 +496,38 @@ section {
   transform: translateX(4px);
 }
 
+.schedule-callout {
+  align-items: center;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  display: grid;
+  gap: clamp(24px, 4vw, 56px);
+  grid-template-columns: minmax(240px, 0.9fr) minmax(300px, 1.1fr) auto;
+  margin: 32px auto 0;
+  max-width: var(--content-max);
+  padding: 28px;
+  scroll-margin-top: 96px;
+}
+
+.schedule-callout h3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.7rem, 2.6vw, 2.4rem);
+  letter-spacing: -0.025em;
+  line-height: 1;
+  margin-top: 10px;
+  text-transform: uppercase;
+}
+
+.schedule-callout > p {
+  color: var(--color-text-muted);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+.schedule-callout .button {
+  white-space: nowrap;
+}
+
 .academy-section {
   background: var(--color-bg);
   display: grid;
@@ -595,7 +627,7 @@ section {
   grid-template-columns: minmax(390px, 0.82fr) minmax(0, 1.18fr);
   margin: 0 auto;
   max-width: 1600px;
-  min-height: 650px;
+  min-height: 560px;
 }
 
 .stage-copy {
@@ -604,11 +636,11 @@ section {
 }
 
 .section-label-light {
-  color: #d9a8b4;
+  color: var(--color-warm);
 }
 
 .stage-copy h2 span {
-  color: #d9a8b4;
+  color: var(--color-warm);
 }
 
 .stage-copy > p:not(.section-label) {
@@ -711,7 +743,7 @@ section {
 }
 
 .experience-grid figcaption b {
-  color: #e6a8b7;
+  color: var(--color-warm);
 }
 
 .community-quote {
@@ -799,7 +831,7 @@ section {
   display: grid;
   gap: 48px;
   grid-template-columns: minmax(260px, 1.25fr) 0.55fr 0.8fr auto;
-  min-height: 320px;
+  min-height: 280px;
   padding: 64px clamp(24px, 4.8vw, 72px) 44px;
 }
 
@@ -830,7 +862,7 @@ section {
 }
 
 .footer-links > p {
-  color: #e6a8b7;
+  color: var(--color-warm);
   font-size: 0.67rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -870,7 +902,7 @@ section {
 }
 
 :focus-visible {
-  outline: 3px solid #b86378;
+  outline: 3px solid var(--color-primary);
   outline-offset: 4px;
 }
 
@@ -890,6 +922,14 @@ section {
   .program-card:nth-child(4),
   .program-card:nth-child(5) {
     grid-column: span 1;
+  }
+
+  .schedule-callout {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .schedule-callout .button {
+    justify-self: start;
   }
 
   .site-footer {
@@ -960,7 +1000,8 @@ section {
 
   .section-heading,
   .academy-section,
-  .contact-section {
+  .contact-section,
+  .schedule-callout {
     grid-template-columns: 1fr;
   }
 
@@ -1087,6 +1128,15 @@ section {
     grid-column: auto;
   }
 
+  .schedule-callout {
+    margin-top: 24px;
+    padding: 24px 20px;
+  }
+
+  .schedule-callout .button {
+    justify-self: stretch;
+  }
+
   .program-body {
     min-height: 245px;
   }
@@ -1181,3 +1231,4 @@ section {
     transition-duration: 0.01ms !important;
   }
 }
+
