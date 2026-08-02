@@ -99,6 +99,12 @@ export default function Home() {
 
       <section className="hero" id="inicio">
         <div className="hero-copy-panel">
+          <img
+            className="hero-graphic"
+            src="/vox-formas-hero.png"
+            alt=""
+            aria-hidden="true"
+          />
           <p className="eyebrow">Formación en danza para la vida</p>
           <h1>La danza como fundamento <span>para la vida</span></h1>
           <p className="hero-copy">
@@ -130,6 +136,12 @@ export default function Home() {
       </section>
 
       <section className="programs-section" id="programas">
+        <img
+          className="programs-graphic"
+          src="/vox-forma-circulo.png"
+          alt=""
+          aria-hidden="true"
+        />
         <div className="section-heading">
           <div>
             <p className="section-label">Programas</p>
@@ -173,6 +185,12 @@ export default function Home() {
       </section>
 
       <section className="academy-section" id="academia">
+        <img
+          className="academy-graphic"
+          src="/vox-silueta-ballet-vertical.png"
+          alt=""
+          aria-hidden="true"
+        />
         <div className="academy-media">
           <img src="/comunidad-vox.jpg" alt="Estudiantes de Vox Corpus celebrando sus procesos y reconocimientos" />
           <span>Vox Corpus Danza</span>
@@ -198,6 +216,12 @@ export default function Home() {
       </section>
 
       <section className="stage-section">
+        <img
+          className="stage-graphic"
+          src="/vox-silueta-urbana.png"
+          alt=""
+          aria-hidden="true"
+        />
         <div className="stage-copy">
           <p className="section-label section-label-light">Experiencia escénica</p>
           <h2>El escenario también <span>educa.</span></h2>
@@ -232,12 +256,24 @@ export default function Home() {
       </section>
 
       <section className="community-quote">
+        <img
+          className="community-graphic"
+          src="/vox-silueta-ballet-extension.png"
+          alt=""
+          aria-hidden="true"
+        />
         <p>Más que una academia</p>
         <blockquote>“Cada cuerpo tiene algo que decir.”</blockquote>
         <span>Una comunidad para aprender, crear y crecer bailando.</span>
       </section>
 
       <section className="contact-section" id="contacto">
+        <img
+          className="contact-graphic"
+          src="/vox-forma-equis.png"
+          alt=""
+          aria-hidden="true"
+        />
         <div>
           <p className="section-label">Próximo paso</p>
           <h2>Tu historia puede empezar <span>aquí.</span></h2>
@@ -277,4 +313,3 @@ export default function Home() {
     </main>
   );
 }
-
