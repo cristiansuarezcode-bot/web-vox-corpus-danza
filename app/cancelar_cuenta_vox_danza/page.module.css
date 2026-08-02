@@ -55,12 +55,14 @@
 
 .heroGraphic {
   filter: brightness(0);
+  height: 92%;
+  left: -1px;
   opacity: var(--graphic-opacity-light);
   pointer-events: none;
   position: absolute;
-  right: -2%;
-  top: -12%;
-  width: min(29vw, 360px);
+  right: auto;
+  top: -1px;
+  width: auto;
   z-index: 0;
 }
 
@@ -249,13 +251,14 @@
 }
 
 .dataGraphic {
-  bottom: -46%;
+  bottom: -1px;
   filter: brightness(0) invert(1);
-  left: -5%;
+  height: 105%;
+  left: -13%;
   opacity: var(--graphic-opacity-dark);
   pointer-events: none;
   position: absolute;
-  width: min(36vw, 490px);
+  width: auto;
   z-index: 0;
 }
 
@@ -330,13 +333,17 @@
 }
 
 .formGraphic {
-  bottom: -21%;
+  bottom: auto;
   filter: brightness(0);
-  left: -8%;
+  height: 105%;
+  left: auto;
   opacity: 0.16;
   pointer-events: none;
   position: absolute;
-  width: min(29vw, 380px);
+  right: -1px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: auto;
   z-index: 0;
 }
 
@@ -548,14 +555,17 @@
   }
 
   .heroGraphic {
-    right: -12%;
-    width: min(43vw, 330px);
+    height: 80%;
+    left: -10%;
+    right: auto;
+    width: auto;
   }
 
   .dataGraphic {
-    bottom: -28%;
-    left: -18%;
-    width: min(55vw, 430px);
+    bottom: -1px;
+    height: 80%;
+    left: -28%;
+    width: auto;
   }
 }
 
@@ -582,10 +592,12 @@
   }
 
   .heroGraphic {
+    height: 70%;
+    left: -20%;
     opacity: 0.13;
-    right: -22%;
-    top: -4%;
-    width: 58vw;
+    right: auto;
+    top: -1px;
+    width: auto;
   }
 
   .hero h1 {
