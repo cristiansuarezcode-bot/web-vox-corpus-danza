@@ -139,9 +139,10 @@ export default function DeleteAccountPage() {
         </div>
         <div>
           <a href="/">Volver al sitio principal</a>
-          <span>Última actualización: 31 de julio de 2026</span>
+          <span>Última actualización: 1 de agosto de 2026</span>
         </div>
       </footer>
     </main>
   );
 }
+

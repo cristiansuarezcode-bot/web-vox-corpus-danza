@@ -1,13 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Condensed:wght@700&display=swap");
 
 :root {
-  --color-bg: #fcfbf9;
-  --color-section: #f2f3f4;
+  --color-bg: #ffffff;
+  --color-section: #f3f4f5;
   --color-primary: #7a1028;
   --color-primary-dark: #500a1a;
   --color-text: #111111;
   --color-text-muted: #55575a;
-  --color-border: #d9dadc;
+  --color-border: #e1e2e4;
   --color-warm: #eee4da;
   --color-white: #ffffff;
   --font-display: "Roboto Condensed", "Arial Narrow", Arial, sans-serif;
@@ -63,7 +63,7 @@ section {
 
 .site-header {
   align-items: center;
-  background: rgba(252, 251, 249, 0.96);
+  background: rgba(255, 255, 255, 0.96);
   border-bottom: 1px solid var(--color-border);
   display: flex;
   height: 78px;
@@ -290,7 +290,7 @@ section {
 }
 
 .hero-media figcaption {
-  background: rgba(252, 251, 249, 0.92);
+  background: rgba(255, 255, 255, 0.92);
   bottom: 0;
   font-size: 0.69rem;
   font-weight: 700;
@@ -304,7 +304,7 @@ section {
 
 .hero-index {
   align-items: center;
-  background: rgba(252, 251, 249, 0.9);
+  background: rgba(255, 255, 255, 0.9);
   display: flex;
   flex-direction: column;
   gap: 16px;
