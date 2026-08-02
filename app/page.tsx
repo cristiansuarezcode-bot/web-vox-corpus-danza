@@ -101,7 +101,7 @@ export default function Home() {
         <div className="hero-copy-panel">
           <img
             className="hero-graphic"
-            src="/vox-formas-hero.png"
+            src="/vox-forma-circulo.png"
             alt=""
             aria-hidden="true"
           />
@@ -136,12 +136,6 @@ export default function Home() {
       </section>
 
       <section className="programs-section" id="programas">
-        <img
-          className="programs-graphic"
-          src="/vox-forma-circulo.png"
-          alt=""
-          aria-hidden="true"
-        />
         <div className="section-heading">
           <div>
             <p className="section-label">Programas</p>

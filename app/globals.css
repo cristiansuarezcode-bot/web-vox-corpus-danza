@@ -188,13 +188,16 @@ section {
 }
 
 .hero-graphic {
+  bottom: -1px;
   filter: brightness(0);
-  left: -12%;
+  height: 88%;
+  left: auto;
   opacity: var(--graphic-opacity-light);
   pointer-events: none;
   position: absolute;
-  top: -11%;
-  width: min(94%, 650px);
+  right: -1px;
+  top: auto;
+  width: auto;
   z-index: 0;
 }
 
@@ -409,25 +412,6 @@ section {
 
 .programs-section {
   background: var(--color-section);
-  isolation: isolate;
-  overflow: hidden;
-  position: relative;
-}
-
-.programs-section > *:not(.programs-graphic) {
-  position: relative;
-  z-index: 1;
-}
-
-.programs-graphic {
-  filter: brightness(0);
-  opacity: 0.16;
-  pointer-events: none;
-  position: absolute;
-  right: -7%;
-  top: -8%;
-  width: min(30vw, 390px);
-  z-index: 0;
 }
 
 .section-heading {
@@ -589,13 +573,14 @@ section {
 }
 
 .academy-graphic {
-  bottom: -18%;
+  bottom: -1px;
   filter: brightness(0);
+  height: 92%;
   opacity: var(--graphic-opacity-light);
   pointer-events: none;
   position: absolute;
-  right: -9%;
-  width: min(32vw, 440px);
+  right: -15%;
+  width: auto;
   z-index: 0;
 }
 
@@ -700,13 +685,14 @@ section {
 }
 
 .stage-graphic {
-  bottom: -38%;
+  bottom: -1px;
   filter: brightness(0) invert(1);
-  left: -8%;
+  height: 102%;
+  left: -11%;
   opacity: var(--graphic-opacity-dark);
   pointer-events: none;
   position: absolute;
-  width: min(39vw, 520px);
+  width: auto;
   z-index: 0;
 }
 
@@ -846,13 +832,14 @@ section {
 }
 
 .community-graphic {
-  bottom: -58%;
+  bottom: -70%;
   filter: brightness(0);
+  height: 165%;
   opacity: 0.18;
   pointer-events: none;
   position: absolute;
-  right: -4%;
-  width: min(32vw, 430px);
+  right: -7%;
+  width: auto;
   z-index: 0;
 }
 
@@ -898,12 +885,14 @@ section {
 
 .contact-graphic {
   filter: brightness(0);
+  height: 132%;
   opacity: 0.16;
   pointer-events: none;
   position: absolute;
   right: -4%;
-  top: -32%;
-  width: min(30vw, 380px);
+  top: 50%;
+  transform: translateY(-50%);
+  width: auto;
   z-index: 0;
 }
 
@@ -1100,9 +1089,12 @@ section {
   }
 
   .hero-graphic {
+    bottom: -1px;
+    height: 78%;
     left: auto;
-    right: -12%;
-    width: min(74vw, 590px);
+    right: -1px;
+    top: auto;
+    width: auto;
   }
 
   .hero-media {
@@ -1134,9 +1126,10 @@ section {
   }
 
   .academy-graphic {
-    bottom: -12%;
-    right: -18%;
-    width: min(48vw, 410px);
+    bottom: -1px;
+    height: 78%;
+    right: -24%;
+    width: auto;
   }
 
   .stage-section {
@@ -1148,10 +1141,12 @@ section {
   }
 
   .stage-graphic {
-    bottom: -28%;
+    bottom: auto;
+    height: 48%;
     left: auto;
     right: -10%;
-    width: min(55vw, 450px);
+    top: -1px;
+    width: auto;
   }
 
   .stage-media {
@@ -1196,10 +1191,12 @@ section {
   }
 
   .hero-graphic {
+    bottom: -1px;
+    height: 76%;
     opacity: 0.14;
-    right: -30%;
-    top: -2%;
-    width: 92vw;
+    right: -18%;
+    top: auto;
+    width: auto;
   }
 
   .hero h1 {
@@ -1251,10 +1248,6 @@ section {
     padding-right: 20px;
   }
 
-  .programs-graphic {
-    display: none;
-  }
-
   .section-heading {
     gap: 24px;
     margin-bottom: 36px;
@@ -1300,10 +1293,7 @@ section {
   }
 
   .academy-graphic {
-    bottom: -8%;
-    opacity: 0.14;
-    right: -34%;
-    width: 72vw;
+    display: none;
   }
 
   .academy-points {
@@ -1327,10 +1317,12 @@ section {
   }
 
   .stage-graphic {
-    bottom: -16%;
+    bottom: auto;
+    height: 46%;
     opacity: 0.2;
-    right: -26%;
-    width: 78vw;
+    right: -30%;
+    top: -1px;
+    width: auto;
   }
 
   .stage-media {
@@ -1363,10 +1355,11 @@ section {
   }
 
   .community-graphic {
-    bottom: -25%;
+    bottom: -55%;
+    height: 125%;
     opacity: 0.12;
-    right: -34%;
-    width: 72vw;
+    right: -30%;
+    width: auto;
   }
 
   .contact-section {
@@ -1374,10 +1367,11 @@ section {
   }
 
   .contact-graphic {
+    height: 95%;
     opacity: 0.11;
-    right: -28%;
-    top: -9%;
-    width: 58vw;
+    right: -30%;
+    top: 50%;
+    width: auto;
   }
 
   .site-footer {
