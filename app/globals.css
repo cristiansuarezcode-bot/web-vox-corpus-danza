@@ -32,6 +32,7 @@ body {
   color: var(--color-text);
   font-family: var(--font-body);
   margin: 0;
+  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -567,21 +568,9 @@ section {
   position: relative;
 }
 
-.academy-section > *:not(.academy-graphic) {
+.academy-section > * {
   position: relative;
   z-index: 1;
-}
-
-.academy-graphic {
-  bottom: -1px;
-  filter: brightness(0);
-  height: 92%;
-  opacity: var(--graphic-opacity-light);
-  pointer-events: none;
-  position: absolute;
-  right: -15%;
-  width: auto;
-  z-index: 0;
 }
 
 .academy-media {
@@ -826,21 +815,9 @@ section {
   text-align: center;
 }
 
-.community-quote > *:not(.community-graphic) {
+.community-quote > * {
   position: relative;
   z-index: 1;
-}
-
-.community-graphic {
-  bottom: -70%;
-  filter: brightness(0);
-  height: 165%;
-  opacity: 0.18;
-  pointer-events: none;
-  position: absolute;
-  right: -7%;
-  width: auto;
-  z-index: 0;
 }
 
 .community-quote > p {
@@ -885,11 +862,11 @@ section {
 
 .contact-graphic {
   filter: brightness(0);
-  height: 132%;
-  opacity: 0.16;
+  height: 118%;
+  opacity: 0.1;
   pointer-events: none;
   position: absolute;
-  right: -4%;
+  right: -14%;
   top: 50%;
   transform: translateY(-50%);
   width: auto;
@@ -1089,12 +1066,7 @@ section {
   }
 
   .hero-graphic {
-    bottom: -1px;
-    height: 78%;
-    left: auto;
-    right: -1px;
-    top: auto;
-    width: auto;
+    display: none;
   }
 
   .hero-media {
@@ -1125,13 +1097,6 @@ section {
     min-height: 540px;
   }
 
-  .academy-graphic {
-    bottom: -1px;
-    height: 78%;
-    right: -24%;
-    width: auto;
-  }
-
   .stage-section {
     grid-template-columns: 1fr;
   }
@@ -1141,12 +1106,11 @@ section {
   }
 
   .stage-graphic {
-    bottom: auto;
-    height: 48%;
-    left: auto;
-    right: -10%;
-    top: -1px;
-    width: auto;
+    display: none;
+  }
+
+  .contact-graphic {
+    display: none;
   }
 
   .stage-media {
@@ -1188,15 +1152,6 @@ section {
   .hero-copy-panel {
     min-height: auto;
     padding: 72px 20px 64px;
-  }
-
-  .hero-graphic {
-    bottom: -1px;
-    height: 76%;
-    opacity: 0.14;
-    right: -18%;
-    top: auto;
-    width: auto;
   }
 
   .hero h1 {
@@ -1292,10 +1247,6 @@ section {
     min-height: 380px;
   }
 
-  .academy-graphic {
-    display: none;
-  }
-
   .academy-points {
     grid-template-columns: 1fr;
   }
@@ -1314,15 +1265,6 @@ section {
   .stage-copy {
     min-height: auto;
     padding: 72px 20px;
-  }
-
-  .stage-graphic {
-    bottom: auto;
-    height: 46%;
-    opacity: 0.2;
-    right: -30%;
-    top: -1px;
-    width: auto;
   }
 
   .stage-media {
@@ -1354,24 +1296,8 @@ section {
     font-size: clamp(2.25rem, 11vw, 3.25rem);
   }
 
-  .community-graphic {
-    bottom: -55%;
-    height: 125%;
-    opacity: 0.12;
-    right: -30%;
-    width: auto;
-  }
-
   .contact-section {
     gap: 36px;
-  }
-
-  .contact-graphic {
-    height: 95%;
-    opacity: 0.11;
-    right: -30%;
-    top: 50%;
-    width: auto;
   }
 
   .site-footer {
