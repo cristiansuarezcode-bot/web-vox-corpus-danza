@@ -45,6 +45,12 @@ export default function DeleteAccountPage() {
       </header>
 
       <section className={styles.hero}>
+        <img
+          className={styles.heroGraphic}
+          src="/vox-forma-diagonal.png"
+          alt=""
+          aria-hidden="true"
+        />
         <div className={styles.heroLabel}><span /> Solicitud oficial</div>
         <h1>Eliminar tu cuenta<br /><em>de Vox Danza.</em></h1>
         <p>
@@ -81,6 +87,12 @@ export default function DeleteAccountPage() {
       </section>
 
       <section className={`${styles.contentSection} ${styles.dataSection}`}>
+        <img
+          className={styles.dataGraphic}
+          src="/vox-silueta-urbana.png"
+          alt=""
+          aria-hidden="true"
+        />
         <div className={styles.sectionNumber}>02</div>
         <div>
           <p className={styles.kicker}>Alcance</p>
@@ -103,6 +115,12 @@ export default function DeleteAccountPage() {
       </section>
 
       <section className={styles.formSection} id="solicitud">
+        <img
+          className={styles.formGraphic}
+          src="/vox-forma-circulo.png"
+          alt=""
+          aria-hidden="true"
+        />
         <div className={styles.formIntro}>
           <div className={styles.sectionNumber}>03</div>
           <p className={styles.kicker}>Enviar solicitud</p>
@@ -145,4 +163,3 @@ export default function DeleteAccountPage() {
     </main>
   );
 }
-
