@@ -1,35 +1,35 @@
 const programs = [
   {
     title: "Primeros pasos",
-    label: "Exploración y confianza",
+    label: "Nivel inicial",
     text: "Un comienzo cercano para descubrir la danza a través del juego, la música y el movimiento.",
     image: "/primeros-pasos.png",
     alt: "Niñas de Vox Corpus disfrutando una presentación",
   },
   {
     title: "Formación infantil",
-    label: "Bases y expresión",
+    label: "Nivel infantil",
     text: "Procesos que fortalecen coordinación, escucha, disciplina y seguridad al bailar.",
     image: "/team-girls.png",
     alt: "Grupo infantil de Vox Corpus en escena",
   },
   {
     title: "Nivel intermedio",
-    label: "Técnica y presencia",
+    label: "Nivel intermedio",
     text: "Entrenamiento para ampliar recursos, musicalidad y confianza frente al escenario.",
     image: "/grupo-intermedio.png",
     alt: "Estudiantes de nivel intermedio en una coreografía",
   },
   {
     title: "Danza urbana",
-    label: "Energía y equipo",
+    label: "Formación urbana",
     text: "Ritmo, identidad y creación colectiva en una experiencia dinámica y formativa.",
     image: "/escenario-urbano-azul.jpg",
     alt: "Grupo de danza urbana de Vox Corpus en una presentación",
   },
   {
     title: "Contemporáneo",
-    label: "Creación y escena",
+    label: "Formación escénica",
     text: "Un espacio para investigar el cuerpo, la emoción y nuevas formas de expresión.",
     image: "/contemporaneo-azul.jpg",
     alt: "Bailarinas de Vox Corpus en una obra contemporánea",
@@ -79,6 +79,7 @@ export default function Home() {
           <a href="#academia">La academia</a>
           <a href="#programas">Programas</a>
           <a href="#experiencias">Experiencias</a>
+          <a href="#horarios">Horarios</a>
           <a href="#contacto">Contacto</a>
           <a className="nav-cta" href="#contacto">Inscríbete <span aria-hidden="true">→</span></a>
         </nav>
@@ -90,6 +91,7 @@ export default function Home() {
             <a href="#academia">La academia</a>
             <a href="#programas">Programas</a>
             <a href="#experiencias">Experiencias</a>
+            <a href="#horarios">Horarios</a>
             <a href="#contacto">Contacto</a>
           </nav>
         </details>
@@ -134,8 +136,8 @@ export default function Home() {
             <h2>Clases para <span>cada etapa</span></h2>
           </div>
           <p>
-            Propuestas para explorar, aprender y avanzar. Los detalles de
-            grupos, niveles y horarios estarán disponibles próximamente.
+            Propuestas para explorar, aprender y avanzar. Cada programa
+            acompaña un momento distinto del proceso formativo.
           </p>
         </div>
 
@@ -153,6 +155,20 @@ export default function Home() {
               </div>
             </article>
           ))}
+        </div>
+
+        <div className="schedule-callout" id="horarios">
+          <div>
+            <p className="section-label">Horarios y grupos</p>
+            <h3>Encuentra el proceso adecuado.</h3>
+          </div>
+          <p>
+            La disponibilidad se organiza según el programa y el nivel. Escríbenos
+            para conocer los grupos y horarios vigentes y recibir orientación personal.
+          </p>
+          <a className="button button-secondary" href="mailto:voxcorpusdanza@gmail.com">
+            Consultar horarios <span aria-hidden="true">→</span>
+          </a>
         </div>
       </section>
 
@@ -228,11 +244,10 @@ export default function Home() {
         </div>
         <div className="contact-copy">
           <p>
-            Estamos organizando la información completa de grupos, horarios,
-            ubicación e inscripciones. Mientras tanto, puedes escribirnos y te
-            orientaremos personalmente.
+            Cuéntanos qué programa te interesa. Te orientaremos personalmente
+            sobre el nivel, los grupos disponibles y el proceso de inscripción.
           </p>
-          <div className="contact-status"><span>Información en preparación</span><strong>Inscripciones próximamente</strong></div>
+          <div className="contact-status"><span>Atención personalizada</span><strong>Horarios según programa y nivel</strong></div>
           <a className="button button-primary" href="mailto:voxcorpusdanza@gmail.com">Escríbenos <span aria-hidden="true">→</span></a>
         </div>
       </section>
@@ -248,12 +263,13 @@ export default function Home() {
           <a href="#academia">La academia</a>
           <a href="#programas">Programas</a>
           <a href="#experiencias">Experiencias</a>
+          <a href="#horarios">Horarios</a>
           <a href="#contacto">Contacto</a>
         </div>
         <div className="footer-links">
           <p>Información</p>
           <a href="/cancelar_cuenta_vox_danza/">Eliminar cuenta de Vox Danza</a>
-          <span>Sitio en construcción</span>
+          <span>Canal oficial de Vox Corpus Danza</span>
           <small>© {new Date().getFullYear()} Vox Corpus Danza</small>
         </div>
         <a className="footer-cta" href="#contacto">Inscríbete <span aria-hidden="true">→</span></a>
@@ -261,3 +277,4 @@ export default function Home() {
     </main>
   );
 }
+
