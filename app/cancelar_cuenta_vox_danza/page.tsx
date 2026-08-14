@@ -28,10 +28,10 @@ export const metadata: Metadata = {
 };
 
 const deletedData = [
-  "Información personal asociada, como nombre y correo electrónico.",
-  "Historial de clases y asistencias.",
-  "Información de perfil y configuración.",
-  "Otros datos relacionados con el uso de la aplicación Vox Danza.",
+  "Credenciales e información personal identificable que ya no deba conservarse.",
+  "Fotografía, biografía, preferencias y demás información propia del perfil.",
+  "Identificadores de instalación y datos usados para entregar notificaciones.",
+  "Otros datos personales asociados a la cuenta que no estén sujetos a conservación restringida.",
 ];
 
 export default function DeleteAccountPage() {
@@ -103,12 +103,13 @@ export default function DeleteAccountPage() {
             {deletedData.map((item) => <li key={item}>{item}</li>)}
           </ul>
           <div className={styles.retentionNote}>
-            <strong>¿Tienes una pregunta sobre tus datos?</strong>
+            <strong>Registros que pueden conservarse</strong>
             <p>
-              Para consultar si algún dato específico debe conservarse por una
-              obligación legal o contractual, escribe a{` `}
-              <a href="mailto:voxcorpusdanza@gmail.com">voxcorpusdanza@gmail.com</a>.
-              Cualquier retención aplicable se limitará al mínimo necesario.
+              Los historiales de matrículas, asistencia, créditos del proceso,
+              pagos y auditoría pueden conservarse de forma restringida o
+              anonimizada hasta por 10 años para obligaciones administrativas,
+              contables, contractuales o de seguridad. No se mantienen como un
+              perfil activo ni se usan para publicidad.
             </p>
           </div>
         </div>
@@ -156,8 +157,9 @@ export default function DeleteAccountPage() {
           <p>Canal oficial de privacidad de la aplicación Vox Danza.</p>
         </div>
         <div>
+          <a href="/politica_privacidad_vox_danza/">Política de privacidad</a>
           <a href="/">Volver al sitio principal</a>
-          <span>Última actualización: 1 de agosto de 2026</span>
+          <span>Última actualización: 14 de agosto de 2026</span>
         </div>
       </footer>
     </main>
