@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { ExternalLink } from "lucide-react";
 
 const APP_STORE_URL = "https://apps.apple.com/co/app/vox-danza/id6753774380";
 const GOOGLE_PLAY_URL =
@@ -51,7 +52,7 @@ export default function AppDownloadRedirect() {
             <small>Descargar en</small>
             <strong>App Store</strong>
           </span>
-          <span className="store-arrow" aria-hidden="true" />
+          <ExternalLink className="store-arrow" size={18} strokeWidth={1.8} aria-hidden="true" />
         </a>
 
         <a className="store-link" href={GOOGLE_PLAY_URL}>
@@ -62,7 +63,7 @@ export default function AppDownloadRedirect() {
             <small>Disponible en</small>
             <strong>Google Play</strong>
           </span>
-          <span className="store-arrow" aria-hidden="true" />
+          <ExternalLink className="store-arrow" size={18} strokeWidth={1.8} aria-hidden="true" />
         </a>
       </div>
 
