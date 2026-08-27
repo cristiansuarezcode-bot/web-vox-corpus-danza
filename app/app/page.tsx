@@ -27,13 +27,13 @@ export default function AppDownloadPage() {
 
       <section className="download-card">
         <div className="app-emblem" aria-hidden="true">
-          <img src="/favicon-vox-v2.png" alt="" />
+          <img src="/vox-danza-app-icon.png" alt="" />
         </div>
         <p className="download-kicker">Aplicación oficial</p>
-        <h1>Lleva tu proceso<br /><span>Vox contigo.</span></h1>
+        <h1>Tu experiencia Vox,<br /><span>siempre contigo.</span></h1>
         <p className="download-copy">
-          Consulta la información de tu proceso y mantente conectado con la
-          academia desde tu celular.
+          Lleva contigo la información y las novedades importantes de tu
+          proceso.
         </p>
 
         <AppDownloadRedirect />
