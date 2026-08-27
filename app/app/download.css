@@ -161,9 +161,34 @@
   margin-top: 4px;
 }
 
-.store-link b {
-  font-size: 1rem;
-  font-weight: 400;
+.store-arrow {
+  color: rgba(255, 255, 255, 0.82);
+  height: 18px;
+  position: relative;
+  width: 18px;
+}
+
+.store-arrow::before {
+  border-right: 1.6px solid currentColor;
+  border-top: 1.6px solid currentColor;
+  content: "";
+  height: 9px;
+  position: absolute;
+  right: 1px;
+  top: 1px;
+  width: 9px;
+}
+
+.store-arrow::after {
+  background: currentColor;
+  content: "";
+  height: 1.6px;
+  left: 2px;
+  position: absolute;
+  top: 9px;
+  transform: rotate(-45deg);
+  transform-origin: center;
+  width: 15px;
 }
 
 .download-help {
@@ -263,7 +288,9 @@
   }
 
   .download-card h1 {
-    font-size: clamp(3rem, 14.5vw, 4.35rem);
+    font-size: clamp(2.55rem, 11vw, 3.1rem);
+    line-height: 0.96;
+    max-width: 370px;
   }
 
   .download-copy {
