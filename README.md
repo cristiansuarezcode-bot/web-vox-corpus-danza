@@ -23,6 +23,7 @@ La exportación estática se genera en `out/`. Cada cambio enviado a la rama `ma
 ## Rutas públicas
 
 - `/`: sitio principal.
+- `/app`: descarga inteligente de Vox Danza para App Store y Google Play.
 - `/cancelar_cuenta_vox_danza`: instrucciones oficiales para solicitar la eliminación de una cuenta de la app Vox Danza.
 
 ## Dominio

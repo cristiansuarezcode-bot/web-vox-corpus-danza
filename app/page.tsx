@@ -286,6 +286,7 @@ export default function Home() {
         </div>
         <div className="footer-links">
           <p>Información</p>
+          <a href="/app/">Descarga Vox Danza</a>
           <a href="/politica_privacidad_vox_danza/">Política de privacidad</a>
           <a href="/cancelar_cuenta_vox_danza/">Eliminar cuenta de Vox Danza</a>
           <span>Canal oficial de Vox Corpus Danza</span>
