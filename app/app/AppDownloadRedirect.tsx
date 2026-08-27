@@ -51,7 +51,7 @@ export default function AppDownloadRedirect() {
             <small>Descargar en</small>
             <strong>App Store</strong>
           </span>
-          <b aria-hidden="true">↗</b>
+          <span className="store-arrow" aria-hidden="true" />
         </a>
 
         <a className="store-link" href={GOOGLE_PLAY_URL}>
@@ -62,7 +62,7 @@ export default function AppDownloadRedirect() {
             <small>Disponible en</small>
             <strong>Google Play</strong>
           </span>
-          <b aria-hidden="true">↗</b>
+          <span className="store-arrow" aria-hidden="true" />
         </a>
       </div>
 
