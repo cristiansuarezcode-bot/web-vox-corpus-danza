@@ -163,32 +163,7 @@
 
 .store-arrow {
   color: rgba(255, 255, 255, 0.82);
-  height: 18px;
-  position: relative;
-  width: 18px;
-}
-
-.store-arrow::before {
-  border-right: 1.6px solid currentColor;
-  border-top: 1.6px solid currentColor;
-  content: "";
-  height: 9px;
-  position: absolute;
-  right: 1px;
-  top: 1px;
-  width: 9px;
-}
-
-.store-arrow::after {
-  background: currentColor;
-  content: "";
-  height: 1.6px;
-  left: 2px;
-  position: absolute;
-  top: 9px;
-  transform: rotate(-45deg);
-  transform-origin: center;
-  width: 15px;
+  flex-shrink: 0;
 }
 
 .download-help {
