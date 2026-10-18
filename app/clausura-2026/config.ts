@@ -28,7 +28,7 @@ export const clausura = {
 
   fechas: {
     preventaBoletasInicio: "2026-10-24T08:00:00-05:00",
-    preventaBoletasFin: "2026-10-24T13:00:00-05:00",
+    preventaBoletasFin: "2026-10-24T15:00:00-05:00",
     paqueteFinPreventa: "2026-11-26T23:59:59-05:00",
     aperturaPuertas: "2026-11-28T15:00:00-05:00",
     inicioShow: "2026-11-28T16:00:00-05:00",
@@ -48,7 +48,7 @@ export const clausura = {
 
   boleteria: {
     preventaTexto: "Sábado 24 de octubre",
-    preventaHorario: "8:00 a.m. a 1:00 p.m.",
+    preventaHorario: "8:00 a.m. a 3:00 p.m.",
     preventaLugar: "En la academia",
     precioFormacion: 60000,
     precioCompetencia: 50000,
@@ -102,7 +102,7 @@ export const clausura = {
     {
       pregunta: "¿Cuándo y dónde compro mi boleta?",
       respuesta:
-        "La preventa especial es el sábado 24 de octubre, de 8:00 a.m. a 1:00 p.m., en la academia. Después se abre la venta general a $70.000, según la disponibilidad de sillas del teatro.",
+        "La preventa especial es el sábado 24 de octubre, de 8:00 a.m. a 3:00 p.m., en la academia. Después se abre la venta general a $70.000, según la disponibilidad de sillas del teatro.",
     },
     {
       pregunta: "¿Los niños pagan boleta?",
