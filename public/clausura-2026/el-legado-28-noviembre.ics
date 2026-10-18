@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Vox Corpus Danza//Clausura 2026//ES
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:show-clausura-2026@voxcorpusdanza.com
+DTSTAMP:20261018T120000Z
+DTSTART:20261128T210000Z
+DTEND:20261129T000000Z
+SUMMARY:El Legado · Clausura 2026 de Vox Corpus Danza
+LOCATION:Teatro Universidad de Envigado\, Carrera 27B #39A Sur-57\, Envigado
+DESCRIPTION:Apertura de puertas 3:00 p.m. · Inicio del show 4:00 p.m. Más información: https://voxcorpusdanza.com/clausura-2026/
+BEGIN:VALARM
+TRIGGER:-P1D
+ACTION:DISPLAY
+DESCRIPTION:Mañana es El Legado
+END:VALARM
+BEGIN:VALARM
+TRIGGER:-PT2H
+ACTION:DISPLAY
+DESCRIPTION:Hoy es El Legado: puertas a las 3:00 p.m.
+END:VALARM
+END:VEVENT
+END:VCALENDAR

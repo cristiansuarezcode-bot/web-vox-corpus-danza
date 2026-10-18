@@ -24,6 +24,7 @@ La exportación estática se genera en `out/`. Cada cambio enviado a la rama `ma
 
 - `/`: sitio principal.
 - `/app`: descarga inteligente de Vox Danza para App Store y Google Play.
+- `/clausura-2026`: página de El Legado, Clausura 2026. Todo su contenido (textos, precios y fechas) está en `app/clausura-2026/config.ts`; la página cambia sola de fase según la fecha.
 - `/cancelar_cuenta_vox_danza`: instrucciones oficiales para solicitar la eliminación de una cuenta de la app Vox Danza.
 
 ## Dominio
