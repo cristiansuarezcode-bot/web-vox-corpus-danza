@@ -5,9 +5,9 @@ CALSCALE:GREGORIAN
 METHOD:PUBLISH
 BEGIN:VEVENT
 UID:preventa-boletas-clausura-2026@voxcorpusdanza.com
-DTSTAMP:20261018T120000Z
+DTSTAMP:20261018T163000Z
 DTSTART:20261024T130000Z
-DTEND:20261024T180000Z
+DTEND:20261024T200000Z
 SUMMARY:Preventa de boletas · El Legado (Clausura 2026)
 LOCATION:Vox Corpus Danza
 DESCRIPTION:Preventa especial de boletas para El Legado\, Clausura 2026 de Vox Corpus Danza. Estudiantes de formación $60.000 · Estudiantes de competencia $50.000. Más información: https://voxcorpusdanza.com/clausura-2026/
