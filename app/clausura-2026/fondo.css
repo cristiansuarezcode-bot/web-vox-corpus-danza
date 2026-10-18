@@ -1,0 +1,5 @@
+/* Fondo negro también en el rebote del scroll, solo en la página de la clausura */
+html:has(main[data-clausura]),
+body:has(main[data-clausura]) {
+  background: #000;
+}
