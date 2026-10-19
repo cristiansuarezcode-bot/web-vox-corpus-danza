@@ -72,13 +72,19 @@ export const clausura = {
     // Sube los archivos a public/clausura-2026/ y agrégalos aquí.
     // Mientras la lista esté vacía, ese bloque no se muestra.
     fotosEjemplo: [
-      { src: "/clausura-2026/recuerdo-familia-1.jpg", alt: "Foto familiar de una estudiante con sus abuelos y su mamá en la clausura 2025" },
-      { src: "/clausura-2026/recuerdo-familia-2.jpg", alt: "Foto familiar de una estudiante con sus papás y un ramo de flores" },
-      { src: "/clausura-2026/recuerdo-escena-1.jpg", alt: "Estudiante bailando en el escenario de la clausura 2025" },
-      { src: "/clausura-2026/recuerdo-grupal-1.jpg", alt: "Foto grupal de estudiantes en escena durante la clausura 2025" },
-      { src: "/clausura-2026/recuerdo-familia-3.jpg", alt: "Foto familiar de un estudiante con sus papás" },
-      { src: "/clausura-2026/recuerdo-familia-4.jpg", alt: "Foto familiar de una estudiante con su familia y un ramo de flores" },
-    ] as { src: string; alt: string }[],
+      { src: "/clausura-2026/recuerdo-familia-1.jpg", tipo: "Familiar", alt: "Foto familiar de una estudiante con sus abuelos y su mamá en la clausura 2025" },
+      { src: "/clausura-2026/recuerdo-escena-2.jpg", tipo: "En escena", alt: "Estudiante haciendo un salto mortal en el escenario de la clausura 2025" },
+      { src: "/clausura-2026/recuerdo-familia-2.jpg", tipo: "Familiar", alt: "Foto familiar de una estudiante con sus papás y un ramo de flores" },
+      { src: "/clausura-2026/recuerdo-grupal-1.jpg", tipo: "Grupal", alt: "Foto grupal de estudiantes en escena durante la clausura 2025" },
+      { src: "/clausura-2026/recuerdo-backstage-1.jpg", tipo: "Backstage", alt: "Niñas sonriendo antes de salir al escenario en la clausura 2025" },
+      { src: "/clausura-2026/recuerdo-escena-1.jpg", tipo: "En escena", alt: "Estudiante bailando en el escenario de la clausura 2025" },
+      { src: "/clausura-2026/recuerdo-familia-3.jpg", tipo: "Familiar", alt: "Foto familiar de un estudiante con sus papás" },
+      { src: "/clausura-2026/recuerdo-escena-3.jpg", tipo: "En escena", alt: "Dos estudiantes bailando hip hop en la clausura 2025" },
+      { src: "/clausura-2026/recuerdo-backstage-2.jpg", tipo: "Backstage", alt: "Dos niños posando con pañoleta en la clausura 2025" },
+      { src: "/clausura-2026/recuerdo-escena-4.jpg", tipo: "En escena", alt: "Dos estudiantes de rojo y dorado bailando en la clausura 2025" },
+      { src: "/clausura-2026/recuerdo-familia-4.jpg", tipo: "Familiar", alt: "Foto familiar de una estudiante con su familia y un ramo de flores" },
+      { src: "/clausura-2026/recuerdo-grupal-2.jpg", tipo: "Grupal", alt: "Grupo de estudiantes con guantes rojos en escena" },
+    ] as { src: string; alt: string; tipo: string }[],
   },
 
   // Enlace del formulario de la encuesta (por ejemplo, un Formulario de Google).

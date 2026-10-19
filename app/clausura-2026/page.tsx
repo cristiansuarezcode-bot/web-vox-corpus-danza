@@ -3,6 +3,7 @@ import Avisos from "./Avisos";
 import Boleteria from "./Boleteria";
 import ChipPaquete from "./ChipPaquete";
 import CuentaRegresiva from "./CuentaRegresiva";
+import Galeria from "./Galeria";
 import PrecioPaquete from "./PrecioPaquete";
 import { INSTAGRAM, WHATSAPP_VISIBLE, clausura, whatsappLink } from "./config";
 import "./fondo.css";
@@ -219,16 +220,7 @@ export default function Clausura2026Page() {
           </ul>
         </div>
 
-        {paquete.fotosEjemplo.length > 0 ? (
-          <div>
-            <p className={styles.subtitulo}>Así se ven los recuerdos</p>
-            <div className={styles.galeria}>
-              {paquete.fotosEjemplo.map((f) => (
-                <img key={f.src} src={f.src} alt={f.alt} loading="lazy" />
-              ))}
-            </div>
-          </div>
-        ) : null}
+        {paquete.fotosEjemplo.length > 0 ? <Galeria fotos={paquete.fotosEjemplo} /> : null}
 
         <a
           className={`${styles.botonDorado} ${styles.botonGrande}`}
