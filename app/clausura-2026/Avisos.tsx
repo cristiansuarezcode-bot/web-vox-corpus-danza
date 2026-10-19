@@ -153,7 +153,7 @@ export default function Avisos() {
         <>
           <p className={styles.avisoTitulo} id={tituloId}>Llévate el recuerdo de su gran noche</p>
           <p className={styles.textoSuave}>
-            Fotos familiar, individual, grupal y en escena, más el video de la clausura.
+            Fotos familiar, individual, grupal y en escena, más el video del show.
           </p>
           <div className={`${styles.precios} ${styles.avisoPrecios}`}>
             <s className={styles.precioTachado}>
