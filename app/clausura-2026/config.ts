@@ -64,7 +64,7 @@ export const clausura = {
       "Foto individual en backstage",
       "Foto grupal",
       "Fotos en escena de cada estudiante",
-      "Video de la clausura",
+      "Video del show",
     ],
     mediosPago:
       "Paga en efectivo en recepción o por transferencia, enviando el comprobante al WhatsApp 311 271 0369.",
