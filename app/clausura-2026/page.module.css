@@ -626,13 +626,127 @@
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
+  margin-top: 10px;
 }
 
-.galeria img {
+.galeriaFoto {
+  position: relative;
+  display: block;
+  padding: 0;
+  border: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #111;
+  cursor: zoom-in;
+}
+
+.galeriaFoto img {
+  display: block;
   width: 100%;
+  height: auto;
   aspect-ratio: 4 / 5;
   object-fit: cover;
+}
+
+.galeriaFoto:focus-visible {
+  outline: 2px solid var(--cl-dorado);
+  outline-offset: 2px;
+}
+
+.galeriaTipo {
+  position: absolute;
+  left: 8px;
+  bottom: 8px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.72);
+  border: 1px solid rgba(212, 168, 75, 0.6);
+  color: var(--cl-crema);
+  font-family: var(--cl-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+.galeriaMas {
+  width: 100%;
+  margin-top: 12px;
+}
+
+/* Visor de fotos en pantalla completa */
+
+.visor {
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  max-height: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: rgba(0, 0, 0, 0.94);
+  color: var(--cl-crema);
+}
+
+.visor::backdrop {
+  background: rgba(0, 0, 0, 0.94);
+}
+
+.visorContenido {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: calc(12px + env(safe-area-inset-top)) 12px calc(16px + env(safe-area-inset-bottom));
+  box-sizing: border-box;
+  pointer-events: none;
+}
+
+.visorContenido > * {
+  pointer-events: auto;
+}
+
+.visorBarra {
+  width: 100%;
+  max-width: 560px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--cl-sans);
+  font-size: 0.85rem;
+  color: var(--cl-suave);
+}
+
+.visorImagen {
+  display: block;
+  max-width: min(100%, 560px);
+  max-height: calc(100% - 140px);
+  object-fit: contain;
   border-radius: 12px;
+}
+
+.visorFlechas {
+  display: flex;
+  gap: 16px;
+}
+
+.visorBoton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 999px;
+  border: 1.5px solid rgba(212, 168, 75, 0.7);
+  background: rgba(0, 0, 0, 0.5);
+  color: var(--cl-crema);
+  cursor: pointer;
+}
+
+.visorBoton:hover {
+  border-color: var(--cl-dorado-claro);
+  color: var(--cl-dorado-claro);
 }
 
 /* ---------- Preguntas ---------- */
