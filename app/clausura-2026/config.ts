@@ -92,9 +92,10 @@ export const clausura = {
       destacado: false,
     },
     {
-      titulo: "Thriller",
-      texto: "Uno de los momentos más esperados de la noche. Mejor no te contamos más.",
-      destacado: true,
+      titulo: "Niños, jóvenes y adultos en escena",
+      texto:
+        "Toda la familia Vox en el escenario, desde los más pequeños hasta nuestros adultos.",
+      destacado: false,
     },
   ],
 
