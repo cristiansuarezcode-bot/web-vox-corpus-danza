@@ -1,0 +1,644 @@
+/* Mapa de sillas y taquilla — mismo negro y dorado de la página de la clausura.
+   Las variables --cl-* vienen de .pagina (page.module.css). */
+
+.contenedor {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 24px 16px 48px;
+  box-sizing: border-box;
+}
+
+.contenedorAncho {
+  max-width: 980px;
+}
+
+.cabecera {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+}
+
+.antetitulo {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--cl-apagado);
+}
+
+.titulo {
+  font-family: var(--cl-serif);
+  font-size: 1.9rem;
+  line-height: 1.1;
+  color: var(--cl-dorado);
+}
+
+.bajada {
+  max-width: 420px;
+  color: var(--cl-suave);
+  line-height: 1.5;
+}
+
+.datos {
+  font-size: 0.85rem;
+  color: var(--cl-apagado);
+}
+
+.estado {
+  padding: 28px 16px;
+  border: 1px solid var(--cl-linea);
+  border-radius: 16px;
+  text-align: center;
+  color: var(--cl-suave);
+}
+
+.bloqueMapa {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.disponibles {
+  text-align: center;
+  color: var(--cl-suave);
+}
+
+.disponibles strong {
+  font-family: var(--cl-serif);
+  font-size: 1.6rem;
+  color: var(--cl-dorado);
+}
+
+.nota {
+  font-size: 0.8rem;
+  color: var(--cl-apagado);
+  text-align: center;
+}
+
+/* ---------- Leyenda ---------- */
+
+.leyenda {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 16px;
+  padding: 0;
+  list-style: none;
+  font-size: 0.8rem;
+  color: var(--cl-suave);
+}
+
+.leyenda li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.muestra {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+}
+
+/* ---------- Mapa ---------- */
+
+.mapaMarco {
+  overflow-x: auto;
+  padding: 4px 0 8px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.mapa {
+  --silla: calc((min(100vw, 560px) - 32px - 44px) / (var(--sillas) * 1.18));
+  --hueco: calc(var(--silla) * 0.18);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--hueco);
+  min-width: max-content;
+  margin: 0 auto;
+}
+
+.mapaGrande .mapa {
+  --silla: 30px;
+  --hueco: 4px;
+}
+
+.escenario,
+.fondoSala {
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+.escenario {
+  margin-bottom: 10px;
+  padding: 10px 0;
+  border-radius: 0 0 40% 40% / 0 0 100% 100%;
+  background: linear-gradient(180deg, rgba(212, 168, 75, 0.35), rgba(212, 168, 75, 0.08));
+  color: var(--cl-dorado-claro);
+}
+
+.fondoSala {
+  margin-top: 10px;
+  padding: 6px 0;
+  border-top: 1px dashed var(--cl-borde);
+  color: var(--cl-apagado);
+  letter-spacing: 0.12em;
+}
+
+.filaMapa {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.letra {
+  width: 16px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-align: center;
+  color: var(--cl-apagado);
+}
+
+.mapaGrande .letra {
+  width: 20px;
+  font-size: 0.85rem;
+}
+
+.sillas {
+  display: flex;
+  justify-content: center;
+  gap: var(--hueco);
+  width: calc(var(--sillas) * var(--silla) + (var(--sillas) - 1) * var(--hueco));
+}
+
+.silla {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--silla);
+  height: var(--silla);
+  padding: 0;
+  border: 0;
+  border-radius: 28% 28% 18% 18%;
+  font-family: var(--cl-sans);
+  font-size: 0.66rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.libre {
+  background: #2f6b47;
+  color: #e7f5ec;
+}
+
+.vendida {
+  background: #3a3a3a;
+  color: #9a9a9a;
+}
+
+.reservada {
+  background: #6b5a2e;
+  color: #e9dcb8;
+  background-image: repeating-linear-gradient(45deg, rgba(0, 0, 0, 0.28) 0 3px, transparent 3px 6px);
+}
+
+.elegida {
+  background: var(--cl-dorado);
+  color: #000;
+  box-shadow: 0 0 0 2px var(--cl-dorado-claro);
+}
+
+button.silla {
+  cursor: pointer;
+}
+
+button.libre:hover {
+  background: #3c8a5b;
+}
+
+/* ---------- Ayuda pública ---------- */
+
+.ayuda {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 14px 16px 14px 32px;
+  border: 1px solid var(--cl-linea);
+  border-radius: 14px;
+  font-size: 0.85rem;
+  line-height: 1.45;
+  color: var(--cl-suave);
+}
+
+.volver {
+  align-self: center;
+  color: var(--cl-dorado);
+  font-size: 0.9rem;
+}
+
+/* ---------- Botones y campos ---------- */
+
+.botonDorado,
+.botonBorde,
+.botonPeligro {
+  min-height: 46px;
+  padding: 0 18px;
+  border-radius: 999px;
+  font-family: var(--cl-sans);
+  font-weight: 700;
+  font-size: 0.88rem;
+  cursor: pointer;
+}
+
+.botonDorado {
+  border: 0;
+  background: var(--cl-dorado);
+  color: #000;
+}
+
+.botonDorado:disabled,
+.botonBorde:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+
+.botonBorde {
+  border: 1.5px solid var(--cl-dorado);
+  background: transparent;
+  color: var(--cl-dorado);
+}
+
+.botonPeligro {
+  border: 0;
+  background: #b3412f;
+  color: #fff;
+}
+
+.botonAncho {
+  width: 100%;
+  min-height: 54px;
+  font-size: 1rem;
+}
+
+.botonTexto {
+  align-self: flex-start;
+  padding: 6px 0;
+  border: 0;
+  background: none;
+  color: #e48a7a;
+  font-family: var(--cl-sans);
+  font-weight: 600;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--cl-suave);
+}
+
+.campo input,
+.campo select {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.campo input,
+.campo select,
+.listaElegidas input,
+.listaElegidas select {
+  min-height: 44px;
+  padding: 0 12px;
+  border: 1px solid var(--cl-borde);
+  border-radius: 10px;
+  background: #0d0b07;
+  color: var(--cl-crema);
+  font-family: var(--cl-sans);
+  font-size: 1rem;
+}
+
+.ingreso {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+  max-width: 360px;
+  margin: 0 auto;
+}
+
+.avisoError,
+.avisoBien {
+  padding: 12px 14px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.avisoError {
+  border: 1px solid #b3412f;
+  background: rgba(179, 65, 47, 0.15);
+  color: #f2b8ad;
+}
+
+.avisoBien {
+  border: 1px solid #2f6b47;
+  background: rgba(47, 107, 71, 0.2);
+  color: #bfe6cd;
+}
+
+/* ---------- Panel del vendedor ---------- */
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.barraPanel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--cl-suave);
+}
+
+.pestanas {
+  display: flex;
+  gap: 8px;
+  border-bottom: 1px solid var(--cl-linea);
+}
+
+.pestanas button {
+  flex: 1;
+  min-height: 46px;
+  border: 0;
+  border-bottom: 3px solid transparent;
+  background: none;
+  color: var(--cl-apagado);
+  font-family: var(--cl-sans);
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.pestanas button[aria-selected="true"] {
+  border-bottom-color: var(--cl-dorado);
+  color: var(--cl-dorado);
+}
+
+.vender {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.formulario {
+  width: 100%;
+  max-width: 620px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 16px;
+  border: 1px solid var(--cl-borde);
+  border-radius: 16px;
+  background: var(--cl-tarjeta);
+}
+
+.subtitulo {
+  font-family: var(--cl-serif);
+  font-size: 1.1rem;
+  color: var(--cl-dorado);
+}
+
+.numerar {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.numerar .campo {
+  flex: 1;
+}
+
+.listaElegidas {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0;
+  list-style: none;
+}
+
+.listaElegidas li {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr) 96px 36px;
+  align-items: center;
+  gap: 8px;
+}
+
+.listaElegidas select,
+.listaElegidas input {
+  width: 100%;
+  min-width: 0;
+  padding: 0 8px;
+  font-size: 0.9rem;
+  box-sizing: border-box;
+}
+
+.idSilla {
+  font-family: var(--cl-serif);
+  color: var(--cl-dorado);
+}
+
+.quitar {
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--cl-borde);
+  border-radius: 999px;
+  background: none;
+  color: var(--cl-suave);
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.pagos {
+  display: flex;
+  gap: 18px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  color: var(--cl-crema);
+}
+
+.pagos legend {
+  margin-bottom: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--cl-suave);
+}
+
+.pagos label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+}
+
+.pagos input {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--cl-dorado);
+}
+
+.total {
+  font-size: 1rem;
+  color: var(--cl-suave);
+}
+
+.total strong {
+  font-family: var(--cl-serif);
+  font-size: 1.5rem;
+  color: var(--cl-crema);
+}
+
+/* ---------- Ventas registradas ---------- */
+
+.ventas {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.buscador {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.buscador .campo {
+  flex: 1;
+}
+
+.listaVentas {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0;
+  list-style: none;
+}
+
+.tarjetaVenta {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 14px;
+  border: 1px solid var(--cl-linea);
+  border-radius: 14px;
+  background: var(--cl-tarjeta);
+}
+
+.cabezaVenta {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  color: var(--cl-crema);
+}
+
+.cabezaVenta span {
+  font-weight: 700;
+  color: var(--cl-dorado);
+}
+
+.metaVenta {
+  font-size: 0.78rem;
+  color: var(--cl-apagado);
+}
+
+.chipsSillas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 0;
+  list-style: none;
+}
+
+.chip,
+.chipAnulado {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+}
+
+.chip {
+  border: 1px solid var(--cl-borde);
+  color: var(--cl-crema);
+}
+
+.chip button {
+  border: 0;
+  background: none;
+  color: #e48a7a;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.chipAnulado {
+  border: 1px dashed #555;
+  color: #888;
+  text-decoration: line-through;
+}
+
+.confirmar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 12px;
+  background: rgba(179, 65, 47, 0.12);
+  color: #f2b8ad;
+  font-size: 0.88rem;
+}
+
+.confirmar p {
+  width: 100%;
+}
+
+.pista {
+  display: none;
+  width: 100%;
+  font-size: 0.78rem;
+  text-align: center;
+  color: var(--cl-apagado);
+}
+
+@media (max-width: 700px) {
+  .pista {
+    display: block;
+  }
+
+  .mapaGrande .mapa {
+    --silla: 28px;
+  }
+}
