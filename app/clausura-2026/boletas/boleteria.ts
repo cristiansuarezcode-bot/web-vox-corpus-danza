@@ -1,7 +1,9 @@
 // Conexión con la boletería (Apps Script de Google sobre la hoja de cálculo).
 // La dirección termina en /exec y la da Google al implementar la aplicación web.
-// Mientras sea null, el mapa y el panel muestran que la boletería aún no está conectada.
-export const BOLETERIA_API: string | null = process.env.NEXT_PUBLIC_BOLETERIA_API || null;
+// Implementación "Boletería clausura 2026 v1" del proyecto de Apps Script en voxcorpusdanza@gmail.com.
+export const BOLETERIA_API: string | null =
+  process.env.NEXT_PUBLIC_BOLETERIA_API ||
+  "https://script.google.com/macros/s/AKfycbzRW5oCHFoXrlnm92pMxRzQdVSca-ajd2iPQHQrwlvea0H4QXoeiSJVS7BEVLOnAH8Tdg/exec";
 
 export type FilaTeatro = { fila: string; sillas: number };
 export type Bloqueo = { id: string; motivo: string };
