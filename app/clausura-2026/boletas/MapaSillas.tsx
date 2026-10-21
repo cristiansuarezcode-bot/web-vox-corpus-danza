@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import { idSilla, type FilaTeatro } from "./boleteria";
 import styles from "./boletas.module.css";
 
@@ -19,16 +20,23 @@ type Props = {
  */
 export default function MapaSillas({ teatro, ocupadas, bloqueadas, seleccionadas, alTocar, tamano = "fluido" }: Props) {
   const maximo = Math.max(1, ...teatro.map((t) => t.sillas));
+  const marco = useRef<HTMLDivElement>(null);
+
+  // En el celular el mapa es más ancho que la pantalla: arranca centrado.
+  useEffect(() => {
+    const el = marco.current;
+    if (el && el.scrollWidth > el.clientWidth) el.scrollLeft = (el.scrollWidth - el.clientWidth) / 2;
+  }, [teatro.length]);
 
   return (
-    <div className={`${styles.mapaMarco} ${tamano === "grande" ? styles.mapaGrande : ""}`}>
+    <div ref={marco} className={`${styles.mapaMarco} ${tamano === "grande" ? styles.mapaGrande : ""}`}>
       <div className={styles.mapa} style={{ ["--sillas" as string]: maximo }}>
         <div className={styles.escenario}>Escenario</div>
         {teatro.map((t) => {
           const numeros = Array.from({ length: t.sillas }, (_, i) => t.sillas - i); // 1 queda a la derecha
           return (
             <div key={t.fila} className={styles.filaMapa}>
-              <span className={styles.letra} aria-hidden="true">{t.fila}</span>
+              <span className={`${styles.letra} ${styles.letraIzq}`} aria-hidden="true">{t.fila}</span>
               <div className={styles.sillas} role="group" aria-label={`Fila ${t.fila}`}>
                 {numeros.map((n) => {
                   const id = idSilla(t.fila, n);
@@ -64,7 +72,7 @@ export default function MapaSillas({ teatro, ocupadas, bloqueadas, seleccionadas
                   );
                 })}
               </div>
-              <span className={styles.letra} aria-hidden="true">{t.fila}</span>
+              <span className={`${styles.letra} ${styles.letraDer}`} aria-hidden="true">{t.fila}</span>
             </div>
           );
         })}

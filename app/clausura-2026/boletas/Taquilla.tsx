@@ -32,7 +32,7 @@ function guardarClave(c: string | null) {
   }
 }
 
-type Detalle = { tipo: string; boleta: string };
+type Detalle = { tipo: string };
 type Aviso = { tipo: "bien" | "mal"; texto: string } | null;
 
 export default function Taquilla() {
@@ -175,7 +175,6 @@ function Vender({
   const [estudiante, setEstudiante] = useState("");
   const [pago, setPago] = useState("");
   const [nota, setNota] = useState("");
-  const [primeraBoleta, setPrimeraBoleta] = useState("");
   const [enviando, setEnviando] = useState(false);
   const [aviso, setAviso] = useState<Aviso>(null);
 
@@ -201,7 +200,7 @@ function Vender({
     setElegidas((prev) => {
       const n = { ...prev };
       if (n[id]) delete n[id];
-      else n[id] = { tipo: tipoGeneral, boleta: "" };
+      else n[id] = { tipo: tipoGeneral };
       return n;
     });
   };
@@ -211,26 +210,11 @@ function Vender({
     setElegidas((prev) => Object.fromEntries(Object.entries(prev).map(([id, d]) => [id, { ...d, tipo: t }])));
   };
 
-  const numerar = () => {
-    const inicio = parseInt(primeraBoleta, 10);
-    if (!Number.isFinite(inicio)) return;
-    const ancho = primeraBoleta.trim().length;
-    setElegidas((prev) => {
-      const n = { ...prev };
-      ids.forEach((id, i) => {
-        n[id] = { ...n[id], boleta: String(inicio + i).padStart(ancho, "0") };
-      });
-      return n;
-    });
-  };
-
   const registrar = async () => {
     setAviso(null);
     if (!ids.length) return setAviso({ tipo: "mal", texto: "Toca en el mapa las sillas que la familia escogió." });
     if (!estudiante.trim()) return setAviso({ tipo: "mal", texto: "Escribe el nombre del estudiante." });
     if (!pago) return setAviso({ tipo: "mal", texto: "Escoge si pagó en efectivo o por transferencia." });
-    const sinBoleta = ids.filter((id) => !elegidas[id].boleta.trim());
-    if (sinBoleta.length) return setAviso({ tipo: "mal", texto: `Falta el número de boleta de: ${sinBoleta.join(", ")}.` });
 
     setEnviando(true);
     try {
@@ -242,7 +226,7 @@ function Vender({
         nota: nota.trim(),
         sillas: ids.map((id) => {
           const [fila, silla] = id.split("-");
-          return { fila, silla: Number(silla), tipo: elegidas[id].tipo, boleta: elegidas[id].boleta.trim() };
+          return { fila, silla: Number(silla), tipo: elegidas[id].tipo, boleta: id }; // la boleta se identifica por fila y silla
         }),
       });
       if (r.ok) {
@@ -254,7 +238,6 @@ function Vender({
         setEstudiante("");
         setPago("");
         setNota("");
-        setPrimeraBoleta("");
         await refrescar();
       } else {
         if (r.clave === false) return salir();
@@ -297,16 +280,6 @@ function Vender({
 
         {ids.length ? (
           <>
-            <div className={styles.numerar}>
-              <label className={styles.campo}>
-                <span>N° de la primera boleta</span>
-                <input inputMode="numeric" value={primeraBoleta} onChange={(e) => setPrimeraBoleta(e.target.value)} placeholder="Ej. 045" />
-              </label>
-              <button type="button" className={styles.botonBorde} onClick={numerar} disabled={!primeraBoleta.trim()}>
-                Numerar en orden
-              </button>
-            </div>
-
             <ul className={styles.listaElegidas}>
               {ids.map((id) => (
                 <li key={id}>
@@ -320,13 +293,6 @@ function Vender({
                       <option key={t} value={t}>{t}</option>
                     ))}
                   </select>
-                  <input
-                    aria-label={`Número de boleta de ${id}`}
-                    inputMode="numeric"
-                    placeholder="N° boleta"
-                    value={elegidas[id].boleta}
-                    onChange={(e) => setElegidas((p) => ({ ...p, [id]: { ...p[id], boleta: e.target.value } }))}
-                  />
                   <button type="button" className={styles.quitar} onClick={() => tocar(id)} aria-label={`Quitar ${id}`}>
                     ×
                   </button>
@@ -406,9 +372,9 @@ function Ventas({
     try {
       const r = await enviar<{ anuladas: string[] }>({ accion: "anular", clave, ...pendiente });
       if (r.ok) {
-        setAviso({ tipo: "bien", texto: `Anuladas: ${r.anuladas.join(", ")}. Esas sillas quedan libres.` });
         setPendiente(null);
         await Promise.all([cargar(), refrescar()]);
+        setAviso({ tipo: "bien", texto: `Anuladas: ${r.anuladas.join(", ")}. Esas sillas quedan libres.` });
       } else setAviso({ tipo: "mal", texto: r.error });
     } catch {
       setAviso({ tipo: "mal", texto: "No se pudo anular por la conexión. Intenta de nuevo." });
@@ -423,7 +389,7 @@ function Ventas({
       !q ||
       v.estudiante.toLowerCase().includes(q) ||
       v.idVenta.toLowerCase().includes(q) ||
-      v.sillas.some((s) => s.id.toLowerCase() === q || s.boleta.toLowerCase() === q),
+      v.sillas.some((s) => s.id.toLowerCase() === q),
   );
   const activas = (ventas ?? []).reduce((a, v) => a + v.sillas.filter((s) => s.estado === "Vendida").length, 0);
 
@@ -431,7 +397,7 @@ function Ventas({
     <div className={styles.ventas}>
       <div className={styles.buscador}>
         <label className={styles.campo}>
-          <span>Buscar por estudiante, silla (F-8) o N° de boleta</span>
+          <span>Buscar por estudiante o silla (F-8)</span>
           <input value={buscar} onChange={(e) => setBuscar(e.target.value)} placeholder="Buscar…" />
         </label>
         <button type="button" className={styles.botonBorde} onClick={cargar}>
@@ -460,7 +426,7 @@ function Ventas({
                   const anulada = s.estado !== "Vendida";
                   return (
                     <li key={id} className={anulada ? styles.chipAnulado : styles.chip}>
-                      {id} · {s.tipo} · N° {s.boleta}
+                      {id} · {s.tipo}
                       {!anulada && vivas.length > 1 ? (
                         <button type="button" onClick={() => setPendiente({ idVenta: v.idVenta, sillas: [id] })} aria-label={`Anular solo ${id}`}>
                           ×
