@@ -42,16 +42,12 @@ export default function MapaPublico() {
 
   const ocupadas = new Set(mapa.ocupadas);
   const bloqueadas = new Set(mapa.bloqueadas);
-  const total = mapa.teatro.reduce((a, t) => a + t.sillas, 0);
-  const libres = total - ocupadas.size - bloqueadas.size;
 
   return (
     <div className={styles.bloqueMapa}>
-      <p className={styles.disponibles}>
-        <strong>{libres}</strong> sillas disponibles
-      </p>
       <Leyenda />
-      <MapaSillas teatro={mapa.teatro} ocupadas={ocupadas} bloqueadas={bloqueadas} />
+      <p className={styles.pista}>Desliza el mapa hacia los lados para ver toda la fila.</p>
+      <MapaSillas teatro={mapa.teatro} ocupadas={ocupadas} bloqueadas={bloqueadas} tamano="grande" />
       <p className={styles.nota}>
         Se actualiza solo. {error ? <span className={styles.avisoError}>{error}</span> : null}
       </p>

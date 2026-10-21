@@ -69,6 +69,10 @@ export default function Boleteria({ compilado }: { compilado: number }) {
         )}
       </div>
 
+      <a className={`${styles.botonDorado} ${styles.botonGrande}`} href="/clausura-2026/boletas/">
+        Ver sillas disponibles
+      </a>
+
       <p className={styles.notaCentro}>
         Los niños espectadores pagan boleta a partir de los 4 años.
       </p>
