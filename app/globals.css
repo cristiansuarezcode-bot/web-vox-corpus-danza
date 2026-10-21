@@ -1327,3 +1327,141 @@ section {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ---------- Clausura 2026 "El Legado" (se oculta sola después del evento) ---------- */
+
+.clausura-aviso {
+  align-items: center;
+  background: #000;
+  color: #f4ebd6;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 0.78rem;
+  gap: 4px 16px;
+  justify-content: center;
+  letter-spacing: 0.04em;
+  padding: 10px 16px;
+  text-align: center;
+}
+
+.clausura-aviso strong {
+  color: #d4a84b;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.clausura-aviso-ir {
+  border-bottom: 1px solid #d4a84b;
+  color: #f1d28a;
+  font-weight: 700;
+}
+
+.clausura-aviso:hover .clausura-aviso-ir,
+.clausura-aviso:focus-visible .clausura-aviso-ir {
+  color: #fff;
+}
+
+.desktop-nav a.nav-clausura,
+.mobile-menu a.nav-clausura {
+  color: #a8801f;
+}
+
+.clausura-home {
+  background:
+    radial-gradient(ellipse 520px 360px at 50% 45%, rgba(212, 168, 75, 0.16), rgba(0, 0, 0, 0) 72%),
+    #000;
+  color: #f4ebd6;
+  padding: clamp(48px, 6vw, 88px) clamp(20px, 4.2vw, 72px);
+}
+
+.clausura-home-copia {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin: 0 auto;
+  max-width: 640px;
+  text-align: center;
+}
+
+.clausura-home-etiqueta {
+  color: #bfae8a;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.clausura-home-titulo {
+  margin: 0;
+  width: min(100%, 520px);
+}
+
+.clausura-home-titulo img {
+  display: block;
+  height: auto;
+  mix-blend-mode: lighten;
+  width: 100%;
+}
+
+.clausura-home-datos {
+  color: #f4ebd6;
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.clausura-home-botones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 6px;
+}
+
+.clausura-boton {
+  align-items: center;
+  border-radius: 999px;
+  display: inline-flex;
+  font-size: 0.85rem;
+  font-weight: 700;
+  gap: 10px;
+  justify-content: center;
+  letter-spacing: 0.04em;
+  min-height: 50px;
+  padding: 0 26px;
+}
+
+.clausura-boton-dorado {
+  background: #d4a84b;
+  color: #000;
+}
+
+.clausura-boton-dorado:hover,
+.clausura-boton-dorado:focus-visible {
+  background: #f1d28a;
+}
+
+.clausura-boton-borde {
+  border: 1.5px solid #d4a84b;
+  color: #d4a84b;
+}
+
+.clausura-boton-borde:hover,
+.clausura-boton-borde:focus-visible {
+  border-color: #f1d28a;
+  color: #f1d28a;
+}
+
+@media (max-width: 680px) {
+  .clausura-aviso-fecha {
+    display: none;
+  }
+
+  .clausura-boton {
+    width: 100%;
+  }
+}
