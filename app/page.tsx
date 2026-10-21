@@ -1,3 +1,5 @@
+import { AvisoClausura, EnlaceClausura, SeccionClausura } from "./ClausuraHome";
+
 const programs = [
   {
     title: "Primeros pasos",
@@ -69,6 +71,7 @@ const gallery = [
 export default function Home() {
   return (
     <main className="home-page">
+      <AvisoClausura />
       <header className="site-header">
         <a className="brand" href="#inicio" aria-label="Vox Corpus Danza, inicio">
           <span className="brand-mark" aria-hidden="true" />
@@ -81,6 +84,7 @@ export default function Home() {
           <a href="#experiencias">Experiencias</a>
           <a href="#horarios">Horarios</a>
           <a href="#contacto">Contacto</a>
+          <EnlaceClausura className="nav-clausura" />
           <a className="nav-cta" href="#contacto">Inscríbete <span aria-hidden="true">→</span></a>
         </nav>
 
@@ -93,6 +97,7 @@ export default function Home() {
             <a href="#experiencias">Experiencias</a>
             <a href="#horarios">Horarios</a>
             <a href="#contacto">Contacto</a>
+            <EnlaceClausura className="nav-clausura" />
           </nav>
         </details>
       </header>
@@ -134,6 +139,8 @@ export default function Home() {
           </article>
         ))}
       </section>
+
+      <SeccionClausura />
 
       <section className="programs-section" id="programas">
         <div className="section-heading">
