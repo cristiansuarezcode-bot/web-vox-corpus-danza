@@ -46,8 +46,7 @@ export default function MapaPublico() {
   return (
     <div className={styles.bloqueMapa}>
       <Leyenda />
-      <p className={styles.pista}>Desliza el mapa hacia los lados para ver toda la fila.</p>
-      <MapaSillas teatro={mapa.teatro} ocupadas={ocupadas} bloqueadas={bloqueadas} tamano="grande" />
+      <MapaSillas teatro={mapa.teatro} ocupadas={ocupadas} bloqueadas={bloqueadas} numeros />
       <p className={styles.nota}>
         Se actualiza solo. {error ? <span className={styles.avisoError}>{error}</span> : null}
       </p>

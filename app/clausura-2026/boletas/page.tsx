@@ -14,7 +14,7 @@ export const viewport: Viewport = { themeColor: "#000000" };
 
 export default function BoletasPage() {
   return (
-    <main className={`${base.pagina} ${styles.contenedor} ${styles.contenedorAncho}`} data-clausura="">
+    <main className={`${base.pagina} ${styles.contenedor}`} data-clausura="">
       <header className={styles.cabecera}>
         <a href="/clausura-2026/" aria-label="Volver a la página de la clausura">
           <img src="/clausura-2026/vox-lockup.png" alt="Vox Corpus Danza" width={130} height={29} />
