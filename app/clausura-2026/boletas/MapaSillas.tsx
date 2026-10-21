@@ -12,13 +12,15 @@ type Props = {
   /** Solo en el panel del vendedor: tocar una silla libre la selecciona. */
   alTocar?: (id: string) => void;
   tamano?: "fluido" | "grande";
+  /** Muestra el número dentro de cada silla. */
+  numeros?: boolean;
 };
 
 /**
  * Mapa del teatro visto desde la silla: el escenario arriba, la fila A
  * primero y la silla 1 a la derecha (igual que el plano del teatro, girado).
  */
-export default function MapaSillas({ teatro, ocupadas, bloqueadas, seleccionadas, alTocar, tamano = "fluido" }: Props) {
+export default function MapaSillas({ teatro, ocupadas, bloqueadas, seleccionadas, alTocar, tamano = "fluido", numeros = tamano === "grande" }: Props) {
   const maximo = Math.max(1, ...teatro.map((t) => t.sillas));
   const marco = useRef<HTMLDivElement>(null);
 
@@ -67,7 +69,7 @@ export default function MapaSillas({ teatro, ocupadas, bloqueadas, seleccionadas
                   }
                   return (
                     <span key={id} className={clase} role="img" aria-label={texto}>
-                      {tamano === "grande" ? n : ""}
+                      {numeros ? n : ""}
                     </span>
                   );
                 })}

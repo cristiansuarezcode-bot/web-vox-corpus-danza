@@ -130,6 +130,10 @@
   --hueco: 4px;
 }
 
+.mapaGrande .silla {
+  font-size: 0.66rem;
+}
+
 .escenario,
 .fondoSala {
   width: 100%;
@@ -193,7 +197,7 @@
   border: 0;
   border-radius: 28% 28% 18% 18%;
   font-family: var(--cl-sans);
-  font-size: 0.66rem;
+  font-size: calc(var(--silla) * 0.5);
   font-weight: 600;
   line-height: 1;
 }
