@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useId, useMemo, useState } from "react";
+import { Pencil } from "lucide-react";
 import { pesos } from "../config";
 import {
   BOLETERIA_API,
@@ -517,7 +518,9 @@ function BuscadorEstudiante({
   const resultados = palabras.length
     ? indice.filter((e) => palabras.every((p) => e.clave.includes(p))).slice(0, MAX_RESULTADOS)
     : [];
-  const opciones = palabras.length ? [...resultados.map((r) => r.nombre), null] : [];
+  // Al final de los resultados va la opción de escribir el nombre a mano (null).
+  const opciones = resultados.length ? [...resultados.map((r) => r.nombre), null] : [];
+  const sinCoincidencias = palabras.length > 0 && !resultados.length;
 
   // Sin lista en la hoja: casilla normal, como antes.
   if (!estudiantes.length || aMano) {
@@ -548,13 +551,16 @@ function BuscadorEstudiante({
     );
   }
 
+  const irAMano = () => {
+    setAMano(true);
+    alCambiar(texto.trim());
+  };
+
   const elegir = (i: number) => {
     const o = opciones[i];
     if (o === undefined) return;
-    if (o === null) {
-      setAMano(true);
-      alCambiar(texto.trim());
-    } else alCambiar(o);
+    if (o === null) irAMano();
+    else alCambiar(o);
   };
 
   return (
@@ -565,6 +571,7 @@ function BuscadorEstudiante({
         value={texto}
         onChange={(e) => { setTexto(e.target.value); setActivo(0); }}
         onKeyDown={(e) => {
+          if (sinCoincidencias && e.key === "Enter") { e.preventDefault(); irAMano(); return; }
           if (!opciones.length) return;
           if (e.key === "ArrowDown") { e.preventDefault(); setActivo((a) => Math.min(a + 1, opciones.length - 1)); }
           else if (e.key === "ArrowUp") { e.preventDefault(); setActivo((a) => Math.max(a - 1, 0)); }
@@ -589,12 +596,24 @@ function BuscadorEstudiante({
               onMouseDown={(e) => e.preventDefault()}
               onClick={() => elegir(i)}
             >
-              {o ?? `No está en la lista: usar «${texto.trim()}»`}
+              {o ?? (
+                <>
+                  <Pencil size={16} aria-hidden="true" /> No está en la lista: escribir «{texto.trim()}»
+                </>
+              )}
             </li>
           ))}
         </ul>
       ) : null}
-      {palabras.length && !resultados.length ? <p className={styles.sinResultados}>Nadie con ese nombre en la lista.</p> : null}
+      {sinCoincidencias ? (
+        <p className={styles.sinResultados} role="status">
+          No encontramos «{texto.trim()}» en la lista de estudiantes.
+        </p>
+      ) : null}
+      <button type="button" className={styles.botonAMano} onClick={irAMano}>
+        <Pencil size={16} aria-hidden="true" />
+        {texto.trim() ? `¿No está en la lista? Escribir «${texto.trim()}» a mano` : "¿No está en la lista? Escribir el nombre a mano"}
+      </button>
     </div>
   );
 }

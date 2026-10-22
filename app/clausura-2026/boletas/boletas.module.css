@@ -701,11 +701,13 @@ button.libre:hover {
 }
 
 .resultados .resultadoAMano {
+  gap: 8px;
   margin-top: 4px;
   border-top: 1px dashed var(--cl-borde);
   border-radius: 0 0 8px 8px;
-  color: var(--cl-suave);
-  font-size: 0.9rem;
+  color: var(--cl-dorado);
+  font-size: 0.92rem;
+  font-weight: 700;
 }
 
 .estudianteElegido {
@@ -740,9 +742,39 @@ button.libre:hover {
 
 .sinResultados {
   margin: 0;
-  font-size: 0.85rem;
-  font-weight: 500;
-  color: var(--cl-apagado);
+  padding: 12px 14px;
+  border: 1px solid var(--cl-dorado);
+  border-radius: 10px;
+  background: rgba(212, 168, 75, 0.1);
+  font-size: 0.92rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--cl-crema);
+}
+
+.botonAMano {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  min-height: 46px;
+  padding: 8px 16px;
+  border: 1.5px dashed var(--cl-dorado);
+  border-radius: 10px;
+  background: transparent;
+  color: var(--cl-dorado);
+  font-family: var(--cl-sans);
+  font-size: 0.92rem;
+  font-weight: 700;
+  line-height: 1.3;
+  text-align: center;
+  cursor: pointer;
+  overflow-wrap: anywhere;
+}
+
+.botonAMano:hover {
+  background: rgba(212, 168, 75, 0.1);
 }
 
 .pagos {
