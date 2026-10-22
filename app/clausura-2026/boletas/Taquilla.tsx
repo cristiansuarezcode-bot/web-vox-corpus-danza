@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useId, useMemo, useState } from "react";
 import { pesos } from "../config";
 import {
   BOLETERIA_API,
@@ -174,6 +174,8 @@ function Vender({
   const [elegidas, setElegidas] = useState<Record<string, Detalle>>({});
   const [estudiante, setEstudiante] = useState("");
   const [pago, setPago] = useState("");
+  const [cuenta, setCuenta] = useState("");
+  const [ventasHechas, setVentasHechas] = useState(0); // reinicia el buscador después de cada venta
   const [nota, setNota] = useState("");
   const [enviando, setEnviando] = useState(false);
   const [aviso, setAviso] = useState<Aviso>(null);
@@ -195,6 +197,9 @@ function Vender({
     }
   }, [ocupadas, elegidas]);
 
+  const cuentas = entrada.cuentas ?? [];
+  const pideCuenta = pago === "Transferencia" && cuentas.length > 0;
+
   const tocar = (id: string) => {
     setAviso(null);
     setElegidas((prev) => {
@@ -213,8 +218,9 @@ function Vender({
   const registrar = async () => {
     setAviso(null);
     if (!ids.length) return setAviso({ tipo: "mal", texto: "Toca en el mapa las sillas que la familia escogió." });
-    if (!estudiante.trim()) return setAviso({ tipo: "mal", texto: "Escribe el nombre del estudiante." });
+    if (!estudiante.trim()) return setAviso({ tipo: "mal", texto: "Busca y selecciona el estudiante." });
     if (!pago) return setAviso({ tipo: "mal", texto: "Escoge si pagó en efectivo o por transferencia." });
+    if (pideCuenta && !cuenta) return setAviso({ tipo: "mal", texto: "Escoge a qué cuenta llegó la transferencia." });
 
     setEnviando(true);
     try {
@@ -223,6 +229,7 @@ function Vender({
         clave,
         estudiante: estudiante.trim(),
         pago,
+        cuenta: pideCuenta ? cuenta : "",
         nota: nota.trim(),
         sillas: ids.map((id) => {
           const [fila, silla] = id.split("-");
@@ -232,11 +239,13 @@ function Vender({
       if (r.ok) {
         setAviso({
           tipo: "bien",
-          texto: `Venta registrada para ${estudiante.trim()}: ${r.sillas.join(", ")} · Total ${pesos(r.total)} (${pago.toLowerCase()}).`,
+          texto: `Venta registrada para ${estudiante.trim()}: ${r.sillas.join(", ")} · Total ${pesos(r.total)} (${pago.toLowerCase()}${pideCuenta ? ` a ${cuenta}` : ""}).`,
         });
         setElegidas({});
         setEstudiante("");
         setPago("");
+        setCuenta("");
+        setVentasHechas((n) => n + 1);
         setNota("");
         await refrescar();
       } else {
@@ -262,10 +271,12 @@ function Vender({
           {ids.length ? `${ids.length} ${ids.length === 1 ? "silla seleccionada" : "sillas seleccionadas"}` : "Toca las sillas en el mapa"}
         </h2>
 
-        <label className={styles.campo}>
-          <span>Nombre del estudiante</span>
-          <input value={estudiante} onChange={(e) => { setEstudiante(e.target.value); setAviso(null); }} autoComplete="off" placeholder="Nombre y apellido" />
-        </label>
+        <BuscadorEstudiante
+          key={ventasHechas}
+          estudiantes={entrada.estudiantes ?? []}
+          valor={estudiante}
+          alCambiar={(n) => { setEstudiante(n); setAviso(null); }}
+        />
 
         <label className={styles.campo}>
           <span>Tipo de boleta para toda la compra</span>
@@ -310,6 +321,17 @@ function Vender({
             </label>
           ))}
         </fieldset>
+
+        {pideCuenta ? (
+          <fieldset className={styles.pagos}>
+            <legend>¿A qué cuenta llegó la transferencia?</legend>
+            {cuentas.map((c) => (
+              <label key={c}>
+                <input type="radio" name="cuenta" value={c} checked={cuenta === c} onChange={() => { setCuenta(c); setAviso(null); }} /> {c}
+              </label>
+            ))}
+          </fieldset>
+        ) : null}
 
         <label className={styles.campo}>
           <span>Nota (opcional)</span>
@@ -383,11 +405,11 @@ function Ventas({
     }
   };
 
-  const q = buscar.trim().toLowerCase();
+  const q = sinTildes(buscar.trim());
   const filtradas = (ventas ?? []).filter(
     (v) =>
       !q ||
-      v.estudiante.toLowerCase().includes(q) ||
+      sinTildes(v.estudiante).includes(q) ||
       v.idVenta.toLowerCase().includes(q) ||
       v.sillas.some((s) => s.id.toLowerCase() === q),
   );
@@ -417,7 +439,7 @@ function Ventas({
                 <span>{pesos(v.total)}</span>
               </div>
               <p className={styles.metaVenta}>
-                {v.fecha} · {v.pago} · {v.vendedor} · {v.idVenta}
+                {v.fecha} · {v.pago}{v.cuenta ? ` (${v.cuenta})` : ""} · {v.vendedor} · {v.idVenta}
               </p>
               {v.nota ? <p className={styles.metaVenta}>Nota: {v.nota}</p> : null}
               <ul className={styles.chipsSillas}>
@@ -461,6 +483,118 @@ function Ventas({
           );
         })}
       </ul>
+    </div>
+  );
+}
+
+/** Minúsculas y sin tildes, para que "maria" encuentre "María". */
+function sinTildes(t: string) {
+  return t.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+}
+
+const MAX_RESULTADOS = 8;
+
+/**
+ * Busca el estudiante en la lista de la hoja y lo deja seleccionado.
+ * Si no está, se puede escribir el nombre a mano.
+ */
+function BuscadorEstudiante({
+  estudiantes,
+  valor,
+  alCambiar,
+}: {
+  estudiantes: string[];
+  valor: string;
+  alCambiar: (nombre: string) => void;
+}) {
+  const id = useId();
+  const [texto, setTexto] = useState("");
+  const [activo, setActivo] = useState(0);
+  const [aMano, setAMano] = useState(false);
+
+  const indice = useMemo(() => estudiantes.map((n) => ({ nombre: n, clave: sinTildes(n) })), [estudiantes]);
+  const palabras = sinTildes(texto.trim()).split(/\s+/).filter(Boolean);
+  const resultados = palabras.length
+    ? indice.filter((e) => palabras.every((p) => e.clave.includes(p))).slice(0, MAX_RESULTADOS)
+    : [];
+  const opciones = palabras.length ? [...resultados.map((r) => r.nombre), null] : [];
+
+  // Sin lista en la hoja: casilla normal, como antes.
+  if (!estudiantes.length || aMano) {
+    return (
+      <label className={styles.campo}>
+        <span>Nombre del estudiante</span>
+        <input value={valor} onChange={(e) => alCambiar(e.target.value)} autoComplete="off" placeholder="Nombre y apellido" autoFocus={aMano} />
+        {aMano ? (
+          <button type="button" className={styles.botonCambiar} onClick={() => { setAMano(false); alCambiar(""); }}>
+            Volver a buscar en la lista
+          </button>
+        ) : null}
+      </label>
+    );
+  }
+
+  if (valor) {
+    return (
+      <div className={styles.campo}>
+        <span>Estudiante</span>
+        <div className={styles.estudianteElegido}>
+          <strong>{valor}</strong>
+          <button type="button" className={styles.botonCambiar} onClick={() => { alCambiar(""); setTexto(""); }}>
+            Cambiar
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  const elegir = (i: number) => {
+    const o = opciones[i];
+    if (o === undefined) return;
+    if (o === null) {
+      setAMano(true);
+      alCambiar(texto.trim());
+    } else alCambiar(o);
+  };
+
+  return (
+    <div className={styles.campo}>
+      <label htmlFor={`${id}-q`}>Estudiante</label>
+      <input
+        id={`${id}-q`}
+        value={texto}
+        onChange={(e) => { setTexto(e.target.value); setActivo(0); }}
+        onKeyDown={(e) => {
+          if (!opciones.length) return;
+          if (e.key === "ArrowDown") { e.preventDefault(); setActivo((a) => Math.min(a + 1, opciones.length - 1)); }
+          else if (e.key === "ArrowUp") { e.preventDefault(); setActivo((a) => Math.max(a - 1, 0)); }
+          else if (e.key === "Enter") { e.preventDefault(); elegir(activo); }
+        }}
+        role="combobox"
+        aria-expanded={opciones.length > 0}
+        aria-controls={`${id}-lista`}
+        aria-activedescendant={opciones.length ? `${id}-${activo}` : undefined}
+        autoComplete="off"
+        placeholder="Escribe nombre o apellido…"
+      />
+      {opciones.length ? (
+        <ul id={`${id}-lista`} role="listbox" className={styles.resultados}>
+          {opciones.map((o, i) => (
+            <li
+              key={o ?? "__a-mano"}
+              id={`${id}-${i}`}
+              role="option"
+              aria-selected={i === activo}
+              className={o === null ? styles.resultadoAMano : undefined}
+              onMouseDown={(e) => e.preventDefault()}
+              onClick={() => elegir(i)}
+            >
+              {o ?? `No está en la lista: usar «${texto.trim()}»`}
+            </li>
+          ))}
+        </ul>
+      ) : null}
+      {palabras.length && !resultados.length ? <p className={styles.sinResultados}>Nadie con ese nombre en la lista.</p> : null}
     </div>
   );
 }

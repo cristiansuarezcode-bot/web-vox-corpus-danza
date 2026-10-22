@@ -21,6 +21,10 @@ export type Entrada = {
   vendedor: string;
   precios: Record<string, number>;
   pagos: string[];
+  /** Cuentas a las que puede llegar una transferencia. */
+  cuentas?: string[];
+  /** Nombres completos de la pestaña "Estudiantes" de la hoja. */
+  estudiantes?: string[];
   teatro: FilaTeatro[];
   bloqueos: Bloqueo[];
 };
@@ -32,6 +36,7 @@ export type Venta = {
   vendedor: string;
   estudiante: string;
   pago: string;
+  cuenta?: string;
   nota: string;
   sillas: SillaVenta[];
   total: number;

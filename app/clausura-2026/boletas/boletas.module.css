@@ -669,3 +669,82 @@ button.libre:hover {
   right: 0;
   box-shadow: -6px 0 8px -4px #000;
 }
+
+/* ---------- Buscador de estudiante ---------- */
+
+.resultados {
+  margin: 0;
+  padding: 4px;
+  list-style: none;
+  border: 1px solid var(--cl-borde);
+  border-radius: 10px;
+  background: #0d0b07;
+  max-height: 320px;
+  overflow-y: auto;
+}
+
+.resultados li {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  border-radius: 8px;
+  color: var(--cl-crema);
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.resultados li[aria-selected="true"],
+.resultados li:hover {
+  background: rgba(212, 168, 75, 0.18);
+}
+
+.resultados .resultadoAMano {
+  margin-top: 4px;
+  border-top: 1px dashed var(--cl-borde);
+  border-radius: 0 0 8px 8px;
+  color: var(--cl-suave);
+  font-size: 0.9rem;
+}
+
+.estudianteElegido {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 44px;
+  padding: 0 4px 0 12px;
+  border: 1px solid var(--cl-dorado);
+  border-radius: 10px;
+  color: var(--cl-crema);
+  font-size: 1rem;
+}
+
+.botonCambiar {
+  align-self: flex-start;
+  min-height: 40px;
+  padding: 0 12px;
+  border: 0;
+  background: none;
+  color: var(--cl-dorado);
+  font-family: var(--cl-sans);
+  font-weight: 700;
+  font-size: 0.88rem;
+  cursor: pointer;
+}
+
+.estudianteElegido .botonCambiar {
+  align-self: center;
+}
+
+.sinResultados {
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--cl-apagado);
+}
+
+.pagos {
+  flex-wrap: wrap;
+}
