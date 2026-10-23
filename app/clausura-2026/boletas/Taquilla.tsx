@@ -598,7 +598,7 @@ function BuscadorEstudiante({
             >
               {o ?? (
                 <>
-                  <Pencil size={16} aria-hidden="true" /> No está en la lista: escribir «{texto.trim()}»
+                  <Pencil size={14} aria-hidden="true" /> No está en la lista: escribir «{texto.trim()}» a mano
                 </>
               )}
             </li>
@@ -606,14 +606,13 @@ function BuscadorEstudiante({
         </ul>
       ) : null}
       {sinCoincidencias ? (
-        <p className={styles.sinResultados} role="status">
-          No encontramos «{texto.trim()}» en la lista de estudiantes.
-        </p>
+        <div className={styles.sinResultados} role="status">
+          <p>No encontramos «{texto.trim()}» en la lista. Revisa cómo lo escribiste o busca por el apellido.</p>
+          <button type="button" className={styles.botonAMano} onClick={irAMano}>
+            <Pencil size={14} aria-hidden="true" /> Si no está, escribir el nombre a mano
+          </button>
+        </div>
       ) : null}
-      <button type="button" className={styles.botonAMano} onClick={irAMano}>
-        <Pencil size={16} aria-hidden="true" />
-        {texto.trim() ? `¿No está en la lista? Escribir «${texto.trim()}» a mano` : "¿No está en la lista? Escribir el nombre a mano"}
-      </button>
     </div>
   );
 }
