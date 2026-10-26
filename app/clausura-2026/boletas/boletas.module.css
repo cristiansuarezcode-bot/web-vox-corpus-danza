@@ -971,3 +971,238 @@ button.libre:hover {
 .tablaResumen .filaAlerta dt {
   color: #f2b8ad;
 }
+
+/* ---------- Finanzas de la clausura ---------- */
+
+.segmentos {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 4px;
+  padding: 4px;
+  border: 1px solid var(--cl-borde);
+  border-radius: 999px;
+}
+
+.segmentos button {
+  min-height: 40px;
+  padding: 0 4px;
+  border: 0;
+  border-radius: 999px;
+  background: none;
+  color: var(--cl-suave);
+  font-family: var(--cl-sans);
+  font-size: 0.8rem;
+  font-weight: 700;
+  line-height: 1.1;
+  cursor: pointer;
+}
+
+.segmentos button[aria-selected="true"] {
+  background: var(--cl-dorado);
+  color: #1a1408;
+}
+
+.cifra small {
+  font-size: 0.78rem;
+  color: var(--cl-apagado);
+}
+
+.negativo {
+  color: #f2b8ad !important;
+}
+
+.alFinal {
+  margin: 0;
+  padding: 12px 14px;
+  border: 1px solid #2f6b47;
+  border-radius: 12px;
+  background: rgba(47, 107, 71, 0.2);
+  color: #bfe6cd;
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.alFinalMal {
+  border-color: #b3412f;
+  background: rgba(179, 65, 47, 0.15);
+  color: #f2b8ad;
+}
+
+.bloqueFin {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 14px;
+  border: 1px solid var(--cl-borde);
+  border-radius: 14px;
+  background: var(--cl-tarjeta);
+}
+
+.bloqueFin h3 {
+  margin: 0;
+  font-family: var(--cl-serif);
+  font-size: 1.05rem;
+  color: var(--cl-dorado);
+}
+
+.tablaOrigen > div {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) repeat(3, minmax(0, 1fr));
+  gap: 6px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--cl-borde);
+  font-size: 0.8rem;
+  color: var(--cl-suave);
+}
+
+.tablaOrigen > div:last-child {
+  border-bottom: 0;
+}
+
+.tablaOrigen > div > :not(:first-child) {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.tablaOrigen strong {
+  color: var(--cl-crema);
+}
+
+.tablaOrigen .cabezaOrigen {
+  padding-top: 0;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--cl-apagado);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.rubros {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.rubros li {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.rubros small {
+  font-size: 0.78rem;
+  color: var(--cl-apagado);
+}
+
+.rubroCabeza {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 0.9rem;
+}
+
+.rubroCabeza strong {
+  color: var(--cl-crema);
+}
+
+.rubroCabeza em {
+  font-weight: 400;
+  color: var(--cl-apagado);
+}
+
+.rubroCabeza span {
+  color: var(--cl-suave);
+  white-space: nowrap;
+}
+
+.barra {
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+}
+
+.barra > div {
+  height: 100%;
+  border-radius: 999px;
+  background: var(--cl-dorado);
+}
+
+.barra > .barraPasada {
+  background: #b3412f;
+}
+
+.dosColumnas {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+@media (max-width: 420px) {
+  .dosColumnas {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.gastoAnulado {
+  opacity: 0.55;
+}
+
+.gastoAnulado .cabezaVenta strong,
+.gastoAnulado .cabezaVenta span {
+  text-decoration: line-through;
+}
+
+.accionesRubro {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.accionesRubro .botonCambiar {
+  padding: 0;
+}
+
+.listaQuitados {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.listaQuitados li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--cl-borde);
+  font-size: 0.88rem;
+  color: var(--cl-suave);
+}
+
+.listaQuitados li:last-child {
+  border-bottom: 0;
+}
+
+.cifrasFin {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.cifrasFin .cifra:last-child {
+  grid-column: 1 / -1;
+}
+
+.cifrasFin .cifra strong {
+  font-size: 1.35rem;
+  overflow-wrap: normal;
+  white-space: nowrap;
+}
+
+.cifrasFin .cifra:first-child strong {
+  font-size: 1.9rem;
+}

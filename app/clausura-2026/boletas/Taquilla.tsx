@@ -12,6 +12,7 @@ import {
   type FilaResumen,
   type Venta,
 } from "./boleteria";
+import Finanzas from "./Finanzas";
 import MapaSillas, { Leyenda } from "./MapaSillas";
 import styles from "./boletas.module.css";
 
@@ -104,7 +105,7 @@ export default function Taquilla() {
 }
 
 function Panel({ entrada, clave, salir }: { entrada: Entrada; clave: string; salir: () => void }) {
-  const [pestana, setPestana] = useState<"vender" | "ventas" | "resumen">("vender");
+  const [pestana, setPestana] = useState<"vender" | "ventas" | "resumen" | "finanzas">("vender");
   const [ocupadas, setOcupadas] = useState<Set<string>>(new Set());
   const bloqueadas = useMemo(() => new Set(entrada.bloqueos.map((b) => b.id)), [entrada.bloqueos]);
 
@@ -148,14 +149,21 @@ function Panel({ entrada, clave, salir }: { entrada: Entrada; clave: string; sal
             Resumen
           </button>
         ) : null}
+        {entrada.verResumen ? (
+          <button type="button" role="tab" aria-selected={pestana === "finanzas"} onClick={() => setPestana("finanzas")}>
+            Finanzas
+          </button>
+        ) : null}
       </div>
 
       {pestana === "vender" ? (
         <Vender entrada={entrada} clave={clave} ocupadas={ocupadas} bloqueadas={bloqueadas} refrescar={refrescar} salir={salir} setOcupadas={setOcupadas} />
       ) : pestana === "ventas" ? (
         <Ventas clave={clave} teatro={entrada.teatro} refrescar={refrescar} salir={salir} />
-      ) : (
+      ) : pestana === "resumen" ? (
         <Resumen clave={clave} salir={salir} />
+      ) : (
+        <Finanzas clave={clave} salir={salir} />
       )}
     </div>
   );

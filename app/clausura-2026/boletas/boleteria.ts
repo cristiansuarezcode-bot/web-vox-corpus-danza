@@ -87,3 +87,37 @@ export function ordenarSillas(ids: string[], teatro: FilaTeatro[]) {
     return (pos.get(fa) ?? 0) - (pos.get(fb) ?? 0) || Number(sa) - Number(sb);
   });
 }
+
+// ---------- Finanzas de la clausura (solo directores)
+
+export type RubroFin = { rubro: string; presupuestado: number; activo: boolean; nota: string; pagado: number; gastos: number };
+export type GastoFin = {
+  id: string;
+  fecha: string;
+  rubro: string;
+  descripcion: string;
+  aQuien: string;
+  valor: number;
+  pagadoDesde: string;
+  registradoPor: string;
+  estado: string;
+  nota: string;
+};
+export type OrigenFin = { origen: string; entro: number; salio: number; queda: number };
+export type Finanzas = {
+  actualizado: string;
+  totales: {
+    ingresos: number;
+    boletas: number;
+    paquetes: number;
+    gastado: number;
+    disponible: number;
+    presupuesto: number;
+    porPagar: number;
+    alFinal: number;
+  };
+  porOrigen: OrigenFin[];
+  origenes: string[];
+  rubros: RubroFin[];
+  gastos: GastoFin[];
+};
