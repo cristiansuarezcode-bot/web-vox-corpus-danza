@@ -871,4 +871,103 @@ button.libre:hover {
 
 .chipPaquete {
   border-color: var(--cl-dorado);
+  background: rgba(212, 168, 75, 0.22);
+  color: var(--cl-dorado-claro, #f0d48a);
+  font-weight: 700;
+}
+
+/* ---------- Resumen (solo directores) ---------- */
+
+.resumen {
+  width: 100%;
+  max-width: 620px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.barraResumen {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.barraResumen .nota {
+  margin: 0;
+}
+
+.cifras {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.cifra {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 14px;
+  border: 1px solid var(--cl-borde);
+  border-radius: 14px;
+  background: var(--cl-tarjeta);
+}
+
+.cifra span {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--cl-suave);
+}
+
+.cifra strong {
+  font-family: var(--cl-serif);
+  font-size: 1.45rem;
+  color: var(--cl-dorado);
+  overflow-wrap: anywhere;
+}
+
+.cifra:first-child {
+  grid-column: 1 / -1;
+}
+
+.cifra:first-child strong {
+  font-size: 1.9rem;
+}
+
+.tablaResumen {
+  margin: 0;
+  padding: 4px 14px;
+  border: 1px solid var(--cl-borde);
+  border-radius: 14px;
+  background: var(--cl-tarjeta);
+}
+
+.tablaResumen div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--cl-borde);
+  font-size: 0.9rem;
+}
+
+.tablaResumen div:last-child {
+  border-bottom: 0;
+}
+
+.tablaResumen dt {
+  color: var(--cl-suave);
+}
+
+.tablaResumen dd {
+  margin: 0;
+  color: var(--cl-crema);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.tablaResumen .filaAlerta dd,
+.tablaResumen .filaAlerta dt {
+  color: #f2b8ad;
 }

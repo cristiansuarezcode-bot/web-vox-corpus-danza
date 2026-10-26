@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useId, useMemo, useState } from "react";
-import { Pencil } from "lucide-react";
+import { Camera, Pencil } from "lucide-react";
 import { pesos } from "../config";
 import {
   BOLETERIA_API,
@@ -9,6 +9,7 @@ import {
   ordenarSillas,
   pedirMapa,
   type Entrada,
+  type FilaResumen,
   type Venta,
 } from "./boleteria";
 import MapaSillas, { Leyenda } from "./MapaSillas";
@@ -103,7 +104,7 @@ export default function Taquilla() {
 }
 
 function Panel({ entrada, clave, salir }: { entrada: Entrada; clave: string; salir: () => void }) {
-  const [pestana, setPestana] = useState<"vender" | "ventas">("vender");
+  const [pestana, setPestana] = useState<"vender" | "ventas" | "resumen">("vender");
   const [ocupadas, setOcupadas] = useState<Set<string>>(new Set());
   const bloqueadas = useMemo(() => new Set(entrada.bloqueos.map((b) => b.id)), [entrada.bloqueos]);
 
@@ -142,12 +143,19 @@ function Panel({ entrada, clave, salir }: { entrada: Entrada; clave: string; sal
         <button type="button" role="tab" aria-selected={pestana === "ventas"} onClick={() => setPestana("ventas")}>
           Ventas registradas
         </button>
+        {entrada.verResumen ? (
+          <button type="button" role="tab" aria-selected={pestana === "resumen"} onClick={() => setPestana("resumen")}>
+            Resumen
+          </button>
+        ) : null}
       </div>
 
       {pestana === "vender" ? (
         <Vender entrada={entrada} clave={clave} ocupadas={ocupadas} bloqueadas={bloqueadas} refrescar={refrescar} salir={salir} setOcupadas={setOcupadas} />
-      ) : (
+      ) : pestana === "ventas" ? (
         <Ventas clave={clave} teatro={entrada.teatro} refrescar={refrescar} salir={salir} />
+      ) : (
+        <Resumen clave={clave} salir={salir} />
       )}
     </div>
   );
@@ -552,6 +560,7 @@ function Ventas({
                 })}
                 {v.paquetes && v.paquetes.cantidad ? (
                   <li className={paqVivo ? `${styles.chip} ${styles.chipPaquete}` : styles.chipAnulado}>
+                    <Camera size={13} aria-hidden="true" />
                     {v.paquetes.cantidad === 1 ? "Paquete audiovisual" : `${v.paquetes.cantidad} paquetes audiovisuales`}
                     {paqVivo && partesVivas > 1 ? (
                       <button type="button" onClick={() => setPendiente({ idVenta: v.idVenta, paquete: true })} aria-label="Anular solo el paquete">
@@ -743,4 +752,81 @@ function describirPagos(v: Venta) {
   return [pagos.length ? `Pagó ${pagos.join(" + ")}` : "", devoluciones.length ? `Devuelto ${devoluciones.join(" + ")}` : ""]
     .filter(Boolean)
     .join(" · ");
+}
+
+/** Cifras principales arriba; el resto, en la lista completa. */
+const DESTACADOS = ["Recaudo total (pagos recibidos)", "Boletas vendidas", "Sillas disponibles", "Paquetes audiovisuales vendidos"];
+const NOMBRE_CORTO: Record<string, string> = {
+  "Recaudo total (pagos recibidos)": "Recaudo total",
+  "Paquetes audiovisuales vendidos": "Paquetes",
+};
+
+/** El resumen de la hoja, solo para los directores. */
+function Resumen({ clave, salir }: { clave: string; salir: () => void }) {
+  const [filas, setFilas] = useState<FilaResumen[] | null>(null);
+  const [actualizado, setActualizado] = useState("");
+  const [error, setError] = useState("");
+  const [cargando, setCargando] = useState(false);
+
+  const cargar = useCallback(async () => {
+    setCargando(true);
+    setError("");
+    try {
+      const r = await enviar<{ filas: FilaResumen[]; actualizado: string }>({ accion: "resumen", clave });
+      if (r.ok) {
+        setFilas(r.filas);
+        setActualizado(r.actualizado);
+      } else if (r.clave === false) salir();
+      else setError(r.error);
+    } catch {
+      setError("No se pudo cargar el resumen. Revisa la conexión.");
+    } finally {
+      setCargando(false);
+    }
+  }, [clave, salir]);
+
+  useEffect(() => {
+    cargar();
+  }, [cargar]);
+
+  const valor = (f: FilaResumen) => (f.dinero ? pesos(f.valor) : f.valor.toLocaleString("es-CO"));
+  const destacados = DESTACADOS.map((c) => filas?.find((f) => f.concepto === c)).filter((f): f is FilaResumen => !!f);
+  const resto = (filas ?? []).filter((f) => !DESTACADOS.includes(f.concepto));
+
+  return (
+    <div className={styles.resumen}>
+      <div className={styles.barraResumen}>
+        <p className={styles.nota}>{actualizado ? `Actualizado: ${actualizado.slice(11, 16)}` : "Cargando…"}</p>
+        <button type="button" className={styles.botonBorde} onClick={cargar} disabled={cargando}>
+          {cargando ? "Cargando…" : "Actualizar"}
+        </button>
+      </div>
+      {error ? <p className={styles.avisoError} role="alert">{error}</p> : null}
+
+      {destacados.length ? (
+        <div className={styles.cifras}>
+          {destacados.map((f) => (
+            <div key={f.concepto} className={styles.cifra}>
+              <span>{NOMBRE_CORTO[f.concepto] ?? f.concepto}</span>
+              <strong>{valor(f)}</strong>
+            </div>
+          ))}
+        </div>
+      ) : null}
+
+      {resto.length ? (
+        <dl className={styles.tablaResumen}>
+          {resto.map((f) => {
+            const alerta = /debe ser 0/i.test(f.concepto) && f.valor !== 0;
+            return (
+              <div key={f.concepto} className={alerta ? styles.filaAlerta : undefined}>
+                <dt>{f.concepto}</dt>
+                <dd>{valor(f)}</dd>
+              </div>
+            );
+          })}
+        </dl>
+      ) : null}
+    </div>
+  );
 }

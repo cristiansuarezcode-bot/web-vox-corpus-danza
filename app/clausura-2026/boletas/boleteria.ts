@@ -35,9 +35,13 @@ export type Entrada = {
   estudiantes?: string[];
   /** Paquete audiovisual: el precio ya viene según la fecha (preventa o normal). */
   paquete?: Paquete | null;
+  /** Solo los directores (columna "Ve resumen" de Vendedores). */
+  verResumen?: boolean;
   teatro: FilaTeatro[];
   bloqueos: Bloqueo[];
 };
+
+export type FilaResumen = { concepto: string; valor: number; dinero: boolean };
 
 export type PagoVenta = { forma: string; cuenta: string; valor: number; estado: string; nota?: string };
 export type PaqueteVenta = { cantidad: number; precio: number; total: number; estado: string };
