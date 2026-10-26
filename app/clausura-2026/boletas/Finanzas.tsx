@@ -278,7 +278,7 @@ function NuevoGasto({ datos, pedir, recargar }: { datos: DatosFinanzas; pedir: P
       </label>
       <div className={styles.dosColumnas}>
         <label className={styles.campo}>
-          <span>¿A quién se le pagó? (opcional)</span>
+          <span>A quién (opcional)</span>
           <input value={aQuien} onChange={(e) => setAQuien(e.target.value)} placeholder="Proveedor o persona" />
         </label>
         <Monto etiqueta="Valor" valor={valor} alCambiar={(v) => { setValor(v); setAviso(null); }} />

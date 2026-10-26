@@ -1139,9 +1139,10 @@ button.libre:hover {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
+  align-items: end;
 }
 
-@media (max-width: 420px) {
+@media (max-width: 560px) {
   .dosColumnas {
     grid-template-columns: minmax(0, 1fr);
   }
@@ -1205,4 +1206,54 @@ button.libre:hover {
 
 .cifrasFin .cifra:first-child strong {
   font-size: 1.9rem;
+}
+
+/* ---------- Campos parejos en iPhone ----------
+   Safari le da a las fechas y a los select su propio tamaño y estilo;
+   aquí todos quedan del mismo alto, a lo ancho de su columna y alineados a la izquierda. */
+
+.campo input,
+.campo select {
+  height: 46px;
+  min-width: 0;
+  max-width: 100%;
+  -webkit-appearance: none;
+  appearance: none;
+  line-height: normal;
+}
+
+.campo input[type="date"] {
+  display: block;
+  width: 100%;
+  text-align: left;
+}
+
+.campo input[type="date"]::-webkit-date-and-time-value {
+  text-align: left;
+}
+
+.campo input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(0.75) sepia(0.6) saturate(3) hue-rotate(5deg);
+  cursor: pointer;
+}
+
+.campo select,
+.listaElegidas select {
+  -webkit-appearance: none;
+  appearance: none;
+  padding-right: 34px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%23d4a84b' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 12px 8px;
+}
+
+.pagos {
+  row-gap: 0;
+  column-gap: 22px;
+}
+
+.pagos input {
+  margin: 0;
+  flex-shrink: 0;
 }
