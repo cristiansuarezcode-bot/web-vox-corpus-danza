@@ -1,5 +1,6 @@
 "use client";
 
+import { CalendarDays } from "lucide-react";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { pesos } from "../config";
 import { enviar, type Finanzas as DatosFinanzas, type GastoFin, type RubroFin } from "./boleteria";
@@ -24,6 +25,42 @@ function fechaCorta(iso: string) {
   const meses = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"];
   const [, m, d] = iso.split("-").map(Number);
   return m && d ? `${d} ${meses[m - 1]}` : iso;
+}
+
+/** "2026-10-25" → "Domingo 25 de octubre" (y "· hoy" si es hoy). */
+function fechaLarga(iso: string) {
+  const [a, m, d] = iso.split("-").map(Number);
+  if (!a || !m || !d) return "Escoge la fecha";
+  const dias = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
+  const meses = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
+  const dia = dias[new Date(a, m - 1, d).getDay()];
+  return `${dia} ${d} de ${meses[m - 1]}${iso === hoyBogota() ? " · hoy" : ""}`;
+}
+
+/**
+ * Fecha con el mismo aspecto en todos los celulares. Safari dibuja el
+ * input de fecha a su manera, así que el texto y el ícono los ponemos
+ * nosotros y el input queda invisible encima: al tocar abre el calendario
+ * del teléfono.
+ */
+function CampoFecha({ etiqueta, valor, max, alCambiar }: { etiqueta: string; valor: string; max?: string; alCambiar: (v: string) => void }) {
+  return (
+    <label className={styles.campo}>
+      <span>{etiqueta}</span>
+      <div className={styles.fecha}>
+        <span>{fechaLarga(valor)}</span>
+        <CalendarDays size={18} aria-hidden="true" />
+        <input
+          type="date"
+          value={valor}
+          max={max}
+          aria-label={etiqueta}
+          onChange={(e) => { if (e.target.value) alCambiar(e.target.value); }}
+          onClick={(e) => { try { e.currentTarget.showPicker?.(); } catch { /* algunos navegadores no lo permiten */ } }}
+        />
+      </div>
+    </label>
+  );
 }
 
 /** Casilla de plata: guarda solo dígitos y muestra $1.234.567. */
@@ -256,10 +293,7 @@ function NuevoGasto({ datos, pedir, recargar }: { datos: DatosFinanzas; pedir: P
   return (
     <section className={styles.formulario} aria-label="Registrar gasto">
       <div className={styles.dosColumnas}>
-        <label className={styles.campo}>
-          <span>Fecha del pago</span>
-          <input type="date" value={fecha} max={hoyBogota()} onChange={(e) => setFecha(e.target.value)} />
-        </label>
+        <CampoFecha etiqueta="Fecha del pago" valor={fecha} max={hoyBogota()} alCambiar={setFecha} />
         <label className={styles.campo}>
           <span>Rubro</span>
           <select value={rubro} onChange={(e) => { setRubro(e.target.value); setAviso(null); }}>

@@ -1222,21 +1222,6 @@ button.libre:hover {
   line-height: normal;
 }
 
-.campo input[type="date"] {
-  display: block;
-  width: 100%;
-  text-align: left;
-}
-
-.campo input[type="date"]::-webkit-date-and-time-value {
-  text-align: left;
-}
-
-.campo input[type="date"]::-webkit-calendar-picker-indicator {
-  filter: invert(0.75) sepia(0.6) saturate(3) hue-rotate(5deg);
-  cursor: pointer;
-}
-
 .campo select,
 .listaElegidas select {
   -webkit-appearance: none;
@@ -1256,4 +1241,43 @@ button.libre:hover {
 .pagos input {
   margin: 0;
   flex-shrink: 0;
+}
+
+.fecha {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  height: 46px;
+  padding: 0 14px 0 12px;
+  border: 1px solid var(--cl-borde);
+  border-radius: 10px;
+  background: #0d0b07;
+  color: var(--cl-crema);
+  font-family: var(--cl-sans);
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.fecha svg {
+  flex-shrink: 0;
+  color: var(--cl-dorado);
+}
+
+.fecha:focus-within {
+  outline: 2px solid var(--cl-dorado-claro);
+  outline-offset: 1px;
+}
+
+.campo .fecha input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  opacity: 0;
+  cursor: pointer;
 }
