@@ -174,8 +174,10 @@ function Vender({
   const [tipoGeneral, setTipoGeneral] = useState(tipos[0] ?? "");
   const [elegidas, setElegidas] = useState<Record<string, Detalle>>({});
   const [estudiante, setEstudiante] = useState("");
-  const [pago, setPago] = useState("");
+  const [pago, setPago] = useState(""); // "Efectivo", "Transferencia" o MIXTO
   const [cuenta, setCuenta] = useState("");
+  const [efectivoMixto, setEfectivoMixto] = useState(""); // solo dígitos
+  const [paquetes, setPaquetes] = useState(0);
   const [ventasHechas, setVentasHechas] = useState(0); // reinicia el buscador después de cada venta
   const [nota, setNota] = useState("");
   const [enviando, setEnviando] = useState(false);
@@ -183,7 +185,12 @@ function Vender({
 
   const ids = ordenarSillas(Object.keys(elegidas), entrada.teatro);
   const seleccion = useMemo(() => new Set(Object.keys(elegidas)), [elegidas]);
-  const total = ids.reduce((a, id) => a + (entrada.precios[elegidas[id].tipo] ?? 0), 0);
+  const totalSillas = ids.reduce((a, id) => a + (entrada.precios[elegidas[id].tipo] ?? 0), 0);
+  const paquete = entrada.paquete && entrada.paquete.precio > 0 ? entrada.paquete : null;
+  const totalPaquetes = paquete ? paquetes * paquete.precio : 0;
+  const total = totalSillas + totalPaquetes;
+  const enEfectivo = Number(efectivoMixto) || 0;
+  const enTransferencia = Math.max(total - enEfectivo, 0);
 
   // Si alguien más vendió una silla que tenía seleccionada, se quita de la selección.
   useEffect(() => {
@@ -199,7 +206,7 @@ function Vender({
   }, [ocupadas, elegidas]);
 
   const cuentas = entrada.cuentas ?? [];
-  const pideCuenta = pago === "Transferencia" && cuentas.length > 0;
+  const pideCuenta = (pago === "Transferencia" || pago === MIXTO) && cuentas.length > 0;
 
   const tocar = (id: string) => {
     setAviso(null);
@@ -218,19 +225,34 @@ function Vender({
 
   const registrar = async () => {
     setAviso(null);
-    if (!ids.length) return setAviso({ tipo: "mal", texto: "Toca en el mapa las sillas que la familia escogió." });
+    if (!ids.length && !paquetes) return setAviso({ tipo: "mal", texto: "Toca en el mapa las sillas que la familia escogió, o agrega el paquete audiovisual." });
     if (!estudiante.trim()) return setAviso({ tipo: "mal", texto: "Busca y selecciona el estudiante." });
-    if (!pago) return setAviso({ tipo: "mal", texto: "Escoge si pagó en efectivo o por transferencia." });
+    if (!pago) return setAviso({ tipo: "mal", texto: "Escoge cómo pagó." });
+    if (pago === MIXTO && total > 0 && !(enEfectivo > 0 && enEfectivo < total)) {
+      return setAviso({ tipo: "mal", texto: `Escribe cuánto pagó en efectivo: debe ser más de $0 y menos de ${pesos(total)}.` });
+    }
     if (pideCuenta && !cuenta) return setAviso({ tipo: "mal", texto: "Escoge a qué cuenta llegó la transferencia." });
+
+    const pagos =
+      total === 0
+        ? []
+        : pago === MIXTO
+          ? [
+              { forma: "Efectivo", valor: enEfectivo },
+              { forma: "Transferencia", cuenta, valor: enTransferencia },
+            ]
+          : [{ forma: pago, cuenta: pideCuenta ? cuenta : "", valor: total }];
 
     setEnviando(true);
     try {
-      const r = await enviar<{ idVenta: string; total: number; sillas: string[] }>({
+      const r = await enviar<{ idVenta: string; total: number; sillas: string[]; paquetes?: number }>({
         accion: "vender",
         clave,
         estudiante: estudiante.trim(),
-        pago,
+        pago: pago === MIXTO ? "Efectivo" : pago, // por si el programa de Google aún es el anterior
         cuenta: pideCuenta ? cuenta : "",
+        pagos,
+        paquetes,
         nota: nota.trim(),
         sillas: ids.map((id) => {
           const [fila, silla] = id.split("-");
@@ -238,14 +260,24 @@ function Vender({
         }),
       });
       if (r.ok) {
+        const partes = [
+          r.sillas.length ? r.sillas.join(", ") : "",
+          paquetes ? (paquetes === 1 ? "paquete audiovisual" : `${paquetes} paquetes audiovisuales`) : "",
+        ].filter(Boolean);
+        const comoPago =
+          pago === MIXTO
+            ? `${pesos(enEfectivo)} en efectivo y ${pesos(enTransferencia)} por transferencia a ${cuenta}`
+            : `${pago.toLowerCase()}${pideCuenta ? ` a ${cuenta}` : ""}`;
         setAviso({
           tipo: "bien",
-          texto: `Venta registrada para ${estudiante.trim()}: ${r.sillas.join(", ")} · Total ${pesos(r.total)} (${pago.toLowerCase()}${pideCuenta ? ` a ${cuenta}` : ""}).`,
+          texto: `Venta registrada para ${estudiante.trim()}: ${partes.join(" + ")} · Total ${pesos(r.total)} (${comoPago}).`,
         });
         setElegidas({});
         setEstudiante("");
         setPago("");
         setCuenta("");
+        setEfectivoMixto("");
+        setPaquetes(0);
         setVentasHechas((n) => n + 1);
         setNota("");
         await refrescar();
@@ -269,7 +301,11 @@ function Vender({
 
       <section className={styles.formulario} aria-label="Datos de la venta">
         <h2 className={styles.subtitulo}>
-          {ids.length ? `${ids.length} ${ids.length === 1 ? "silla seleccionada" : "sillas seleccionadas"}` : "Toca las sillas en el mapa"}
+          {ids.length
+            ? `${ids.length} ${ids.length === 1 ? "silla seleccionada" : "sillas seleccionadas"}`
+            : paquetes
+              ? "Solo paquete audiovisual"
+              : "Toca las sillas en el mapa"}
         </h2>
 
         <BuscadorEstudiante
@@ -314,6 +350,27 @@ function Vender({
           </>
         ) : null}
 
+        {paquete ? (
+          <div className={styles.paquete}>
+            <div>
+              <strong>Paquete audiovisual</strong>
+              <span>
+                {pesos(paquete.precio)} c/u
+                {paquete.enPreventa ? ` · preventa hasta el ${fechaCorta(paquete.finPreventa)}` : ""}
+              </span>
+            </div>
+            <div className={styles.contador} role="group" aria-label="Cantidad de paquetes audiovisuales">
+              <button type="button" onClick={() => { setPaquetes((n) => Math.max(n - 1, 0)); setAviso(null); }} disabled={!paquetes} aria-label="Quitar un paquete">
+                −
+              </button>
+              <output aria-live="polite">{paquetes}</output>
+              <button type="button" onClick={() => { setPaquetes((n) => Math.min(n + 1, 10)); setAviso(null); }} disabled={paquetes >= 10} aria-label="Agregar un paquete">
+                +
+              </button>
+            </div>
+          </div>
+        ) : null}
+
         <fieldset className={styles.pagos}>
           <legend>Forma de pago</legend>
           {entrada.pagos.map((p) => (
@@ -321,11 +378,31 @@ function Vender({
               <input type="radio" name="pago" value={p} checked={pago === p} onChange={() => { setPago(p); setAviso(null); }} /> {p}
             </label>
           ))}
+          <label>
+            <input type="radio" name="pago" value={MIXTO} checked={pago === MIXTO} onChange={() => { setPago(MIXTO); setAviso(null); }} /> Una parte y otra parte
+          </label>
         </fieldset>
+
+        {pago === MIXTO ? (
+          <div className={styles.mixto}>
+            <label className={styles.campo}>
+              <span>¿Cuánto pagó en efectivo?</span>
+              <input
+                inputMode="numeric"
+                value={efectivoMixto ? pesos(enEfectivo) : ""}
+                onChange={(e) => { setEfectivoMixto(e.target.value.replace(/\D/g, "").slice(0, 9)); setAviso(null); }}
+                placeholder="$0"
+              />
+            </label>
+            <p>
+              Por transferencia: <strong>{pesos(enTransferencia)}</strong>
+            </p>
+          </div>
+        ) : null}
 
         {pideCuenta ? (
           <fieldset className={styles.pagos}>
-            <legend>¿A qué cuenta llegó la transferencia?</legend>
+            <legend>{pago === MIXTO ? "¿A qué cuenta llegó la parte de transferencia?" : "¿A qué cuenta llegó la transferencia?"}</legend>
             {cuentas.map((c) => (
               <label key={c}>
                 <input type="radio" name="cuenta" value={c} checked={cuenta === c} onChange={() => { setCuenta(c); setAviso(null); }} /> {c}
@@ -341,6 +418,11 @@ function Vender({
 
         <p className={styles.total}>
           Total: <strong>{pesos(total)}</strong>
+          {totalPaquetes && totalSillas ? (
+            <span className={styles.desglose}>
+              Boletas {pesos(totalSillas)} + paquete{paquetes > 1 ? "s" : ""} {pesos(totalPaquetes)}
+            </span>
+          ) : null}
         </p>
 
         {aviso ? (
@@ -370,7 +452,7 @@ function Ventas({
 }) {
   const [ventas, setVentas] = useState<Venta[] | null>(null);
   const [buscar, setBuscar] = useState("");
-  const [pendiente, setPendiente] = useState<{ idVenta: string; sillas?: string[] } | null>(null);
+  const [pendiente, setPendiente] = useState<{ idVenta: string; sillas?: string[]; paquete?: boolean } | null>(null);
   const [aviso, setAviso] = useState<Aviso>(null);
   const [trabajando, setTrabajando] = useState(false);
 
@@ -393,11 +475,12 @@ function Ventas({
     if (!pendiente) return;
     setTrabajando(true);
     try {
-      const r = await enviar<{ anuladas: string[] }>({ accion: "anular", clave, ...pendiente });
+      const r = await enviar<{ anuladas: string[]; devolucion?: number }>({ accion: "anular", clave, ...pendiente });
       if (r.ok) {
         setPendiente(null);
         await Promise.all([cargar(), refrescar()]);
-        setAviso({ tipo: "bien", texto: `Anuladas: ${r.anuladas.join(", ")}. Esas sillas quedan libres.` });
+        const devolucion = r.devolucion ? ` Quedó registrada una devolución de ${pesos(r.devolucion)}.` : "";
+        setAviso({ tipo: "bien", texto: `Anulado: ${r.anuladas.join(", ")}.${devolucion}` });
       } else setAviso({ tipo: "mal", texto: r.error });
     } catch {
       setAviso({ tipo: "mal", texto: "No se pudo anular por la conexión. Intenta de nuevo." });
@@ -415,6 +498,7 @@ function Ventas({
       v.sillas.some((s) => s.id.toLowerCase() === q),
   );
   const activas = (ventas ?? []).reduce((a, v) => a + v.sillas.filter((s) => s.estado === "Vendida").length, 0);
+  const paquetesVendidos = (ventas ?? []).reduce((a, v) => a + (v.paquetes?.estado === "Vendido" ? v.paquetes.cantidad : 0), 0);
 
   return (
     <div className={styles.ventas}>
@@ -427,12 +511,19 @@ function Ventas({
           Actualizar
         </button>
       </div>
-      <p className={styles.nota}>{ventas ? `${activas} ${activas === 1 ? "boleta vendida" : "boletas vendidas"} en ${ventas.length} ${ventas.length === 1 ? "venta" : "ventas"}.` : "Cargando ventas…"}</p>
+      <p className={styles.nota}>
+        {ventas
+          ? `${activas} ${activas === 1 ? "boleta vendida" : "boletas vendidas"} y ${paquetesVendidos} ${paquetesVendidos === 1 ? "paquete" : "paquetes"} en ${ventas.length} ${ventas.length === 1 ? "venta" : "ventas"}.`
+          : "Cargando ventas…"}
+      </p>
       {aviso ? <p className={aviso.tipo === "bien" ? styles.avisoBien : styles.avisoError} role="status">{aviso.texto}</p> : null}
 
       <ul className={styles.listaVentas}>
         {filtradas.map((v) => {
           const vivas = v.sillas.filter((s) => s.estado === "Vendida");
+          const paqVivo = v.paquetes?.estado === "Vendido" && v.paquetes.cantidad > 0;
+          const partesVivas = vivas.length + (paqVivo ? 1 : 0);
+          const detallePago = describirPagos(v);
           return (
             <li key={v.idVenta} className={styles.tarjetaVenta}>
               <div className={styles.cabezaVenta}>
@@ -440,8 +531,9 @@ function Ventas({
                 <span>{pesos(v.total)}</span>
               </div>
               <p className={styles.metaVenta}>
-                {v.fecha} · {v.pago}{v.cuenta ? ` (${v.cuenta})` : ""} · {v.vendedor} · {v.idVenta}
+                {v.fecha} · {v.vendedor} · {v.idVenta}
               </p>
+              <p className={styles.metaVenta}>{detallePago || `${v.pago}${v.cuenta ? ` (${v.cuenta})` : ""}`}</p>
               {v.nota ? <p className={styles.metaVenta}>Nota: {v.nota}</p> : null}
               <ul className={styles.chipsSillas}>
                 {ordenarSillas(v.sillas.map((s) => s.id), teatro).map((id) => {
@@ -450,7 +542,7 @@ function Ventas({
                   return (
                     <li key={id} className={anulada ? styles.chipAnulado : styles.chip}>
                       {id} · {s.tipo}
-                      {!anulada && vivas.length > 1 ? (
+                      {!anulada && partesVivas > 1 ? (
                         <button type="button" onClick={() => setPendiente({ idVenta: v.idVenta, sillas: [id] })} aria-label={`Anular solo ${id}`}>
                           ×
                         </button>
@@ -458,12 +550,26 @@ function Ventas({
                     </li>
                   );
                 })}
+                {v.paquetes && v.paquetes.cantidad ? (
+                  <li className={paqVivo ? `${styles.chip} ${styles.chipPaquete}` : styles.chipAnulado}>
+                    {v.paquetes.cantidad === 1 ? "Paquete audiovisual" : `${v.paquetes.cantidad} paquetes audiovisuales`}
+                    {paqVivo && partesVivas > 1 ? (
+                      <button type="button" onClick={() => setPendiente({ idVenta: v.idVenta, paquete: true })} aria-label="Anular solo el paquete">
+                        ×
+                      </button>
+                    ) : null}
+                  </li>
+                ) : null}
               </ul>
-              {vivas.length ? (
+              {partesVivas ? (
                 pendiente?.idVenta === v.idVenta ? (
                   <div className={styles.confirmar}>
                     <p>
-                      ¿Anular {pendiente.sillas ? pendiente.sillas.join(", ") : "toda la venta"}? Las sillas quedan libres.
+                      {pendiente.paquete
+                        ? "¿Anular solo el paquete audiovisual? Queda registrada la devolución."
+                        : pendiente.sillas
+                          ? `¿Anular ${pendiente.sillas.join(", ")}? La silla queda libre y se registra la devolución.`
+                          : "¿Anular toda la venta? Las sillas quedan libres."}
                     </p>
                     <button type="button" className={styles.botonPeligro} onClick={anular} disabled={trabajando}>
                       {trabajando ? "Anulando…" : "Sí, anular"}
@@ -615,4 +721,26 @@ function BuscadorEstudiante({
       ) : null}
     </div>
   );
+}
+
+const MIXTO = "Mixto";
+
+/** "2026-11-26" → "26 de noviembre". */
+function fechaCorta(iso: string) {
+  const meses = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
+  const [, m, d] = iso.split("-").map(Number);
+  return m && d ? `${d} de ${meses[m - 1]}` : iso;
+}
+
+/** "Pagó $100.000 en efectivo + $150.000 por transferencia (Cuenta Liz)", con devoluciones si las hay. */
+function describirPagos(v: Venta) {
+  const validos = (v.pagos ?? []).filter((p) => p.estado === "Válido");
+  if (!validos.length) return "";
+  const parte = (p: { forma: string; cuenta: string; valor: number }) =>
+    `${pesos(Math.abs(p.valor))} ${p.forma === "Efectivo" ? "en efectivo" : "por transferencia"}${p.cuenta ? ` (${p.cuenta})` : ""}`;
+  const pagos = validos.filter((p) => p.valor > 0).map(parte);
+  const devoluciones = validos.filter((p) => p.valor < 0).map(parte);
+  return [pagos.length ? `Pagó ${pagos.join(" + ")}` : "", devoluciones.length ? `Devuelto ${devoluciones.join(" + ")}` : ""]
+    .filter(Boolean)
+    .join(" · ");
 }

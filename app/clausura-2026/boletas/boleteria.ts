@@ -16,6 +16,14 @@ export type Mapa = {
   actualizado: string;
 };
 
+export type Paquete = {
+  precio: number;
+  enPreventa: boolean;
+  precioPreventa: number;
+  precioNormal: number;
+  finPreventa: string;
+};
+
 export type Entrada = {
   ok: true;
   vendedor: string;
@@ -25,9 +33,14 @@ export type Entrada = {
   cuentas?: string[];
   /** Nombres completos de la pestaña "Estudiantes" de la hoja. */
   estudiantes?: string[];
+  /** Paquete audiovisual: el precio ya viene según la fecha (preventa o normal). */
+  paquete?: Paquete | null;
   teatro: FilaTeatro[];
   bloqueos: Bloqueo[];
 };
+
+export type PagoVenta = { forma: string; cuenta: string; valor: number; estado: string; nota?: string };
+export type PaqueteVenta = { cantidad: number; precio: number; total: number; estado: string };
 
 export type SillaVenta = { id: string; tipo: string; precio: number; boleta: string; estado: string };
 export type Venta = {
@@ -39,6 +52,8 @@ export type Venta = {
   cuenta?: string;
   nota: string;
   sillas: SillaVenta[];
+  paquetes?: PaqueteVenta | null;
+  pagos?: PagoVenta[];
   total: number;
 };
 

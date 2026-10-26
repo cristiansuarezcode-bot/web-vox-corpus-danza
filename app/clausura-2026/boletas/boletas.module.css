@@ -779,3 +779,96 @@ button.libre:hover {
 .pagos {
   flex-wrap: wrap;
 }
+
+/* ---------- Paquete audiovisual y pago dividido ---------- */
+
+.paquete {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px;
+  border: 1px solid var(--cl-borde);
+  border-radius: 12px;
+}
+
+.paquete > div:first-child {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.paquete strong {
+  color: var(--cl-crema);
+  font-size: 0.95rem;
+}
+
+.paquete span {
+  color: var(--cl-suave);
+  font-size: 0.8rem;
+}
+
+.contador {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.contador button {
+  width: 40px;
+  height: 40px;
+  border: 1.5px solid var(--cl-dorado);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--cl-dorado);
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.contador button:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.contador output {
+  min-width: 28px;
+  text-align: center;
+  font-family: var(--cl-serif);
+  font-size: 1.25rem;
+  color: var(--cl-crema);
+}
+
+.mixto {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 12px;
+}
+
+.mixto p {
+  margin: 0;
+  padding-bottom: 12px;
+  font-size: 0.85rem;
+  color: var(--cl-suave);
+  text-align: right;
+}
+
+.mixto p strong {
+  display: block;
+  font-size: 1rem;
+  color: var(--cl-crema);
+}
+
+.desglose {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--cl-apagado);
+}
+
+.chipPaquete {
+  border-color: var(--cl-dorado);
+}
