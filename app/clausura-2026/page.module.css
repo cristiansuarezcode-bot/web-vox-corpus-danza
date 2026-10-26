@@ -89,7 +89,12 @@
   max-width: 460px;
 }
 
+.h1 picture {
+  display: block;
+}
+
 .tituloLegado {
+  display: block;
   width: 100%;
   height: auto;
   mix-blend-mode: lighten;

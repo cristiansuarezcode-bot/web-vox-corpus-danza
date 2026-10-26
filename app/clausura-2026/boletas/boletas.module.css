@@ -1281,3 +1281,22 @@ button.libre:hover {
   opacity: 0;
   cursor: pointer;
 }
+
+/* Mapa apagado mientras llegan los datos: ocupa el mismo espacio que el real. */
+.mapaCargando {
+  opacity: 0.3;
+  filter: grayscale(1);
+  pointer-events: none;
+  animation: latido 1.4s ease-in-out infinite alternate;
+}
+
+@keyframes latido {
+  from { opacity: 0.18; }
+  to { opacity: 0.35; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mapaCargando {
+    animation: none;
+  }
+}

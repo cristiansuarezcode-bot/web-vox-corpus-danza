@@ -1399,6 +1399,10 @@ section {
   width: min(100%, 520px);
 }
 
+.clausura-home-titulo picture {
+  display: block;
+}
+
 .clausura-home-titulo img {
   display: block;
   height: auto;

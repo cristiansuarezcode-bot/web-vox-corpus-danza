@@ -49,12 +49,20 @@ export function SeccionClausura() {
       <div className="clausura-home-copia">
         <p className="clausura-home-etiqueta">Novena clausura · Vox Corpus Danza</p>
         <h2 id="clausura-home-titulo" className="clausura-home-titulo">
-          <img
-            src="/clausura-2026/el-legado-titulo.jpg"
-            alt="El Legado, celebrando el legado de Michael Jackson"
-            width={1368}
-            height={752}
-          />
+          <picture>
+            <source
+              type="image/webp"
+              srcSet="/clausura-2026/el-legado-titulo-800.webp 800w, /clausura-2026/el-legado-titulo.webp 1368w"
+              sizes="(max-width: 560px) calc(100vw - 40px), 520px"
+            />
+            <img
+              src="/clausura-2026/el-legado-titulo.jpg"
+              alt="El Legado, celebrando el legado de Michael Jackson"
+              width={1368}
+              height={752}
+              decoding="async"
+            />
+          </picture>
         </h2>
         <p className="clausura-home-datos">
           Sábado 28 de noviembre · 4:00 p.m.

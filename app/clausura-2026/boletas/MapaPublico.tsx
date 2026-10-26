@@ -1,11 +1,20 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { BOLETERIA_API, pedirMapa, type Mapa } from "./boleteria";
+import { BOLETERIA_API, pedirMapa, type FilaTeatro, type Mapa } from "./boleteria";
 import MapaSillas, { Leyenda } from "./MapaSillas";
 import styles from "./boletas.module.css";
 
 const CADA_MS = 15000;
+
+/**
+ * Forma del Teatro Universidad de Envigado (A junto al escenario, Z al fondo).
+ * Se dibuja apagada mientras llegan los datos, así el mapa ocupa su espacio
+ * desde el principio y la página no salta cuando termina de cargar.
+ */
+const FILAS_18 = "ADFHJL";
+const TEATRO_INICIAL: FilaTeatro[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").map((fila) => ({ fila, sillas: FILAS_18.includes(fila) ? 18 : 19 }));
+const VACIO = new Set<string>();
 
 export default function MapaPublico() {
   const [mapa, setMapa] = useState<Mapa | null>(null);
@@ -37,7 +46,17 @@ export default function MapaPublico() {
   }, []);
 
   if (!mapa) {
-    return <p className={styles.estado}>{error ?? "Cargando el mapa del teatro…"}</p>;
+    return (
+      <div className={styles.bloqueMapa} aria-busy="true">
+        <Leyenda />
+        <div className={styles.mapaCargando} aria-hidden="true">
+          <MapaSillas teatro={TEATRO_INICIAL} ocupadas={VACIO} bloqueadas={VACIO} numeros />
+        </div>
+        <p className={error ? styles.avisoError : styles.nota} role="status">
+          {error ?? "Cargando las sillas disponibles…"}
+        </p>
+      </div>
+    );
   }
 
   const ocupadas = new Set(mapa.ocupadas);

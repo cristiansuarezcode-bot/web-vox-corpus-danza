@@ -121,13 +121,23 @@ export default function Clausura2026Page() {
         <p className={styles.presenta}>Presenta</p>
         <p className={styles.clausuraAnio}>Clausura 2026</p>
         <h1 className={styles.h1}>
-          <img
-            className={styles.tituloLegado}
-            src="/clausura-2026/el-legado-titulo.jpg"
-            alt="El Legado, celebrando el legado de Michael Jackson"
-            width={1368}
-            height={752}
-          />
+          {/* WebP liviano (800 px para celular, 1368 px para pantallas grandes) y el JPG de respaldo. */}
+          <picture>
+            <source
+              type="image/webp"
+              srcSet="/clausura-2026/el-legado-titulo-800.webp 800w, /clausura-2026/el-legado-titulo.webp 1368w"
+              sizes="(max-width: 500px) calc(100vw - 40px), 460px"
+            />
+            <img
+              className={styles.tituloLegado}
+              src="/clausura-2026/el-legado-titulo.jpg"
+              alt="El Legado, celebrando el legado de Michael Jackson"
+              width={1368}
+              height={752}
+              fetchPriority="high"
+              decoding="async"
+            />
+          </picture>
         </h1>
 
         <CuentaRegresiva compilado={compilado} />
