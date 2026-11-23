@@ -40,7 +40,8 @@ export const clausura = {
     direccion: "Carrera 27B #39A Sur-57, Envigado",
     destinoMapa:
       "Institución Universitaria de Envigado, Carrera 27B #39A Sur-57, Envigado",
-    parqueadero: "La universidad cuenta con parqueadero.",
+    parqueadero:
+      "La universidad cuenta con parqueadero, pero no es posible garantizar cupo para todos los asistentes, ya que en ese horario también hay actividad académica. Recomendamos llegar en transporte público, taxi o plataforma.",
     // Cuando tengas las indicaciones de metro y bus, escríbelas aquí.
     // Mientras sea null, la página solo muestra el botón de la ruta en Google Maps.
     transportePublico: null as string | null,
@@ -140,7 +141,8 @@ export const clausura = {
     },
     {
       pregunta: "¿Hay parqueadero?",
-      respuesta: "Sí, la universidad cuenta con parqueadero.",
+      respuesta:
+        "La universidad cuenta con parqueadero y se puede utilizar. Sin embargo, no es posible garantizar cupo para todos los asistentes, ya que en ese horario también hay actividad académica en la universidad. Por eso recomendamos llegar en transporte público, taxi o plataforma, y no estacionar en la vía pública, pues los vehículos pueden ser inmovilizados por las autoridades de tránsito.",
     },
   ],
 };

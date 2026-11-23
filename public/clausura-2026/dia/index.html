@@ -253,6 +253,8 @@ h2 {
 .item.bloqueado .caja { border-style: dashed; opacity: .6; }
 .item input:checked ~ div strong { text-decoration: line-through; text-decoration-color: rgba(226,181,74,.7); }
 
+.nota-camerino { margin: 0 0 14px; padding: 12px 16px; border-radius: var(--radius); background: rgba(226,181,74,.08); border: 1px solid var(--line); font-size: 15px; color: var(--text); }
+
 /* Muy importante */
 .alertas { display: grid; gap: 12px; }
 .alerta {
@@ -378,7 +380,7 @@ footer p { margin: 0 0 8px; }
     </button>
     <p class="eyebrow">Clausura 2026 · Vox Corpus Danza</p>
     <h1>El Legado</h1>
-    <p class="lead">Ya casi llega nuestra clausura. Aquí tienen todo lo del sábado en un solo lugar, y siempre al día.</p>
+    <p class="lead">Se acerca nuestra clausura. Aquí encontrarán toda la información del sábado, en un solo lugar y siempre actualizada.</p>
     <div class="meta">
       <span class="pill">
         <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
@@ -429,7 +431,7 @@ footer p { margin: 0 0 8px; }
 
   <section id="horas">
     <h2>Las tres horas clave</h2>
-    <p class="sub">Si solo van a recordar algo, que sea esto.</p>
+    <p class="sub">Los horarios más importantes de la jornada.</p>
     <div class="claves">
       <div class="clave">
         <span class="hora">9:00<small>a.m.</small></span>
@@ -458,6 +460,11 @@ footer p { margin: 0 0 8px; }
         <svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
       </button>
       <button type="button" class="aviso-corto" data-ir="importante">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3v8M5 3v5a2 2 0 0 0 4 0V3M7 11v10M17 3c-1.7 1.2-3 3.4-3 6v4h3v8"/><path d="M3 3l18 18"/></svg></span>
+        <span><strong>No se permiten alimentos ni bebidas en la sala</strong><span class="det">Incluye el agua. Es una norma del teatro.</span></span>
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+      </button>
+      <button type="button" class="aviso-corto" data-ir="importante">
         <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9V6a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v3a3 3 0 0 0 0 6v3a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-3a3 3 0 0 0 0-6z"/></svg></span>
         <span><strong>No habrá venta de boletas en el teatro</strong><span class="det">La boletería se adquiere únicamente en la academia.</span></span>
         <svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
@@ -467,7 +474,7 @@ footer p { margin: 0 0 8px; }
 
   <section id="dia">
     <h2>Así va el día</h2>
-    <p class="sub">El sábado esta línea se mueve sola y les muestra en qué momento vamos.</p>
+    <p class="sub">El día del evento, esta línea indicará en tiempo real el momento de la jornada.</p>
     <ol class="timeline" id="timeline">
       <li data-start="09:00" data-end="12:00">
         <span class="marca"></span>
@@ -479,7 +486,7 @@ footer p { margin: 0 0 8px; }
         <span class="marca"></span>
         <span class="t-hora">12:00 m. a 3:00 p.m.</span>
         <h3>Pausa del mediodía <span class="chip-estado"></span></h3>
-        <p data-cfg="mediodia"><span class="pendiente">Por confirmar</span> Les contamos pronto si los niños almuerzan con ustedes o se quedan en el teatro.</p>
+        <p data-cfg="mediodia"><span class="pendiente">Por confirmar</span> Pronto confirmaremos si los estudiantes almuerzan con sus familias o permanecen en el teatro.</p>
       </li>
       <li data-start="15:00" data-end="16:00" id="t-llegada">
         <span class="marca"></span>
@@ -491,33 +498,34 @@ footer p { margin: 0 0 8px; }
         <span class="marca"></span>
         <span class="t-hora" data-cfg="puertasLabel"><span class="pendiente">Hora por confirmar</span></span>
         <h3>Ingreso del público <span class="chip-estado"></span></h3>
-        <p>Abrimos puertas para las familias e invitados. Tengan sus boletas a la mano.</p>
+        <p>Apertura de puertas para familias e invitados. Les pedimos tener sus boletas a la mano.</p>
       </li>
       <li data-start="16:00" data-end="23:59">
         <span class="marca"></span>
         <span class="t-hora">4:00 p.m.</span>
         <h3>Función <span class="chip-estado"></span></h3>
-        <p>¡Empieza El Legado! A disfrutar todo lo que construimos este año.</p>
+        <p>Inicio de El Legado, la clausura de nuestro año artístico.</p>
       </li>
       <li>
         <span class="marca"></span>
         <span class="t-hora">Al terminar</span>
         <h3>Entrega de los niños <span class="chip-estado"></span></h3>
-        <p>Los entregamos empezando por los más pequeños. Por favor esperen las indicaciones de nuestro equipo.</p>
+        <p>La entrega se hace empezando por los más pequeños. Les pedimos esperar las indicaciones de nuestro equipo.</p>
       </li>
     </ol>
   </section>
 
   <section id="llevar">
     <h2>Qué llevar</h2>
-    <p class="sub">Vayan marcando lo que ya tienen listo. Queda guardado en este celular.</p>
+    <p class="sub">Pueden marcar lo que ya tienen listo. La lista queda guardada en este dispositivo.</p>
     <div class="progreso"><span id="prog-txt">0 de 5 listos</span><div class="barra"><i id="prog-bar"></i></div></div>
+    <p class="nota-camerino">El agua y los snacks de los estudiantes se consumen únicamente en camerinos. En la sala del teatro no se permiten alimentos ni bebidas.</p>
     <ul class="lista" id="lista">
       <li><label class="item"><input type="checkbox" id="ll-vestuario" data-key="vestuario"><span class="caja"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></span><div><strong>Vestuario completo</strong><span class="det">De cada montaje en el que baila, marcado con su nombre.</span></div></label></li>
       <li><label class="item"><input type="checkbox" id="ll-cambios" data-key="cambios"><span class="caja"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></span><div><strong>Lo de los cambios, separado</strong><span class="det">Zapatos, accesorios y peinado de cada montaje, en bolsas marcadas.</span></div></label></li>
-      <li><label class="item"><input type="checkbox" id="ll-agua" data-key="agua"><span class="caja"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></span><div><strong>Agua</strong><span class="det">Es un día largo y van a bailar mucho. Que no les falte.</span></div></label></li>
-      <li><label class="item"><input type="checkbox" id="ll-snack" data-key="snack"><span class="caja"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></span><div><strong>Un snack suave</strong><span class="det">Frutas o algo liviano, marcado con su nombre.</span></div></label></li>
-      <li><label class="item bloqueado" id="item-camiseta"><input type="checkbox" id="ll-camiseta" data-key="camiseta" disabled><span class="caja"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></span><div><strong>Camiseta de color para el final</strong><span class="det" data-cfg="camiseta"><span class="pendiente">Por confirmar</span> Les avisamos el color pronto.</span></div></label></li>
+      <li><label class="item"><input type="checkbox" id="ll-agua" data-key="agua"><span class="caja"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></span><div><strong>Agua</strong><span class="det">En termo o botella marcada con su nombre. Es una jornada larga y de mucha actividad.</span></div></label></li>
+      <li><label class="item"><input type="checkbox" id="ll-snack" data-key="snack"><span class="caja"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></span><div><strong>Un snack suave y nutritivo</strong><span class="det">Algo sencillo y fácil de comer, como frutas. Les pedimos evitar comidas pesadas. Marcado con su nombre.</span></div></label></li>
+      <li><label class="item bloqueado" id="item-camiseta"><input type="checkbox" id="ll-camiseta" data-key="camiseta" disabled><span class="caja"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></span><div><strong>Camiseta de color para el final</strong><span class="det" data-cfg="camiseta"><span class="pendiente">Por confirmar</span> Pronto confirmaremos el color.</span></div></label></li>
     </ul>
   </section>
 
@@ -529,7 +537,7 @@ footer p { margin: 0 0 8px; }
         <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 17V7h4a3 3 0 0 1 0 6H9"/></svg></span>
         <div>
           <h3>Parqueadero con cupo limitado</h3>
-          <p>El teatro cuenta con parqueadero. Sin embargo, para esa fecha no es posible garantizar cupo a todos los asistentes, ya que en ese horario también hay actividad académica en la universidad.</p>
+          <p>La universidad cuenta con parqueadero y se puede utilizar. Sin embargo, para esa fecha no es posible garantizar cupo a todos los asistentes, ya que en ese horario también hay actividad académica en la universidad.</p>
           <p>Por esta razón, recomendamos llegar en <span class="dato">transporte público, taxi o plataforma</span>. Les pedimos no estacionar en la vía pública, pues <span class="dato">los vehículos pueden ser inmovilizados por las autoridades de tránsito</span>.</p>
         </div>
       </div>
@@ -541,16 +549,24 @@ footer p { margin: 0 0 8px; }
           <p>Valor de la boleta general: <span class="dato">$70.000</span>.</p>
         </div>
       </div>
+      <div class="alerta">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3v8M5 3v5a2 2 0 0 0 4 0V3M7 11v10M17 3c-1.7 1.2-3 3.4-3 6v4h3v8"/><path d="M3 3l18 18"/></svg></span>
+        <div>
+          <h3>No se permiten alimentos ni bebidas en la sala</h3>
+          <p>Por indicación del teatro, y para el cuidado de la alfombra y la silletería, <span class="dato">no está permitido comer ni beber en la sala</span>, ni siquiera agua. Tampoco se permite el ingreso de botellas a la sala.</p>
+          <p>Esta norma aplica para el público. Los estudiantes sí pueden tener su agua y sus snacks en camerinos.</p>
+        </div>
+      </div>
     </div>
   </section>
 
   <section id="pequenos">
     <h2>Para los más pequeños</h2>
-    <p class="sub">Baby Danza y Predanza van a estar muy bien acompañados.</p>
+    <p class="sub">Baby Danza y Predanza contarán con acompañamiento permanente.</p>
     <div class="dos">
       <div class="tarjeta">
-        <h3>Siempre con sus profes</h3>
-        <p>Tienen profes acompañantes que están con ellos todo el tiempo: en la espera, en el camerino, al salir al escenario y en el momento final.</p>
+        <h3>Acompañamiento permanente</h3>
+        <p>Cuentan con profesoras acompañantes durante toda la jornada: en la espera, en el camerino, al salir al escenario y en el momento final.</p>
       </div>
       <div class="tarjeta">
         <h3>Al final de la función</h3>
@@ -564,7 +580,7 @@ footer p { margin: 0 0 8px; }
 
   <section id="llegar">
     <h2>Cómo llegar</h2>
-    <p class="sub">Un toque y les abre la ruta.</p>
+    <p class="sub">Abran la ruta directamente en su aplicación de mapas.</p>
     <div class="tarjeta">
       <p class="lugar">Teatro Universidad de Envigado</p>
       <p class="dir">Carrera 27B #39A Sur-57, Envigado</p>
@@ -596,7 +612,7 @@ footer p { margin: 0 0 8px; }
     <p>Gracias por acompañarnos todo este año. ¡Los esperamos para celebrar juntos este legado!</p>
     <p>Toda la información de la clausura, paquete audiovisual y preguntas frecuentes: <a href="/clausura-2026/">voxcorpusdanza.com/clausura-2026</a></p>
     <p>¿Dudas? Escríbannos al WhatsApp de la academia: <a href="https://wa.me/573112710369" target="_blank" rel="noopener">311 271 0369</a></p>
-    <span class="actualizado">Actualizado el <span data-cfg="actualizado">22 de noviembre de 2026</span></span>
+    <span class="actualizado">Actualizado el <span data-cfg="actualizado">23 de noviembre de 2026</span></span>
   </div>
 </footer>
 
@@ -607,7 +623,7 @@ footer p { margin: 0 0 8px; }
    null = sigue "Por confirmar".
    ================================================================ */
 var CONFIG = {
-  actualizado: "22 de noviembre de 2026",
+  actualizado: "23 de noviembre de 2026",
   puertas: null,      // ejemplo: { hora: "15:30", label: "3:30 p.m." }
   mediodia: null,     // ejemplo: "Los niños almuerzan con sus familias y vuelven a las 3:00 p.m. en punto."
   camiseta: null,     // ejemplo: "Camiseta amarilla, puesta debajo del vestuario para cambiarse rápido."
