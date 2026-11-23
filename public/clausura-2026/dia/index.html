@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0c0a07">
+<!-- Mientras el equipo la revisa, que no aparezca en Google. Quitar esta línea al aprobarla. -->
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://voxcorpusdanza.com/clausura-2026/dia/">
+<link rel="icon" href="/favicon-vox-v2.png" type="image/png">
+<link rel="apple-touch-icon" href="/favicon-vox-v2.png">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://voxcorpusdanza.com/clausura-2026/dia/">
+<meta property="og:title" content="El Legado · Información del día">
+<meta property="og:description" content="Sábado 28 de noviembre · Teatro Universidad de Envigado. Horarios, qué llevar y cómo llegar.">
+<meta property="og:image" content="https://voxcorpusdanza.com/clausura-2026/og-clausura-2026.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://voxcorpusdanza.com/clausura-2026/og-clausura-2026.jpg">
+<title>El Legado · Información del día</title>
+<meta name="description" content="Clausura 2026 de Vox Corpus Danza. Sábado 28 de noviembre, Teatro Universidad de Envigado. Horarios, qué llevar y cómo llegar.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* Un solo mundo visual: escenario a oscuras, luz dorada de reflector. Columna única pensada para celular. */
+  --ink: #0c0a07;
+  --panel: #17130d;
+  --panel-2: #1f1910;
+  --line: rgba(226, 181, 74, 0.22);
+  --gold: #e2b54a;
+  --gold-hi: #f6dc94;
+  --text: #f3ede1;
+  --muted: #b3a891;
+  --alert: #ff7a52;
+  --ok: #7fd49b;
+  --font-display: "Big Shoulders Display", "Arial Narrow", Impact, sans-serif;
+  --font-body: "Manrope", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --radius: 14px;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+/* El fondo del html también es oscuro, para que el rebote del scroll en iPhone no muestre otro color */
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; background: var(--ink); overscroll-behavior-y: none; }
+body {
+  margin: 0;
+  overflow-anchor: none;
+  background: var(--ink);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.55;
+}
+a { color: var(--gold-hi); }
+:focus-visible { outline: 2px solid var(--gold-hi); outline-offset: 3px; border-radius: 6px; }
+
+.wrap { width: min(720px, 100%); margin: 0 auto; padding: 0 20px; }
+
+/* ---------- Portada ---------- */
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 56px 0 40px;
+  background:
+    radial-gradient(ellipse 60% 70% at 50% -10%, rgba(246, 220, 148, 0.30), transparent 70%),
+    radial-gradient(ellipse 90% 60% at 50% 120%, rgba(226, 181, 74, 0.10), transparent 70%),
+    var(--ink);
+  border-bottom: 1px solid var(--line);
+}
+.hero canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.hero .wrap { position: relative; text-align: left; }
+.eyebrow {
+  font-size: 13px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--gold);
+  margin: 0 0 10px;
+}
+.hero h1 {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(64px, 19vw, 132px);
+  line-height: 0.86;
+  letter-spacing: 0.01em;
+  margin: 0;
+  text-transform: uppercase;
+  background: linear-gradient(180deg, var(--gold-hi) 0%, var(--gold) 55%, #a8812b 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  text-wrap: balance;
+}
+.hero .lead { max-width: 34ch; color: var(--text); margin: 18px 0 22px; font-size: 18px; }
+.meta { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 26px; }
+.pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 8px 14px; border-radius: 999px;
+  background: rgba(226, 181, 74, 0.10); border: 1px solid var(--line);
+  font-weight: 700; font-size: 15px;
+}
+.pill svg { width: 16px; height: 16px; flex: none; stroke: var(--gold); }
+
+.estado {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-weight: 700; font-size: 15px; color: var(--gold-hi);
+  margin: 0 0 12px;
+}
+.estado .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 0 0 rgba(226,181,74,.6); animation: pulse 2s infinite; }
+.estado.vivo .dot { background: var(--alert); }
+@keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(226,181,74,.55); } 70% { box-shadow: 0 0 0 10px rgba(226,181,74,0); } 100% { box-shadow: 0 0 0 0 rgba(226,181,74,0); } }
+
+.countdown { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; max-width: 420px; }
+.countdown div {
+  background: rgba(23, 19, 13, 0.85); border: 1px solid var(--line); border-radius: 12px;
+  padding: 10px 4px 8px; text-align: center;
+}
+.countdown b {
+  display: block; font-family: var(--font-display); font-weight: 800; font-size: 40px; line-height: 1;
+  font-variant-numeric: tabular-nums; color: var(--text);
+}
+.countdown span { font-size: 12px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+.countdown[hidden] { display: none; }
+
+/* Parpadeo del sueño de Lorenzo al abrir la página (empieza con los ojos abiertos) */
+.lid { position: fixed; left: 0; right: 0; height: 50vh; background: #000; z-index: 50; pointer-events: none; transform: scaleY(0); }
+.lid.top { top: 0; transform-origin: top; }
+.lid.bottom { bottom: 0; transform-origin: bottom; }
+.blink .lid { animation: blink 1.5s ease-in-out 0.25s 1 both; }
+@keyframes blink {
+  0% { transform: scaleY(0); }
+  18% { transform: scaleY(1); }
+  34% { transform: scaleY(0); }
+  48% { transform: scaleY(1); }
+  70%, 100% { transform: scaleY(0); }
+}
+
+/* ---------- Navegación ---------- */
+.nav {
+  background: var(--ink);
+  border-bottom: 1px solid var(--line);
+}
+/* Pestañas: 2 filas de 3; al bajar las reemplaza el menú corto de una fila */
+.nav .wrap { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; padding-top: 10px; padding-bottom: 10px; }
+.nav button {
+  position: relative; overflow: hidden;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; text-align: center;
+  min-height: 56px; color: var(--text); font-family: inherit;
+  font-weight: 700; font-size: 13px; line-height: 1.15; cursor: pointer;
+  padding: 7px 6px; border-radius: 12px; border: 1px solid var(--line);
+  background: var(--panel); transition: background .2s, color .2s, border-color .2s, transform .12s;
+  -webkit-tap-highlight-color: transparent;
+}
+.nav button svg { width: 19px; height: 19px; flex: none; stroke: var(--gold); transition: stroke .2s; }
+.nav button:hover { border-color: var(--gold); color: var(--gold-hi); }
+.nav button:active { transform: scale(0.96); }
+.nav button[aria-selected="true"] { background: var(--gold); border-color: var(--gold); color: var(--ink); }
+.nav button[aria-selected="true"] svg { stroke: var(--ink); }
+/* Destello suave que recorre las pestañas que la persona todavía no ha abierto */
+.nav button::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(110deg, transparent 30%, rgba(246, 220, 148, 0.20) 50%, transparent 70%);
+  transform: translateX(-130%);
+  animation: brillo 7s ease-in-out infinite;
+  animation-delay: calc(var(--i, 0) * 0.18s + 1.8s);
+}
+.nav button.visto::after, .nav button[aria-selected="true"]::after { animation: none; opacity: 0; }
+@keyframes brillo { 0% { transform: translateX(-130%); } 16%, 100% { transform: translateX(130%); } }
+
+/* ---------- Secciones ---------- */
+section { padding: 36px 0 8px; }
+section[hidden] { display: none; }
+section.entra { animation: entra .35s ease-out; }
+@keyframes entra { from { opacity: .35; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.siguiente { display: flex; justify-content: flex-end; padding-top: 28px; }
+.siguiente button {
+  display: inline-flex; align-items: center; gap: 8px; cursor: pointer;
+  min-height: 48px; padding: 0 20px; border-radius: 999px; font-family: inherit;
+  font-weight: 800; font-size: 16px; background: transparent; color: var(--gold-hi); border: 1.5px solid var(--gold);
+}
+.siguiente button svg { width: 18px; height: 18px; stroke: var(--gold-hi); }
+h2 {
+  font-family: var(--font-display); font-weight: 800; text-transform: uppercase;
+  font-size: 38px; line-height: 1; letter-spacing: 0.01em;
+  margin: 0 0 6px; color: var(--gold-hi); text-wrap: balance;
+}
+.sub { margin: 0 0 22px; color: var(--muted); max-width: 52ch; }
+
+/* Horas clave */
+.claves { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; }
+.clave {
+  background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 18px 18px 16px; display: flex; flex-direction: column; gap: 4px;
+}
+.clave .hora {
+  font-family: var(--font-display); font-weight: 900; font-size: 46px; line-height: 0.95;
+  color: var(--gold); font-variant-numeric: tabular-nums;
+}
+.clave .hora small { font-size: 22px; font-weight: 800; margin-left: 4px; }
+.clave strong { font-size: 18px; }
+.clave p { margin: 0; color: var(--muted); font-size: 15px; }
+.clave.estrella { background: linear-gradient(160deg, #2a210f, var(--panel) 70%); border-color: rgba(226,181,74,.5); }
+.puertas-linea {
+  margin-top: 12px; display: flex; flex-wrap: wrap; align-items: center; gap: 10px;
+  padding: 12px 16px; border-radius: var(--radius); border: 1px dashed var(--line); color: var(--muted); font-size: 15px;
+}
+.puertas-linea strong { color: var(--text); }
+
+.pendiente {
+  display: inline-block; font-size: 12px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--gold-hi); border: 1px dashed var(--gold); border-radius: 999px; padding: 3px 10px; white-space: nowrap;
+}
+
+/* Línea del tiempo */
+.timeline { list-style: none; margin: 0; padding: 0; position: relative; }
+.timeline::before { content: ""; position: absolute; left: 15px; top: 8px; bottom: 8px; width: 2px; background: var(--line); }
+.timeline li { position: relative; padding: 0 0 22px 48px; }
+.timeline li:last-child { padding-bottom: 0; }
+.timeline .marca {
+  position: absolute; left: 6px; top: 4px; width: 20px; height: 20px; border-radius: 50%;
+  background: var(--ink); border: 2px solid var(--gold);
+}
+.timeline .t-hora { font-weight: 800; color: var(--gold); font-size: 14px; letter-spacing: 0.04em; text-transform: uppercase; font-variant-numeric: tabular-nums; }
+.timeline h3 { margin: 2px 0 4px; font-size: 20px; line-height: 1.25; }
+.timeline p { margin: 0; color: var(--muted); font-size: 16px; max-width: 54ch; }
+.timeline .chip-estado { display: none; margin-left: 8px; vertical-align: 2px; font-size: 11px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 9px; border-radius: 999px; }
+.timeline li.ahora .marca { background: var(--alert); border-color: var(--alert); box-shadow: 0 0 0 6px rgba(255,122,82,.18); }
+.timeline li.ahora .chip-estado { display: inline-block; background: var(--alert); color: #1a0d07; }
+.timeline li.sigue .chip-estado { display: inline-block; background: rgba(226,181,74,.16); color: var(--gold-hi); border: 1px solid var(--line); }
+.timeline li.paso { opacity: 0.5; }
+.timeline li.paso .marca { background: var(--gold); }
+
+/* Qué llevar */
+.progreso { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; font-weight: 700; font-size: 15px; }
+.barra { flex: 1; height: 8px; border-radius: 99px; background: var(--panel-2); overflow: hidden; }
+.barra i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--gold), var(--gold-hi)); transition: width .35s ease; }
+.lista { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.item {
+  display: flex; gap: 14px; align-items: flex-start;
+  background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 14px 16px; cursor: pointer;
+}
+.item input { position: absolute; opacity: 0; pointer-events: none; }
+.caja {
+  flex: none; width: 26px; height: 26px; border-radius: 8px; border: 2px solid var(--gold);
+  display: grid; place-items: center; margin-top: 1px; transition: background .2s;
+}
+.caja svg { width: 16px; height: 16px; stroke: var(--ink); stroke-width: 3; opacity: 0; transition: opacity .2s; }
+.item input:checked + .caja { background: var(--gold); }
+.item input:checked + .caja svg { opacity: 1; }
+.item input:focus-visible + .caja { outline: 2px solid var(--gold-hi); outline-offset: 3px; }
+.item strong { display: block; font-size: 17px; }
+.item span.det { color: var(--muted); font-size: 15px; }
+.item.bloqueado { cursor: default; border-style: dashed; }
+.item.bloqueado .caja { border-style: dashed; opacity: .6; }
+.item input:checked ~ div strong { text-decoration: line-through; text-decoration-color: rgba(226,181,74,.7); }
+
+/* Muy importante */
+.alertas { display: grid; gap: 12px; }
+.alerta {
+  border-radius: var(--radius); padding: 18px 18px 16px;
+  background: linear-gradient(160deg, rgba(255,122,82,.12), var(--panel) 60%);
+  border: 1px solid rgba(255,122,82,.35);
+  display: grid; grid-template-columns: 40px 1fr; gap: 14px;
+}
+.alerta .ico { width: 40px; height: 40px; border-radius: 10px; background: rgba(255,122,82,.16); display: grid; place-items: center; }
+.alerta .ico svg { width: 22px; height: 22px; stroke: var(--alert); }
+.alerta h3 { margin: 0 0 4px; font-size: 19px; }
+.alerta p { margin: 0 0 6px; color: var(--text); font-size: 16px; }
+.alerta p:last-child { margin-bottom: 0; }
+.alerta .dato { color: var(--gold-hi); font-weight: 800; }
+
+/* Pequeños y final */
+.tarjeta { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; }
+.tarjeta p { margin: 0 0 10px; }
+.tarjeta p:last-child { margin-bottom: 0; }
+.tarjeta ul { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
+.tarjeta li::marker { color: var(--gold); }
+.dos { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+.tarjeta h3 { margin: 0 0 8px; font-size: 19px; }
+
+/* Cómo llegar */
+.lugar { font-size: 20px; font-weight: 800; margin: 0; }
+.dir { color: var(--muted); margin: 2px 0 16px; }
+.botones { display: flex; flex-wrap: wrap; gap: 10px; }
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  min-height: 48px; padding: 0 20px; border-radius: 999px; text-decoration: none;
+  font-weight: 800; font-size: 16px;
+}
+.btn svg { width: 18px; height: 18px; }
+.btn.primario { background: var(--gold); color: var(--ink); }
+.btn.primario svg { stroke: var(--ink); }
+.btn.secundario { border: 1.5px solid var(--gold); color: var(--gold-hi); }
+.btn.secundario svg { stroke: var(--gold-hi); }
+.btn:hover { filter: brightness(1.08); }
+
+footer { margin-top: 48px; padding: 32px 0 48px; border-top: 1px solid var(--line); color: var(--muted); font-size: 15px; }
+footer .firma { font-family: var(--font-display); font-weight: 800; font-size: 26px; text-transform: uppercase; color: var(--text); margin: 0 0 4px; }
+footer p { margin: 0 0 8px; }
+.actualizado { display: inline-flex; gap: 8px; align-items: center; margin-top: 10px; font-size: 13px; font-weight: 700; color: var(--gold); }
+
+/* Aviso de novedades */
+.nuevo {
+  display: inline-flex; align-items: center; gap: 10px; max-width: 100%;
+  margin: 0 0 18px; padding: 6px 14px 6px 6px; border-radius: 999px; cursor: pointer; text-align: left;
+  background: rgba(255, 122, 82, 0.12); border: 1px solid rgba(255, 122, 82, 0.45);
+  color: var(--text); font-family: inherit; font-weight: 600; font-size: 14px; line-height: 1.3;
+}
+.nuevo[hidden] { display: none; }
+.nuevo .tag { flex: none; background: var(--alert); color: #1a0d07; font-weight: 800; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 9px; border-radius: 999px; }
+.nuevo svg { flex: none; width: 16px; height: 16px; stroke: var(--alert); }
+
+/* Avisos cortos en Horas clave */
+.avisos-cortos { display: grid; gap: 8px; margin-top: 12px; }
+.aviso-corto {
+  display: grid; grid-template-columns: 34px 1fr 18px; gap: 12px; align-items: center; text-align: left;
+  width: 100%; padding: 12px 14px; border-radius: var(--radius); cursor: pointer; font-family: inherit;
+  background: linear-gradient(160deg, rgba(255,122,82,.12), var(--panel) 70%);
+  border: 1px solid rgba(255,122,82,.35); color: var(--text); font-size: 15px; line-height: 1.35;
+}
+.aviso-corto .ico { width: 34px; height: 34px; border-radius: 9px; background: rgba(255,122,82,.16); display: grid; place-items: center; }
+.aviso-corto .ico svg { width: 19px; height: 19px; stroke: var(--alert); }
+.aviso-corto strong { display: block; font-size: 16px; }
+.aviso-corto span.det { color: var(--muted); }
+.aviso-corto > svg { width: 18px; height: 18px; stroke: var(--alert); }
+
+/* Menú corto que aparece al bajar */
+.nav-mini {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 30;
+  background: rgba(12, 10, 7, 0.95);
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+  /* Oculto del todo (no solo corrido hacia arriba): en algunos visores del celular el corrimiento no basta */
+  visibility: hidden; opacity: 0; transform: translateY(-100%);
+  transition: transform .25s ease, opacity .2s ease, visibility 0s linear .25s;
+}
+.nav-mini.visible {
+  visibility: visible; opacity: 1; transform: none;
+  transition: transform .25s ease, opacity .2s ease, visibility 0s;
+}
+.nav-mini .wrap { display: grid; grid-template-columns: repeat(6, 1fr); gap: 4px; padding: 6px 10px; }
+.nav-mini button {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px;
+  min-height: 46px; padding: 4px 2px; border-radius: 10px; border: 1px solid transparent; cursor: pointer;
+  background: transparent; color: var(--muted); font-family: inherit; font-weight: 700; font-size: 11px; line-height: 1.1;
+  -webkit-tap-highlight-color: transparent;
+}
+.nav-mini button svg { width: 18px; height: 18px; stroke: var(--gold); }
+.nav-mini button[aria-pressed="true"] { background: var(--gold); color: var(--ink); }
+.nav-mini button[aria-pressed="true"] svg { stroke: var(--ink); }
+
+@media (max-width: 420px) {
+  body { font-size: 16px; }
+  .countdown b { font-size: 32px; }
+  h2 { font-size: 32px; }
+  .clave .hora { font-size: 42px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .blink .lid { animation: none; }
+  .nav button::after { animation: none; opacity: 0; }
+  .nav-mini { transition: none; }
+  .estado .dot { animation: none; }
+  .barra i { transition: none; }
+}
+</style>
+</head>
+<body>
+<div class="lid top" aria-hidden="true"></div>
+<div class="lid bottom" aria-hidden="true"></div>
+
+<header class="hero">
+  <canvas id="polvo" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <button type="button" class="nuevo" id="nuevo" hidden>
+      <span class="tag">Nuevo</span>
+      <span id="nuevo-txt"></span>
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+    </button>
+    <p class="eyebrow">Clausura 2026 · Vox Corpus Danza</p>
+    <h1>El Legado</h1>
+    <p class="lead">Ya casi llega nuestra clausura. Aquí tienen todo lo del sábado en un solo lugar, y siempre al día.</p>
+    <div class="meta">
+      <span class="pill">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        Sábado 28 de noviembre
+      </span>
+      <span class="pill">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>
+        Teatro Universidad de Envigado
+      </span>
+    </div>
+    <p class="estado" id="estado"><span class="dot"></span><span id="estado-txt">Falta poco para la función</span></p>
+    <div class="countdown" id="countdown" aria-label="Cuenta regresiva para la función de las 4:00 p.m.">
+      <div><b id="cd-d">0</b><span>Días</span></div>
+      <div><b id="cd-h">00</b><span>Horas</span></div>
+      <div><b id="cd-m">00</b><span>Min</span></div>
+      <div><b id="cd-s">00</b><span>Seg</span></div>
+    </div>
+  </div>
+</header>
+
+<nav class="nav" aria-label="Secciones">
+  <div class="wrap" role="tablist">
+    <button type="button" role="tab" id="tab-horas" data-tab="horas" aria-controls="horas" aria-selected="true" style="--i:0">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+      Horas clave</button>
+    <button type="button" role="tab" id="tab-dia" data-tab="dia" aria-controls="dia" aria-selected="false" style="--i:1">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="5" r="2"/><circle cx="6" cy="12" r="2"/><circle cx="6" cy="19" r="2"/><path d="M11 5h9M11 12h9M11 19h6"/></svg>
+      Así va el día</button>
+    <button type="button" role="tab" id="tab-llevar" data-tab="llevar" aria-controls="llevar" aria-selected="false" style="--i:2">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1 12a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/><path d="M9.5 14.5l2 2 3.5-4"/></svg>
+      Qué llevar</button>
+    <button type="button" role="tab" id="tab-importante" data-tab="importante" aria-controls="importante" aria-selected="false" style="--i:3">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.3 3.9L2.4 17.5A2 2 0 0 0 4.1 20.5h15.8a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/></svg>
+      Muy importante</button>
+    <button type="button" role="tab" id="tab-pequenos" data-tab="pequenos" aria-controls="pequenos" aria-selected="false" style="--i:4">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 5.6a5 5 0 0 0-7.1 0L12 7.3l-1.7-1.7a5 5 0 0 0-7.1 7.1L12 21.5l8.8-8.8a5 5 0 0 0 0-7.1z"/></svg>
+      Los más pequeños</button>
+    <button type="button" role="tab" id="tab-llegar" data-tab="llegar" aria-controls="llegar" aria-selected="false" style="--i:5">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>
+      Cómo llegar</button>
+  </div>
+</nav>
+<nav class="nav-mini" id="nav-mini" aria-label="Menú corto" inert>
+  <div class="wrap" id="nav-mini-wrap"></div>
+</nav>
+
+<main class="wrap">
+
+  <section id="horas">
+    <h2>Las tres horas clave</h2>
+    <p class="sub">Si solo van a recordar algo, que sea esto.</p>
+    <div class="claves">
+      <div class="clave">
+        <span class="hora">9:00<small>a.m.</small></span>
+        <strong>Ensayo general</strong>
+        <p>Hasta las 12:00 m. Es para todos los grupos.</p>
+      </div>
+      <div class="clave">
+        <span class="hora">3:00<small>p.m.</small></span>
+        <strong>Llegada de bailarines</strong>
+        <p>En punto, con todo el vestuario.</p>
+      </div>
+      <div class="clave estrella">
+        <span class="hora">4:00<small>p.m.</small></span>
+        <strong>Función</strong>
+        <p>Se apagan las luces y empieza El Legado.</p>
+      </div>
+    </div>
+    <div class="puertas-linea">
+      <strong>Ingreso del público:</strong>
+      <span data-cfg="puertasLabel"><span class="pendiente">Por confirmar</span></span>
+    </div>
+    <div class="avisos-cortos">
+      <button type="button" class="aviso-corto" data-ir="importante">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 17V7h4a3 3 0 0 1 0 6H9"/></svg></span>
+        <span><strong>Parqueadero con cupo limitado</strong><span class="det">Recomendamos llegar en transporte público, taxi o plataforma.</span></span>
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+      </button>
+      <button type="button" class="aviso-corto" data-ir="importante">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9V6a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v3a3 3 0 0 0 0 6v3a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-3a3 3 0 0 0 0-6z"/></svg></span>
+        <span><strong>No habrá venta de boletas en el teatro</strong><span class="det">La boletería se adquiere únicamente en la academia.</span></span>
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+      </button>
+    </div>
+  </section>
+
+  <section id="dia">
+    <h2>Así va el día</h2>
+    <p class="sub">El sábado esta línea se mueve sola y les muestra en qué momento vamos.</p>
+    <ol class="timeline" id="timeline">
+      <li data-start="09:00" data-end="12:00">
+        <span class="marca"></span>
+        <span class="t-hora">9:00 a.m. a 12:00 m.</span>
+        <h3>Ensayo general <span class="chip-estado"></span></h3>
+        <p>Para todos los grupos. Les pedimos llegar puntuales, porque de este ensayo depende que todo salga bien en la función.</p>
+      </li>
+      <li data-start="12:00" data-end="15:00">
+        <span class="marca"></span>
+        <span class="t-hora">12:00 m. a 3:00 p.m.</span>
+        <h3>Pausa del mediodía <span class="chip-estado"></span></h3>
+        <p data-cfg="mediodia"><span class="pendiente">Por confirmar</span> Les contamos pronto si los niños almuerzan con ustedes o se quedan en el teatro.</p>
+      </li>
+      <li data-start="15:00" data-end="16:00" id="t-llegada">
+        <span class="marca"></span>
+        <span class="t-hora">3:00 p.m. en punto</span>
+        <h3>Llegada de bailarines <span class="chip-estado"></span></h3>
+        <p>Con todo su vestuario y lo que necesiten para sus cambios, marcado con su nombre.</p>
+      </li>
+      <li data-end="16:00" id="t-puertas">
+        <span class="marca"></span>
+        <span class="t-hora" data-cfg="puertasLabel"><span class="pendiente">Hora por confirmar</span></span>
+        <h3>Ingreso del público <span class="chip-estado"></span></h3>
+        <p>Abrimos puertas para las familias e invitados. Tengan sus boletas a la mano.</p>
+      </li>
+      <li data-start="16:00" data-end="23:59">
+        <span class="marca"></span>
+        <span class="t-hora">4:00 p.m.</span>
+        <h3>Función <span class="chip-estado"></span></h3>
+        <p>¡Empieza El Legado! A disfrutar todo lo que construimos este año.</p>
+      </li>
+      <li>
+        <span class="marca"></span>
+        <span class="t-hora">Al terminar</span>
+        <h3>Entrega de los niños <span class="chip-estado"></span></h3>
+        <p>Los entregamos empezando por los más pequeños. Por favor esperen las indicaciones de nuestro equipo.</p>
+      </li>
+    </ol>
+  </section>
+
+  <section id="llevar">
+    <h2>Qué llevar</h2>
+    <p class="sub">Vayan marcando lo que ya tienen listo. Queda guardado en este celular.</p>
+    <div class="progreso"><span id="prog-txt">0 de 5 listos</span><div class="barra"><i id="prog-bar"></i></div></div>
+    <ul class="lista" id="lista">
+      <li><label class="item"><input type="checkbox" id="ll-vestuario" data-key="vestuario"><span class="caja"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></span><div><strong>Vestuario completo</strong><span class="det">De cada montaje en el que baila, marcado con su nombre.</span></div></label></li>
+      <li><label class="item"><input type="checkbox" id="ll-cambios" data-key="cambios"><span class="caja"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></span><div><strong>Lo de los cambios, separado</strong><span class="det">Zapatos, accesorios y peinado de cada montaje, en bolsas marcadas.</span></div></label></li>
+      <li><label class="item"><input type="checkbox" id="ll-agua" data-key="agua"><span class="caja"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></span><div><strong>Agua</strong><span class="det">Es un día largo y van a bailar mucho. Que no les falte.</span></div></label></li>
+      <li><label class="item"><input type="checkbox" id="ll-snack" data-key="snack"><span class="caja"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></span><div><strong>Un snack suave</strong><span class="det">Frutas o algo liviano, marcado con su nombre.</span></div></label></li>
+      <li><label class="item bloqueado" id="item-camiseta"><input type="checkbox" id="ll-camiseta" data-key="camiseta" disabled><span class="caja"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></span><div><strong>Camiseta de color para el final</strong><span class="det" data-cfg="camiseta"><span class="pendiente">Por confirmar</span> Les avisamos el color pronto.</span></div></label></li>
+    </ul>
+  </section>
+
+  <section id="importante">
+    <h2>Muy importante</h2>
+    <p class="sub">Les pedimos tener en cuenta estas indicaciones para el día del evento.</p>
+    <div class="alertas">
+      <div class="alerta">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 17V7h4a3 3 0 0 1 0 6H9"/></svg></span>
+        <div>
+          <h3>Parqueadero con cupo limitado</h3>
+          <p>El teatro cuenta con parqueadero. Sin embargo, para esa fecha no es posible garantizar cupo a todos los asistentes, ya que en ese horario también hay actividad académica en la universidad.</p>
+          <p>Por esta razón, recomendamos llegar en <span class="dato">transporte público, taxi o plataforma</span>. Les pedimos no estacionar en la vía pública, pues <span class="dato">los vehículos pueden ser inmovilizados por las autoridades de tránsito</span>.</p>
+        </div>
+      </div>
+      <div class="alerta">
+        <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9V6a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v3a3 3 0 0 0 0 6v3a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-3a3 3 0 0 0 0-6z"/><path d="M14 5v14" stroke-dasharray="2 3"/></svg></span>
+        <div>
+          <h3>No habrá venta de boletas en el teatro</h3>
+          <p>La boletería se adquiere únicamente en la academia, antes del día del evento. El día de la clausura no habrá venta en taquilla.</p>
+          <p>Valor de la boleta general: <span class="dato">$70.000</span>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="pequenos">
+    <h2>Para los más pequeños</h2>
+    <p class="sub">Baby Danza y Predanza van a estar muy bien acompañados.</p>
+    <div class="dos">
+      <div class="tarjeta">
+        <h3>Siempre con sus profes</h3>
+        <p>Tienen profes acompañantes que están con ellos todo el tiempo: en la espera, en el camerino, al salir al escenario y en el momento final.</p>
+      </div>
+      <div class="tarjeta">
+        <h3>Al final de la función</h3>
+        <ul>
+          <li>Los niños se entregan empezando por los más pequeños.</li>
+          <li>Esperen las indicaciones de nuestro equipo para recogerlos.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="llegar">
+    <h2>Cómo llegar</h2>
+    <p class="sub">Un toque y les abre la ruta.</p>
+    <div class="tarjeta">
+      <p class="lugar">Teatro Universidad de Envigado</p>
+      <p class="dir">Carrera 27B #39A Sur-57, Envigado</p>
+      <div class="botones">
+        <a class="btn primario" href="https://www.google.com/maps/search/?api=1&amp;query=Instituci%C3%B3n%20Universitaria%20de%20Envigado%2C%20Carrera%2027B%2039A%20Sur%2057%2C%20Envigado" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>
+          Abrir en Google Maps
+        </a>
+        <a class="btn secundario" href="https://waze.com/ul?q=Institucion%20Universitaria%20de%20Envigado&amp;navigate=yes" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l18-8-8 18-2-8-8-2z"/></svg>
+          Abrir en Waze
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="siguiente">
+    <button type="button" id="btn-sig">
+      <span id="btn-sig-txt">Siguiente: Así va el día</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </button>
+  </div>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="firma">Vox Corpus Danza</p>
+    <p>Gracias por acompañarnos todo este año. ¡Los esperamos para celebrar juntos este legado!</p>
+    <p>Toda la información de la clausura, paquete audiovisual y preguntas frecuentes: <a href="/clausura-2026/">voxcorpusdanza.com/clausura-2026</a></p>
+    <p>¿Dudas? Escríbannos al WhatsApp de la academia: <a href="https://wa.me/573112710369" target="_blank" rel="noopener">311 271 0369</a></p>
+    <span class="actualizado">Actualizado el <span data-cfg="actualizado">22 de noviembre de 2026</span></span>
+  </div>
+</footer>
+
+<script>
+/* ================================================================
+   DATOS PARA ACTUALIZAR
+   Cuando se confirme algo, se cambia aquí y la página se actualiza sola.
+   null = sigue "Por confirmar".
+   ================================================================ */
+var CONFIG = {
+  actualizado: "22 de noviembre de 2026",
+  puertas: null,      // ejemplo: { hora: "15:30", label: "3:30 p.m." }
+  mediodia: null,     // ejemplo: "Los niños almuerzan con sus familias y vuelven a las 3:00 p.m. en punto."
+  camiseta: null,     // ejemplo: "Camiseta amarilla, puesta debajo del vestuario para cambiarse rápido."
+
+  /* Aviso "Nuevo" arriba de la portada. null = no se muestra.
+     tab = pestaña que abre al tocarlo: horas, dia, llevar, importante, pequenos o llegar */
+  novedad: null      // ejemplo: { texto: "Ya está la hora de apertura de puertas", tab: "horas" }
+};
+
+var DIA = "2026-11-28";
+var FUNCION = new Date(DIA + "T16:00:00-05:00");
+
+/* #demo simula el sábado a las 10:15 a.m. para revisar cómo se ve ese día */
+var demoBase = null, demoInicio = 0;
+function revisarDemo() {
+  if (location.hash === "#demo") { demoBase = new Date(DIA + "T10:15:00-05:00").getTime(); demoInicio = Date.now(); }
+  else { demoBase = null; }
+}
+function ahora() { return demoBase ? new Date(demoBase + (Date.now() - demoInicio)) : new Date(); }
+function hora(hhmm) { return new Date(DIA + "T" + hhmm + ":00-05:00"); }
+
+/* Rellenar los datos confirmados */
+function aplicarConfig() {
+  document.querySelectorAll('[data-cfg="actualizado"]').forEach(function (el) { el.textContent = CONFIG.actualizado; });
+  if (CONFIG.puertas) {
+    document.querySelectorAll('[data-cfg="puertasLabel"]').forEach(function (el) { el.textContent = CONFIG.puertas.label; });
+    document.getElementById("t-puertas").setAttribute("data-start", CONFIG.puertas.hora);
+    document.getElementById("t-llegada").setAttribute("data-end", CONFIG.puertas.hora);
+  }
+  if (CONFIG.mediodia) { document.querySelector('[data-cfg="mediodia"]').textContent = CONFIG.mediodia; }
+  if (CONFIG.camiseta) {
+    document.querySelector('[data-cfg="camiseta"]').textContent = CONFIG.camiseta;
+    document.getElementById("item-camiseta").classList.remove("bloqueado");
+    document.getElementById("ll-camiseta").disabled = false;
+  }
+}
+
+/* Cuenta regresiva y estado */
+function pad(n) { return n < 10 ? "0" + n : "" + n; }
+function actualizarReloj() {
+  var t = ahora();
+  var falta = FUNCION - t;
+  var cd = document.getElementById("countdown");
+  var est = document.getElementById("estado");
+  var txt = document.getElementById("estado-txt");
+  var inicioDia = hora("00:00"), finDia = new Date(DIA + "T23:59:59-05:00");
+
+  if (falta > 0) {
+    cd.hidden = false;
+    var s = Math.floor(falta / 1000);
+    document.getElementById("cd-d").textContent = Math.floor(s / 86400);
+    document.getElementById("cd-h").textContent = pad(Math.floor(s % 86400 / 3600));
+    document.getElementById("cd-m").textContent = pad(Math.floor(s % 3600 / 60));
+    document.getElementById("cd-s").textContent = pad(s % 60);
+    if (t >= inicioDia) {
+      var actual = document.querySelector(".timeline li.ahora h3");
+      txt.textContent = actual ? "¡Hoy es el día! Ahora: " + actual.firstChild.textContent.trim() : "¡Hoy es el día!";
+      est.classList.add("vivo");
+    } else {
+      var dias = Math.ceil((inicioDia - t) / 86400000);
+      txt.textContent = dias === 1 ? "Mañana es el gran día" : "Faltan " + dias + " días para la función";
+      est.classList.remove("vivo");
+    }
+  } else if (t <= finDia) {
+    cd.hidden = true;
+    txt.textContent = "¡Estamos en función!";
+    est.classList.add("vivo");
+  } else {
+    cd.hidden = true;
+    txt.textContent = "Gracias por vivir El Legado con nosotros";
+    est.classList.remove("vivo");
+  }
+}
+
+/* Línea del tiempo en vivo (solo el 28 de noviembre) */
+function actualizarLinea() {
+  var t = ahora();
+  var esElDia = t >= hora("00:00") && t <= new Date(DIA + "T23:59:59-05:00");
+  var items = document.querySelectorAll("#timeline li");
+  var siguienteMarcado = false;
+  items.forEach(function (li) {
+    li.classList.remove("ahora", "sigue", "paso");
+    li.querySelector(".chip-estado").textContent = "";
+  });
+  if (!esElDia) return;
+  items.forEach(function (li) {
+    var ini = li.getAttribute("data-start"), fin = li.getAttribute("data-end");
+    var chip = li.querySelector(".chip-estado");
+    if (fin && t >= hora(fin)) { li.classList.add("paso"); return; }
+    if (ini && fin && t >= hora(ini)) { li.classList.add("ahora"); chip.textContent = "Ahora"; return; }
+    if (!siguienteMarcado && (ini ? t < hora(ini) : !!fin)) {
+      li.classList.add("sigue"); chip.textContent = "Sigue"; siguienteMarcado = true;
+    }
+  });
+}
+
+/* Qué llevar: guardado en este navegador */
+var CLAVE = "legado2026-llevar";
+function leerMarcas() { try { return JSON.parse(localStorage.getItem(CLAVE)) || {}; } catch (e) { return {}; } }
+function guardarMarcas(m) { try { localStorage.setItem(CLAVE, JSON.stringify(m)); } catch (e) {} }
+function actualizarProgreso() {
+  var cajas = document.querySelectorAll("#lista input");
+  var total = cajas.length, listos = 0;
+  cajas.forEach(function (c) { if (c.checked) listos++; });
+  document.getElementById("prog-txt").textContent = listos === total ? "¡Todo listo!" : listos + " de " + total + " listos";
+  document.getElementById("prog-bar").style.width = (listos / total * 100) + "%";
+}
+function iniciarLista() {
+  var marcas = leerMarcas();
+  document.querySelectorAll("#lista input").forEach(function (c) {
+    if (marcas[c.dataset.key] && !c.disabled) c.checked = true;
+    c.addEventListener("change", function () {
+      var m = leerMarcas(); m[c.dataset.key] = c.checked; guardarMarcas(m); actualizarProgreso();
+    });
+  });
+  actualizarProgreso();
+}
+
+/* Polvo dorado bajo el reflector */
+function iniciarPolvo() {
+  var canvas = document.getElementById("polvo");
+  var ctx = canvas.getContext("2d");
+  var quieto = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var dpr = Math.min(window.devicePixelRatio || 1, 2);
+  var w, h, motas = [];
+  function medir() {
+    w = canvas.clientWidth; h = canvas.clientHeight;
+    canvas.width = w * dpr; canvas.height = h * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  function nueva(y) {
+    return { x: w * (0.2 + Math.random() * 0.6) + (Math.random() - 0.5) * w * 0.3, y: y == null ? Math.random() * h : y,
+      r: Math.random() * 1.6 + 0.4, v: Math.random() * 0.25 + 0.08, a: Math.random() * 0.6 + 0.2, f: Math.random() * Math.PI * 2 };
+  }
+  medir();
+  var n = Math.round(Math.min(70, w / 8));
+  for (var i = 0; i < n; i++) motas.push(nueva());
+  function pintar() {
+    ctx.clearRect(0, 0, w, h);
+    motas.forEach(function (m) {
+      var brillo = m.a * (0.6 + 0.4 * Math.sin(m.f));
+      ctx.beginPath(); ctx.arc(m.x, m.y, m.r, 0, Math.PI * 2);
+      ctx.fillStyle = "rgba(246, 220, 148," + brillo.toFixed(3) + ")"; ctx.fill();
+    });
+  }
+  function paso() {
+    motas.forEach(function (m, i) {
+      m.y -= m.v; m.x += Math.sin(m.f) * 0.15; m.f += 0.02;
+      if (m.y < -4) motas[i] = nueva(h + 4);
+    });
+    pintar();
+    requestAnimationFrame(paso);
+  }
+  window.addEventListener("resize", medir);
+  if (quieto) pintar(); else requestAnimationFrame(paso);
+}
+
+/* Pestañas: solo se ve la información de la pestaña elegida */
+var PESTANAS = ["horas", "dia", "llevar", "importante", "pequenos", "llegar"];
+var NOMBRES = { horas: "Horas clave", dia: "Así va el día", llevar: "Qué llevar", importante: "Muy importante", pequenos: "Los más pequeños", llegar: "Cómo llegar" };
+var actualTab = "horas";
+function mostrar(id, subir) {
+  if (PESTANAS.indexOf(id) < 0) id = "horas";
+  actualTab = id;
+  var mover = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  PESTANAS.forEach(function (p) {
+    var s = document.getElementById(p);
+    s.hidden = p !== id;
+    s.classList.remove("entra");
+    if (p === id && mover) { void s.offsetWidth; s.classList.add("entra"); }
+    var b = document.getElementById("tab-" + p);
+    b.setAttribute("aria-selected", p === id ? "true" : "false");
+    if (p === id) b.classList.add("visto");
+    b.tabIndex = p === id ? 0 : -1;
+    var m = document.querySelector('.nav-mini button[data-tab="' + p + '"]');
+    if (m) m.setAttribute("aria-pressed", p === id ? "true" : "false");
+  });
+  var i = PESTANAS.indexOf(id);
+  document.getElementById("btn-sig-txt").textContent = i < PESTANAS.length - 1 ? "Siguiente: " + NOMBRES[PESTANAS[i + 1]] : "Volver a las horas clave";
+  if (subir) {
+    /* Deja el inicio de la información justo debajo del menú corto */
+    var main = document.querySelector("main");
+    var tope = main.getBoundingClientRect().top + window.scrollY - document.getElementById("nav-mini").offsetHeight;
+    if (window.scrollY > tope) window.scrollTo({ top: tope, behavior: mover ? "smooth" : "auto" });
+  }
+}
+function iniciarPestanas() {
+  document.querySelectorAll(".nav button").forEach(function (b) {
+    b.addEventListener("click", function () { mostrar(b.dataset.tab, true); });
+    b.addEventListener("keydown", function (e) {
+      var i = PESTANAS.indexOf(actualTab);
+      if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
+        e.preventDefault();
+        var n = PESTANAS[(i + (e.key === "ArrowRight" ? 1 : PESTANAS.length - 1)) % PESTANAS.length];
+        mostrar(n, false); document.getElementById("tab-" + n).focus();
+      }
+    });
+  });
+  document.getElementById("btn-sig").addEventListener("click", function () {
+    var i = PESTANAS.indexOf(actualTab);
+    mostrar(PESTANAS[(i + 1) % PESTANAS.length], true);
+  });
+  PESTANAS.forEach(function (p) {
+    var s = document.getElementById(p);
+    s.setAttribute("role", "tabpanel"); s.setAttribute("aria-labelledby", "tab-" + p);
+  });
+  /* Un link con #llegar, #llevar, etc. abre directo esa pestaña */
+  var h = location.hash.replace("#", "");
+  mostrar(PESTANAS.indexOf(h) >= 0 ? h : "horas", false);
+}
+
+/* Menú corto: una fila de íconos que aparece cuando el menú grande sale de la pantalla */
+var CORTOS = { horas: "Horas", dia: "El día", llevar: "Llevar", importante: "Avisos", pequenos: "Niños", llegar: "Llegar" };
+function iniciarMenuCorto() {
+  var cont = document.getElementById("nav-mini-wrap");
+  PESTANAS.forEach(function (p) {
+    var b = document.createElement("button");
+    b.type = "button"; b.dataset.tab = p;
+    b.setAttribute("aria-label", NOMBRES[p]);
+    b.setAttribute("aria-pressed", p === actualTab ? "true" : "false");
+    b.appendChild(document.querySelector("#tab-" + p + " svg").cloneNode(true));
+    var s = document.createElement("span"); s.textContent = CORTOS[p]; b.appendChild(s);
+    b.addEventListener("click", function () { mostrar(p, true); });
+    cont.appendChild(b);
+  });
+  var mini = document.getElementById("nav-mini"), grande = document.querySelector(".nav");
+  function revisar() {
+    var r = grande.getBoundingClientRect();
+    var ver = r.height > 0 && r.bottom <= mini.offsetHeight + 1 && window.scrollY > 0;
+    mini.classList.toggle("visible", ver);
+    if (ver) mini.removeAttribute("inert"); else mini.setAttribute("inert", "");
+  }
+  window.addEventListener("scroll", revisar, { passive: true });
+  window.addEventListener("resize", revisar);
+  revisar();
+}
+
+/* Avisos cortos de Horas clave: llevan a Muy importante */
+function iniciarAvisos() {
+  document.querySelectorAll("[data-ir]").forEach(function (b) {
+    b.addEventListener("click", function () { mostrar(b.getAttribute("data-ir"), true); });
+  });
+}
+
+/* Aviso "Nuevo" */
+function mostrarNovedad() {
+  var nov = CONFIG.novedad || (demoBase ? { texto: "Ejemplo: ya está la hora de apertura de puertas", tab: "horas" } : null);
+  var el = document.getElementById("nuevo");
+  if (!nov) { el.hidden = true; return; }
+  document.getElementById("nuevo-txt").textContent = nov.texto;
+  el.hidden = false;
+  el.onclick = function () { mostrar(nov.tab || "horas", false); document.querySelector(".nav").scrollIntoView({ behavior: "smooth" }); };
+}
+
+/* Arranque */
+iniciarPestanas();
+iniciarMenuCorto();
+iniciarAvisos();
+revisarDemo();
+mostrarNovedad();
+aplicarConfig();
+actualizarLinea();
+actualizarReloj();
+iniciarLista();
+iniciarPolvo();
+setInterval(function () { actualizarLinea(); actualizarReloj(); }, 1000);
+window.addEventListener("hashchange", function () {
+  revisarDemo(); actualizarLinea(); actualizarReloj(); mostrarNovedad();
+  var h = location.hash.replace("#", "");
+  if (PESTANAS.indexOf(h) >= 0) mostrar(h, true);
+});
+if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  document.body.classList.add("blink");
+}
+</script>
+<!-- Cloudflare Web Analytics (mismo de voxcorpusdanza.com) -->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "3edc745e3c6348cba0fbadbd312c9fee"}'></script>
+</body>
+</html>
