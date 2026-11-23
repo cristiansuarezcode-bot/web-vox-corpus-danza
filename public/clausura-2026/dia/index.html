@@ -43,8 +43,9 @@
 }
 
 * { box-sizing: border-box; }
-/* El fondo del html también es oscuro, para que el rebote del scroll en iPhone no muestre otro color */
-html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; background: var(--ink); overscroll-behavior-y: none; }
+/* El fondo del html también es oscuro, para que el rebote del scroll no muestre otro color.
+   No se bloquea el rebote: así sigue funcionando "jalar hacia abajo para recargar". */
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; background: var(--ink); }
 body {
   margin: 0;
   overflow-anchor: none;
