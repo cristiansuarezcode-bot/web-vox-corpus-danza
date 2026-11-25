@@ -864,6 +864,7 @@ var actualTab = "horas";
 function mostrar(id, subir) {
   if (PESTANAS.indexOf(id) < 0) id = "horas";
   actualTab = id;
+  document.querySelectorAll(".video-ruta video").forEach(function (v) { if (!v.paused) v.pause(); });
   var mover = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   PESTANAS.forEach(function (p) {
     var s = document.getElementById(p);
@@ -954,7 +955,18 @@ function mostrarNovedad() {
   el.onclick = function () { mostrar(nov.tab || "horas", false); document.querySelector(".nav").scrollIntoView({ behavior: "smooth" }); };
 }
 
+/* Videos de ruta: solo uno suena a la vez. Al dar play a uno, el otro se pausa donde iba. */
+function iniciarVideos() {
+  var vids = Array.prototype.slice.call(document.querySelectorAll(".video-ruta video"));
+  vids.forEach(function (v) {
+    v.addEventListener("play", function () {
+      vids.forEach(function (otro) { if (otro !== v && !otro.paused) otro.pause(); });
+    });
+  });
+}
+
 /* Arranque */
+iniciarVideos();
 iniciarPestanas();
 iniciarMenuCorto();
 iniciarAvisos();
