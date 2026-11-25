@@ -448,13 +448,13 @@ footer p { margin: 0 0 8px; }
     <div class="claves">
       <div class="clave">
         <span class="hora">9:00<small>a.m.</small></span>
-        <strong>Ensayo general</strong>
-        <p>Hasta las 12:00 m. Es para todos los grupos.</p>
+        <strong>Inicio del ensayo general</strong>
+        <p>Inicia en punto, por eso les pedimos llegar con anticipación. Termina a las 12:00 m. Todos los grupos, con ropa negra.</p>
       </div>
       <div class="clave">
         <span class="hora">3:00<small>p.m.</small></span>
         <strong>Llegada de bailarines</strong>
-        <p>En punto, con todo el vestuario.</p>
+        <p>En punto, de nuevo en el teatro y con todo el vestuario.</p>
       </div>
       <div class="clave estrella">
         <span class="hora">4:00<small>p.m.</small></span>
@@ -464,7 +464,7 @@ footer p { margin: 0 0 8px; }
     </div>
     <div class="puertas-linea">
       <strong>Ingreso del público:</strong>
-      <span data-cfg="puertasLabel"><span class="pendiente">Por confirmar</span></span>
+      <span data-cfg="puertasLabel">3:00 p.m.</span>
     </div>
     <div class="avisos-cortos">
       <button type="button" class="aviso-corto" data-ir="importante">
@@ -493,23 +493,23 @@ footer p { margin: 0 0 8px; }
         <span class="marca"></span>
         <span class="t-hora">9:00 a.m. a 12:00 m.</span>
         <h3>Ensayo general <span class="chip-estado"></span></h3>
-        <p>Para todos los grupos. Les pedimos llegar puntuales, porque de este ensayo depende que todo salga bien en la función.</p>
+        <p>Para todos los grupos. El ensayo inicia a las 9:00 a.m. en punto, por lo que les pedimos llegar con anticipación. Todos deben asistir con ropa negra; si tienen el uniforme de Vox Corpus Danza, es la mejor opción.</p>
       </li>
       <li data-start="12:00" data-end="15:00">
         <span class="marca"></span>
         <span class="t-hora">12:00 m. a 3:00 p.m.</span>
-        <h3>Pausa del mediodía <span class="chip-estado"></span></h3>
-        <p data-cfg="mediodia"><span class="pendiente">Por confirmar</span> Pronto confirmaremos si los estudiantes almuerzan con sus familias o permanecen en el teatro.</p>
+        <h3>Tiempo para almorzar y alistarse <span class="chip-estado"></span></h3>
+        <p>Al terminar el ensayo, los estudiantes se retiran del teatro para almorzar y prepararse para la función.</p>
       </li>
       <li data-start="15:00" data-end="16:00" id="t-llegada">
         <span class="marca"></span>
         <span class="t-hora">3:00 p.m. en punto</span>
         <h3>Llegada de bailarines <span class="chip-estado"></span></h3>
-        <p>Con todo su vestuario y lo que necesiten para sus cambios, marcado con su nombre.</p>
+        <p>Los estudiantes regresan al teatro a las 3:00 p.m. en punto, con todo su vestuario y lo necesario para sus cambios, marcado con su nombre.</p>
       </li>
       <li data-end="16:00" id="t-puertas">
         <span class="marca"></span>
-        <span class="t-hora" data-cfg="puertasLabel"><span class="pendiente">Hora por confirmar</span></span>
+        <span class="t-hora" data-cfg="puertasLabel">3:00 p.m.</span>
         <h3>Ingreso del público <span class="chip-estado"></span></h3>
         <p>Apertura de puertas para familias e invitados. Les pedimos tener sus boletas a la mano.</p>
       </li>
@@ -525,6 +525,12 @@ footer p { margin: 0 0 8px; }
         <h3>Entrega de los niños <span class="chip-estado"></span></h3>
         <p>La entrega se hace empezando por los más pequeños. Les pedimos esperar las indicaciones de nuestro equipo.</p>
       </li>
+      <li>
+        <span class="marca"></span>
+        <span class="t-hora">Después del show</span>
+        <h3>Fotos en familia <span class="chip-estado"></span></h3>
+        <p>Los invitamos a acercarse con toda la familia al spot de fotos. Allí podrán tomarse todas las fotos familiares que deseen.</p>
+      </li>
     </ol>
   </section>
 
@@ -534,11 +540,11 @@ footer p { margin: 0 0 8px; }
     <div class="progreso"><span id="prog-txt">0 de 5 listos</span><div class="barra"><i id="prog-bar"></i></div></div>
     <p class="nota-camerino">El agua y los snacks de los estudiantes se consumen únicamente en camerinos. En la sala del teatro no se permiten alimentos ni bebidas.</p>
     <ul class="lista" id="lista">
+      <li><label class="item"><input type="checkbox" id="ll-ropanegra" data-key="ropanegra"><span class="caja"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></span><div><strong>Ropa negra para el ensayo general</strong><span class="det">Si tienen el uniforme de Vox Corpus Danza, es la mejor opción.</span></div></label></li>
       <li><label class="item"><input type="checkbox" id="ll-vestuario" data-key="vestuario"><span class="caja"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></span><div><strong>Vestuario completo</strong><span class="det">De cada montaje en el que baila, marcado con su nombre.</span></div></label></li>
       <li><label class="item"><input type="checkbox" id="ll-cambios" data-key="cambios"><span class="caja"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></span><div><strong>Lo de los cambios, separado</strong><span class="det">Zapatos, accesorios y peinado de cada montaje, en bolsas marcadas.</span></div></label></li>
       <li><label class="item"><input type="checkbox" id="ll-agua" data-key="agua"><span class="caja"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></span><div><strong>Agua</strong><span class="det">En termo o botella marcada con su nombre. Es una jornada larga y de mucha actividad.</span></div></label></li>
-      <li><label class="item"><input type="checkbox" id="ll-snack" data-key="snack"><span class="caja"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></span><div><strong>Un snack suave y nutritivo</strong><span class="det">Algo sencillo y fácil de comer, como frutas. Les pedimos evitar comidas pesadas. Marcado con su nombre.</span></div></label></li>
-      <li><label class="item bloqueado" id="item-camiseta"><input type="checkbox" id="ll-camiseta" data-key="camiseta" disabled><span class="caja"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></span><div><strong>Camiseta de color para el final</strong><span class="det" data-cfg="camiseta"><span class="pendiente">Por confirmar</span> Pronto confirmaremos el color.</span></div></label></li>
+      <li><label class="item"><input type="checkbox" id="ll-snack" data-key="snack"><span class="caja"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></span><div><strong>Un snack suave y fácil de comer</strong><span class="det">Fruta picada en un recipiente (coca) marcado con su nombre, o alimentos en paquete. Les pedimos evitar comidas pesadas.</span></div></label></li>
     </ul>
   </section>
 
@@ -586,6 +592,7 @@ footer p { margin: 0 0 8px; }
         <ul>
           <li>Los niños se entregan empezando por los más pequeños.</li>
           <li>Esperen las indicaciones de nuestro equipo para recogerlos.</li>
+          <li>Después, acérquense con toda la familia al spot de fotos para tomarse las fotos familiares que deseen.</li>
         </ul>
       </div>
     </div>
@@ -629,7 +636,7 @@ footer p { margin: 0 0 8px; }
       <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.3 7.5L3 21l2-5.5A8.4 8.4 0 1 1 21 11.5z"/><path d="M9 8.5c0 3.6 2.9 6.5 6.5 6.5l1-1.6-2-1.1-1 .9a4.5 4.5 0 0 1-2.2-2.2l.9-1-1.1-2z"/></svg>
       <span>WhatsApp <b>311 271 0369</b></span>
     </a>
-    <span class="actualizado">Actualizado el <span data-cfg="actualizado">23 de noviembre de 2026</span></span>
+    <span class="actualizado">Actualizado el <span data-cfg="actualizado">25 de noviembre de 2026</span></span>
   </div>
 </footer>
 
@@ -640,10 +647,8 @@ footer p { margin: 0 0 8px; }
    null = sigue "Por confirmar".
    ================================================================ */
 var CONFIG = {
-  actualizado: "23 de noviembre de 2026",
-  puertas: null,      // ejemplo: { hora: "15:30", label: "3:30 p.m." }
-  mediodia: null,     // ejemplo: "Los niños almuerzan con sus familias y vuelven a las 3:00 p.m. en punto."
-  camiseta: null,     // ejemplo: "Camiseta amarilla, puesta debajo del vestuario para cambiarse rápido."
+  actualizado: "25 de noviembre de 2026",
+  puertas: { hora: "15:00", label: "3:00 p.m." },   // ingreso del público; null = "Por confirmar"
 
   /* Aviso "Nuevo" arriba de la portada. null = no se muestra.
      tab = pestaña que abre al tocarlo: horas, dia, llevar, importante, pequenos o llegar */
@@ -668,13 +673,7 @@ function aplicarConfig() {
   if (CONFIG.puertas) {
     document.querySelectorAll('[data-cfg="puertasLabel"]').forEach(function (el) { el.textContent = CONFIG.puertas.label; });
     document.getElementById("t-puertas").setAttribute("data-start", CONFIG.puertas.hora);
-    document.getElementById("t-llegada").setAttribute("data-end", CONFIG.puertas.hora);
-  }
-  if (CONFIG.mediodia) { document.querySelector('[data-cfg="mediodia"]').textContent = CONFIG.mediodia; }
-  if (CONFIG.camiseta) {
-    document.querySelector('[data-cfg="camiseta"]').textContent = CONFIG.camiseta;
-    document.getElementById("item-camiseta").classList.remove("bloqueado");
-    document.getElementById("ll-camiseta").disabled = false;
+    if (CONFIG.puertas.hora > "15:00") document.getElementById("t-llegada").setAttribute("data-end", CONFIG.puertas.hora);
   }
 }
 
@@ -886,7 +885,7 @@ function iniciarAvisos() {
 
 /* Aviso "Nuevo" */
 function mostrarNovedad() {
-  var nov = CONFIG.novedad || (demoBase ? { texto: "Ejemplo: ya está la hora de apertura de puertas", tab: "horas" } : null);
+  var nov = CONFIG.novedad || (demoBase ? { texto: "Ejemplo: se actualizó la información del ensayo general", tab: "horas" } : null);
   var el = document.getElementById("nuevo");
   if (!nov) { el.hidden = true; return; }
   document.getElementById("nuevo-txt").textContent = nov.texto;
