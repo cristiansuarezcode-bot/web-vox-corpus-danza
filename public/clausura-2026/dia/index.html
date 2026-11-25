@@ -271,6 +271,20 @@ h2 {
 .ley b { color: var(--gold-hi); font-weight: 800; }
 .ley-nota { color: var(--muted); font-size: 12.5px; }
 
+.videos-ruta { margin-top: 20px; padding-top: 18px; border-top: 1px solid var(--line); }
+.videos-ruta h3 { margin: 0 0 12px; font-size: 18px; }
+.videos-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.video-ruta { margin: 0; display: grid; gap: 6px; }
+.video-ruta figcaption { display: flex; align-items: center; gap: 8px; font-weight: 800; font-size: 14.5px; }
+.video-ruta small { margin-left: auto; color: var(--muted); font-weight: 600; font-size: 12.5px; font-variant-numeric: tabular-nums; }
+.vnum { width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center; font-size: 12px; }
+.v1 .vnum { background: var(--gold); color: var(--ink); }
+.v2 .vnum { background: #4fc3f7; color: #06202b; }
+.video-ruta video { display: block; width: 100%; height: auto; aspect-ratio: 9 / 16; border-radius: 12px; border: 1px solid var(--line); background: #000; object-fit: cover; }
+.v1 video { border-color: rgba(226,181,74,.5); }
+.v2 video { border-color: rgba(79,195,247,.45); }
+.videos-ruta .ley-nota { margin: 10px 0 0; }
+
 /* Muy importante */
 .alertas { display: grid; gap: 12px; }
 .alerta {
@@ -643,6 +657,24 @@ footer p { margin: 0 0 8px; }
           <span class="ley-nota">Mapa de referencia. Tóquenlo para verlo en grande.</span>
         </figcaption>
       </figure>
+      <div class="videos-ruta">
+        <h3>Así se llega, en video</h3>
+        <div class="videos-grid">
+          <figure class="video-ruta v1">
+            <figcaption><span class="vnum">1</span>Ruta 1 <small>1:23</small></figcaption>
+            <video controls playsinline muted preload="none" poster="/clausura-2026/video-ruta-1.jpg" width="540" height="960" aria-label="Video del recorrido de la ruta 1 por la Calle 39 Sur y la vía Caldas–Envigado hasta la portería del Bloque 14">
+              <source src="/clausura-2026/video-ruta-1.mp4" type="video/mp4">
+            </video>
+          </figure>
+          <figure class="video-ruta v2">
+            <figcaption><span class="vnum">2</span>Ruta 2 <small>0:33</small></figcaption>
+            <video controls playsinline muted preload="none" poster="/clausura-2026/video-ruta-2.jpg" width="540" height="960" aria-label="Video del recorrido de la ruta 2 por la Calle 40 Sur hasta la entrada principal de la universidad">
+              <source src="/clausura-2026/video-ruta-2.mp4" type="video/mp4">
+            </video>
+          </figure>
+        </div>
+        <p class="ley-nota">Los tramos rectos van acelerados. Toquen el video para reproducirlo y amplíenlo a pantalla completa.</p>
+      </div>
     </div>
   </section>
 
