@@ -40,6 +40,8 @@ export const clausura = {
     direccion: "Carrera 27B #39A Sur-57, Envigado",
     destinoMapa:
       "Institución Universitaria de Envigado, Carrera 27B #39A Sur-57, Envigado",
+    ingreso:
+      "El ingreso al auditorio es por la portería del Bloque 14, no por la entrada principal de la universidad.",
     parqueadero:
       "La universidad cuenta con parqueadero, pero no es posible garantizar cupo para todos los asistentes, ya que en ese horario también hay actividad académica. Recomendamos llegar en transporte público, taxi o plataforma.",
     // Cuando tengas las indicaciones de metro y bus, escríbelas aquí.
@@ -127,7 +129,7 @@ export const clausura = {
     {
       pregunta: "¿A qué hora debo llegar al teatro?",
       respuesta:
-        "Las puertas abren a las 3:00 p.m. y el show empieza a las 4:00 p.m. Por respeto a los artistas, te pedimos llegar con tiempo.",
+        "Las puertas abren a las 3:00 p.m. y el show empieza a las 4:00 p.m. El ingreso es por la portería del Bloque 14, no por la entrada principal de la universidad. Por respeto a los artistas, te pedimos llegar con tiempo.",
     },
     {
       pregunta: "¿Cómo pago el paquete audiovisual?",

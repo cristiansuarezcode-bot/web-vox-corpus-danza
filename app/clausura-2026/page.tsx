@@ -296,6 +296,9 @@ export default function Clausura2026Page() {
           </div>
           <div className={styles.notas}>
             <p>
+              <strong>Ingreso:</strong> {lugar.ingreso}
+            </p>
+            <p>
               <strong>Parqueadero:</strong> {lugar.parqueadero.toLowerCase()}
             </p>
             {lugar.transportePublico ? (
