@@ -259,30 +259,15 @@ h2 {
 
 /* Mapa de llegada */
 .mapa { margin: 0; }
-.mapa svg { display: block; width: 100%; height: auto; border-radius: 12px; border: 1px solid var(--line); }
-.mapa text { font-family: var(--font-body); paint-order: stroke; stroke: #120f0a; stroke-width: 7px; stroke-linejoin: round; }
-.m-via { font-size: 22px; font-weight: 700; fill: #8a8170; letter-spacing: .06em; text-transform: uppercase; }
-.m-calle { font-size: 23px; font-weight: 700; fill: var(--text); }
-.m-zona { font-size: 26px; font-weight: 800; fill: #8a8170; letter-spacing: .08em; stroke-width: 0 !important; }
-.m-nota { font-size: 22px; font-weight: 600; fill: #b3a891; }
-.m-lugar { font-size: 26px; font-weight: 800; fill: #7fd49b; }
-.m-eyebrow { font-size: 14px; font-weight: 800; fill: var(--muted); letter-spacing: .22em; stroke-width: 0 !important; }
-.m-destino { font-size: 21px; font-weight: 800; fill: var(--gold-hi); stroke-width: 0 !important; }
-.m-norte { font-size: 15px; font-weight: 800; fill: var(--muted); stroke-width: 0 !important; }
-.m-fondo { fill: none; stroke: rgba(243,237,225,.07); stroke-width: 10; stroke-linecap: round; stroke-linejoin: round; }
-.ruta { fill: none; stroke-linecap: round; stroke-linejoin: round; }
-.r1-base { stroke: rgba(226,181,74,.22); stroke-width: 22; }
-.r1 { stroke: var(--gold); stroke-width: 9; stroke-dasharray: 22 15; animation: flujo 1.6s linear infinite; }
-.r2-base { stroke: rgba(124,196,216,.16); stroke-width: 20; }
-.r2 { stroke: #7cc4d8; stroke-width: 8; stroke-dasharray: 6 13; }
-@keyframes flujo { to { stroke-dashoffset: -37; } }
-.pulso { transform-origin: 668px 722px; animation: pulsoMapa 2.8s ease-out infinite; }
-@keyframes pulsoMapa { 0% { transform: scale(.9); opacity: .6; } 100% { transform: scale(1.7); opacity: 0; } }
-.mapa figcaption { display: grid; gap: 6px; margin-top: 10px; font-size: 14.5px; color: var(--text); }
+.mapa-link { display: block; border-radius: 12px; overflow: hidden; border: 1px solid var(--line); background: #120f0a; }
+.mapa-link img { display: block; width: 100%; height: auto; }
+.mapa figcaption { display: grid; gap: 7px; margin-top: 12px; font-size: 14.5px; color: var(--text); }
 .ley { display: block; position: relative; padding-left: 34px; line-height: 1.4; }
 .ley i { position: absolute; left: 0; top: 0.7em; width: 24px; height: 0; }
-.ley-1 { border-top: 4px dashed var(--gold); }
-.ley-2 { border-top: 4px dotted #7cc4d8; }
+.ley-1 { border-top: 4px solid var(--gold); border-radius: 2px; }
+.ley-2 { border-top: 4px dashed #4fc3f7; }
+.ley-x { top: 0.05em !important; height: 20px !important; width: 20px !important; left: 2px !important; border-radius: 50%; border: 2px solid #b3a891; color: #e8e2d6; font-style: normal; font-size: 14px; line-height: 16px; text-align: center; font-weight: 800; }
+.ley-p { top: 0.1em !important; height: 18px !important; width: 18px !important; left: 3px !important; border-radius: 50%; background: var(--gold); box-shadow: 0 0 0 3px rgba(226,181,74,.3); }
 .ley b { color: var(--gold-hi); font-weight: 800; }
 .ley-nota { color: var(--muted); font-size: 12.5px; }
 
@@ -407,7 +392,6 @@ footer p { margin: 0 0 8px; }
   .blink .lid { animation: none; }
   .nav button::after { animation: none; opacity: 0; }
   .nav-mini { transition: none; }
-  .r1, .pulso { animation: none; }
   .estado .dot { animation: none; }
   .barra i { transition: none; }
 }
@@ -638,101 +622,25 @@ footer p { margin: 0 0 8px; }
 
   <section id="llegar">
     <h2>Cómo llegar</h2>
-    <p class="sub">Desde el Parque Principal de Envigado hasta la portería del Bloque 14.</p>
+    <p class="sub">Desde la Avenida El Poblado hasta la portería del Bloque 14.</p>
     <div class="tarjeta">
       <p class="lugar">Teatro Universidad de Envigado</p>
       <p class="dir">Carrera 27B #39A Sur-57, Envigado</p>
       <p class="entrada"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg><span><strong>Ingreso por la portería del Bloque 14.</strong> El acceso al auditorio no es por la entrada principal de la universidad.</span></p>
       <figure class="mapa">
-        <svg viewBox="0 0 760 830" role="img" aria-labelledby="m-tit m-desc">
-        <title id="m-tit">Mapa de llegada a la portería del Bloque 14</title>
-        <desc id="m-desc">Desde el Parque Principal de Envigado hay dos rutas hasta la portería del Bloque 14 de la Institución Universitaria de Envigado. La ruta 1 va por la Calle 39 Sur, vía Caldas–Envigado. La ruta 2 va por la Calle 39B Sur y la Calle 40 Sur. La entrada principal no es el ingreso.</desc>
-        <defs>
-          <pattern id="cuadra" width="46" height="46" patternUnits="userSpaceOnUse" patternTransform="rotate(31)">
-            <path d="M0 0H46M0 0V46" stroke="rgba(226,181,74,0.05)" stroke-width="2"/>
-          </pattern>
-        </defs>
-        <rect width="760" height="830" rx="26" fill="#120f0a"/>
-        <rect width="760" height="830" rx="26" fill="url(#cuadra)"/>
-
-        <!-- Calles de referencia -->
-        <path d="M355 103 L215 327" class="m-fondo"/>
-        <path d="M405 133 L265 357" class="m-fondo"/>
-        <path d="M465 168 L325 392" class="m-fondo"/>
-        <path d="M515 198 L375 422" class="m-fondo"/>
-        <path d="M565 233 L425 457" class="m-fondo"/>
-        <path d="M90 150 L250 250 L330 300" class="m-fondo"/>
-        <path d="M300 343 L230 300" class="m-fondo"/>
-        <path d="M470 470 L560 520 L600 560" class="m-fondo"/>
-        <path d="M600 300 L760 330" class="m-fondo"/>
-        <path d="M520 600 L470 640 L420 700" class="m-fondo"/>
-        <path d="M380 380 L300 460 L260 520" class="m-fondo"/>
-
-        <!-- Quebrada -->
-        <path d="M688 612 C700 650 706 700 712 760 L716 830" fill="none" stroke="rgba(124,196,216,.35)" stroke-width="6" stroke-linecap="round"/>
-
-        <!-- Avenida El Poblado -->
-        <path d="M-10 222 L40 185 L90 120 L130 60 L165 -10" fill="none" stroke="#3a3326" stroke-width="30" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M-10 222 L40 185 L90 120 L130 60 L165 -10" fill="none" stroke="#5a4f3b" stroke-width="2" stroke-dasharray="12 14"/>
-        <text class="m-via" x="30" y="238" transform="rotate(-55 30 238)">Av. El Poblado</text>
-
-        <!-- Universidad -->
-        <path d="M562 562 L612 556 L640 636 L652 736 L590 744 L570 650 Z" fill="#2a241a" stroke="#4a4030" stroke-width="2"/>
-        <text class="m-zona" x="606" y="652" text-anchor="middle">IUE</text>
-
-        <g>
-          <path class="ruta r2-base" d="M205 95 L232 140 L240 190 L238 232 L215 272 L255 305 L300 343 L335 365 L370 385 L410 410 L442 440 L470 470 L492 502 L508 540 L525 565 L542 605 L555 645 L566 680 L582 708 L606 736 L646 736 L668 722"/>
-          <path class="ruta r2" d="M205 95 L232 140 L240 190 L238 232 L215 272 L255 305 L300 343 L335 365 L370 385 L410 410 L442 440 L470 470 L492 502 L508 540 L525 565 L542 605 L555 645 L566 680 L582 708 L606 736 L646 736 L668 722"/>
-        </g>
-        <g>
-          <path class="ruta r1-base" d="M205 95 L250 140 L310 175 L360 205 L420 240 L470 270 L520 305 L565 345 L580 372 L585 410 L592 450 L602 495 L612 540 L628 582 L652 617 L680 650 L694 688 L684 712 L668 722"/>
-          <path class="ruta r1" d="M205 95 L250 140 L310 175 L360 205 L420 240 L470 270 L520 305 L565 345 L580 372 L585 410 L592 450 L602 495 L612 540 L628 582 L652 617 L680 650 L694 688 L684 712 L668 722"/>
-        </g>
-
-        <text class="m-calle" x="268" y="140" transform="rotate(31 268 140)">Calle 39 Sur · vía Caldas–Envigado</text>
-        <text class="m-calle" x="628" y="420" transform="rotate(80 628 420)">Vía Caldas–Envigado</text>
-        <text class="m-calle" x="250" y="345" transform="rotate(34 250 345)">Calle 39B Sur</text>
-        <text class="m-calle" x="452" y="515" transform="rotate(66 452 515)">Calle 40 Sur</text>
-
-        <!-- Entrada principal -->
-        <g>
-          <circle cx="582" cy="708" r="14" fill="#1a1611" stroke="#8a8170" stroke-width="3"/>
-          <path d="M576 702L588 714M588 702L576 714" stroke="#b3a891" stroke-width="3.5" stroke-linecap="round"/>
-        </g>
-        <text class="m-nota" x="556" y="702" text-anchor="end">Entrada principal</text>
-        <text class="m-nota" x="556" y="728" text-anchor="end">(no es el ingreso)</text>
-
-        <!-- Parque -->
-        <g>
-          <circle cx="205" cy="78" r="20" fill="#1e3a2a" stroke="#7fd49b" stroke-width="3.5"/>
-          <path d="M205 66L214 81H196Z M205 74L216 89H194Z" fill="#7fd49b"/>
-        </g>
-        <text class="m-lugar" x="238" y="62">Parque Principal</text>
-        <text class="m-lugar" x="238" y="92">de Envigado</text>
-
-        <!-- Portería -->
-        <g>
-          <circle class="pulso" cx="668" cy="722" r="20" fill="none" stroke="#e2b54a" stroke-width="3"/>
-          <circle cx="668" cy="722" r="16" fill="#e2b54a" stroke="#0c0a07" stroke-width="4"/>
-          <path d="M661 723l5 5 9-10" fill="none" stroke="#0c0a07" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-        </g>
-        <path d="M668 740 L668 764" stroke="rgba(226,181,74,.6)" stroke-width="2"/>
-        <g transform="translate(520 764)">
-          <rect width="230" height="56" rx="14" fill="#17130d" stroke="#e2b54a" stroke-width="2"/>
-          <text class="m-eyebrow" x="115" y="21" text-anchor="middle">INGRESO</text>
-          <text class="m-destino" x="115" y="44" text-anchor="middle">Portería Bloque 14</text>
-        </g>
-
-        <g transform="translate(712 52)">
-          <circle r="26" fill="#1a1611" stroke="#4a4030" stroke-width="2"/>
-          <path d="M0 -16L8 6H-8Z" fill="#e2b54a"/>
-          <text class="m-norte" y="20" text-anchor="middle">N</text>
-        </g>
-      </svg>
+        <a class="mapa-link" href="/clausura-2026/mapa-llegada.jpg" target="_blank" rel="noopener" aria-label="Ver el mapa en grande">
+          <picture>
+            <source srcset="/clausura-2026/mapa-llegada.webp" type="image/webp">
+            <img src="/clausura-2026/mapa-llegada.jpg" width="1122" height="1402" loading="lazy" decoding="async"
+              alt="Mapa de llegada. Desde la Avenida El Poblado, la ruta 1 en dorado va por la Calle 39 Sur, pasa junto al Parque Principal de Envigado y sigue por la vía Caldas–Envigado hasta la portería del Bloque 14. La ruta 2 en azul va por la Calle 39B Sur y la Calle 40 Sur hasta la esquina de la entrada principal, y voltea por el borde de abajo de la universidad hasta la portería del Bloque 14.">
+          </picture>
+        </a>
         <figcaption>
-          <span class="ley"><i class="ley-1"></i><b>Ruta 1, la más directa:</b> Calle 39 Sur, vía Caldas–Envigado.</span>
-          <span class="ley"><i class="ley-2"></i><b>Ruta 2:</b> Calle 39B Sur y Calle 40 Sur, bordeando la universidad.</span>
-          <span class="ley-nota">Mapa de referencia, no está a escala.</span>
+          <span class="ley"><i class="ley-1"></i><b>Ruta 1, la más directa:</b> Calle 39 Sur y vía Caldas–Envigado.</span>
+          <span class="ley"><i class="ley-2"></i><b>Ruta 2:</b> Calle 39B Sur y Calle 40 Sur.</span>
+          <span class="ley"><i class="ley-x" aria-hidden="true">×</i><b>Entrada principal:</b> no es el ingreso. Allí se voltea hacia la portería.</span>
+          <span class="ley"><i class="ley-p"></i><b>Portería Bloque 14:</b> ingreso a la clausura.</span>
+          <span class="ley-nota">Mapa de referencia. Tóquenlo para verlo en grande.</span>
         </figcaption>
       </figure>
     </div>
